@@ -3,3 +3,13 @@
 @tailwind utilities;
 
 @import url("https://rsms.me/inter/inter.css");
+
+@layer base {
+  body {
+    @apply text-gray-300 bg-gray-800;
+  }
+
+  ::selection {
+    @apply text-white bg-indigo-700;
+  }
+}
