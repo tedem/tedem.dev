@@ -1,10 +1,11 @@
 import Layout from "../components/layout/layout";
-import Holder from "../components/layout/holder";
+
+import About from "../components/home/about";
 
 export default function Home() {
   return (
     <Layout>
-      <Holder>Main</Holder>
+      <About />
     </Layout>
   );
 }
