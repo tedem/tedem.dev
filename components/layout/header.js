@@ -31,9 +31,9 @@ export default function Header() {
                 <span className="whitespace-nowrap">Merkez</span>
               </a>
             </Link>
-            <Link href="/articles">
+            <Link href="/blog">
               <a className="flex items-center text-gray-300 transition hover:text-gray-200 focus:outline-none focus:text-indigo-200">
-                <span className="whitespace-nowrap">Makaleler</span>
+                <span className="whitespace-nowrap">Blog</span>
               </a>
             </Link>
             <Link href="/bookmarks">
@@ -106,10 +106,10 @@ export default function Header() {
                           </span>
                         </a>
                       </Menu.Item>
-                      <Menu.Item href="/articles">
+                      <Menu.Item href="/blog">
                         <a className="flex w-full px-4 py-2 text-gray-300 transition hover:bg-gray-600 hover:text-gray-100 focus:outline-none focus:bg-indigo-500 focus:text-indigo-100">
                           <span className="text-sm whitespace-nowrap">
-                            Makaleler
+                            Blog
                           </span>
                         </a>
                       </Menu.Item>
