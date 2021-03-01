@@ -7,16 +7,12 @@ export default function About() {
     <section id="about">
       <Holder>
         <div className="py-8 space-y-8">
-          <div className="space-y-4">
+          <div>
             <h2>
-              <a className="text-2xl font-medium text-indigo-300" href="#about">
-                Hakkımda
+              <a className="text-3xl font-bold" href="#about">
+                Medet Erdal Kimdir?
               </a>
             </h2>
-            <p className="text-sm">
-              Medet Erdal kimdir? Kendisi, işi ve becerileri hakkında
-              bilgiler...
-            </p>
           </div>
           <div>
             <p>
