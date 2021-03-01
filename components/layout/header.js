@@ -100,38 +100,28 @@ export default function Header() {
                   >
                     <div className="flex flex-col py-2">
                       <Menu.Item href="/">
-                        <a className="flex w-full px-4 py-2 text-gray-300 transition hover:bg-gray-600 hover:text-gray-100 focus:outline-none focus:bg-indigo-500 focus:text-indigo-100">
-                          <span className="text-sm whitespace-nowrap">
-                            Merkez
-                          </span>
+                        <a className="flex w-full px-5 py-2.5 text-gray-300 transition hover:bg-gray-600 hover:text-gray-100 focus:outline-none focus:bg-indigo-500 focus:text-indigo-100">
+                          <span className="whitespace-nowrap">Merkez</span>
                         </a>
                       </Menu.Item>
                       <Menu.Item href="/blog">
-                        <a className="flex w-full px-4 py-2 text-gray-300 transition hover:bg-gray-600 hover:text-gray-100 focus:outline-none focus:bg-indigo-500 focus:text-indigo-100">
-                          <span className="text-sm whitespace-nowrap">
-                            Blog
-                          </span>
+                        <a className="flex w-full px-5 py-2.5 text-gray-300 transition hover:bg-gray-600 hover:text-gray-100 focus:outline-none focus:bg-indigo-500 focus:text-indigo-100">
+                          <span className="whitespace-nowrap">Blog</span>
                         </a>
                       </Menu.Item>
                       <Menu.Item href="/bookmarks">
-                        <a className="flex w-full px-4 py-2 text-gray-300 transition hover:bg-gray-600 hover:text-gray-100 focus:outline-none focus:bg-indigo-500 focus:text-indigo-100">
-                          <span className="text-sm whitespace-nowrap">
-                            Bookmarks
-                          </span>
+                        <a className="flex w-full px-5 py-2.5 text-gray-300 transition hover:bg-gray-600 hover:text-gray-100 focus:outline-none focus:bg-indigo-500 focus:text-indigo-100">
+                          <span className="whitespace-nowrap">Bookmarks</span>
                         </a>
                       </Menu.Item>
                       <Menu.Item href="/about">
-                        <a className="flex w-full px-4 py-2 text-gray-300 transition hover:bg-gray-600 hover:text-gray-100 focus:outline-none focus:bg-indigo-500 focus:text-indigo-100">
-                          <span className="text-sm whitespace-nowrap">
-                            Hakkımda
-                          </span>
+                        <a className="flex w-full px-5 py-2.5 text-gray-300 transition hover:bg-gray-600 hover:text-gray-100 focus:outline-none focus:bg-indigo-500 focus:text-indigo-100">
+                          <span className="whitespace-nowrap">Hakkımda</span>
                         </a>
                       </Menu.Item>
                       <Menu.Item href="/contact">
-                        <a className="flex w-full px-4 py-2 text-gray-300 transition hover:bg-gray-600 hover:text-gray-100 focus:outline-none focus:bg-indigo-500 focus:text-indigo-100">
-                          <span className="text-sm whitespace-nowrap">
-                            İletişim
-                          </span>
+                        <a className="flex w-full px-5 py-2.5 text-gray-300 transition hover:bg-gray-600 hover:text-gray-100 focus:outline-none focus:bg-indigo-500 focus:text-indigo-100">
+                          <span className="whitespace-nowrap">İletişim</span>
                         </a>
                       </Menu.Item>
                     </div>
