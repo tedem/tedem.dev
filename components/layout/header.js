@@ -6,6 +6,14 @@ import Link from "next/link";
 import Holder from "../layout/holder";
 
 export default function Header() {
+  const links = [
+    { name: "Merkez", target: "/" },
+    { name: "Blog", target: "/blog" },
+    { name: "Bookmarks", target: "/bookmarks" },
+    { name: "Hakkımda", target: "/about" },
+    { name: "İletişim", target: "/contact" },
+  ];
+
   return (
     <header>
       <Holder>
@@ -26,31 +34,13 @@ export default function Header() {
             </Link>
           </div>
           <nav className="hidden ml-auto space-x-12 lg:flex">
-            <Link href="/">
-              <a className="flex items-center text-gray-300 transition hover:text-gray-100 focus:outline-none focus:text-indigo-100">
-                <span className="whitespace-nowrap">Merkez</span>
-              </a>
-            </Link>
-            <Link href="/blog">
-              <a className="flex items-center text-gray-300 transition hover:text-gray-200 focus:outline-none focus:text-indigo-200">
-                <span className="whitespace-nowrap">Blog</span>
-              </a>
-            </Link>
-            <Link href="/bookmarks">
-              <a className="flex items-center text-gray-300 transition hover:text-gray-200 focus:outline-none focus:text-indigo-200">
-                <span className="whitespace-nowrap">Bookmarks</span>
-              </a>
-            </Link>
-            <Link href="/about">
-              <a className="flex items-center text-gray-300 transition hover:text-gray-200 focus:outline-none focus:text-indigo-200">
-                <span className="whitespace-nowrap">Hakkımda</span>
-              </a>
-            </Link>
-            <Link href="/contact">
-              <a className="flex items-center text-gray-300 transition hover:text-gray-200 focus:outline-none focus:text-indigo-200">
-                <span className="whitespace-nowrap">İletişim</span>
-              </a>
-            </Link>
+            {links.map((link) => (
+              <Link key={link.name} href={link.target}>
+                <a className="flex items-center text-gray-300 transition hover:text-gray-100 focus:outline-none focus:text-indigo-100">
+                  <span className="whitespace-nowrap">{link.name}</span>
+                </a>
+              </Link>
+            ))}
           </nav>
           <Menu>
             {({ open }) => (
@@ -99,31 +89,15 @@ export default function Header() {
                     static
                   >
                     <div className="flex flex-col py-2">
-                      <Menu.Item href="/">
-                        <a className="flex w-full px-5 py-2.5 text-gray-300 transition hover:bg-gray-600 hover:text-gray-100 focus:outline-none focus:bg-indigo-500 focus:text-indigo-100">
-                          <span className="whitespace-nowrap">Merkez</span>
-                        </a>
-                      </Menu.Item>
-                      <Menu.Item href="/blog">
-                        <a className="flex w-full px-5 py-2.5 text-gray-300 transition hover:bg-gray-600 hover:text-gray-100 focus:outline-none focus:bg-indigo-500 focus:text-indigo-100">
-                          <span className="whitespace-nowrap">Blog</span>
-                        </a>
-                      </Menu.Item>
-                      <Menu.Item href="/bookmarks">
-                        <a className="flex w-full px-5 py-2.5 text-gray-300 transition hover:bg-gray-600 hover:text-gray-100 focus:outline-none focus:bg-indigo-500 focus:text-indigo-100">
-                          <span className="whitespace-nowrap">Bookmarks</span>
-                        </a>
-                      </Menu.Item>
-                      <Menu.Item href="/about">
-                        <a className="flex w-full px-5 py-2.5 text-gray-300 transition hover:bg-gray-600 hover:text-gray-100 focus:outline-none focus:bg-indigo-500 focus:text-indigo-100">
-                          <span className="whitespace-nowrap">Hakkımda</span>
-                        </a>
-                      </Menu.Item>
-                      <Menu.Item href="/contact">
-                        <a className="flex w-full px-5 py-2.5 text-gray-300 transition hover:bg-gray-600 hover:text-gray-100 focus:outline-none focus:bg-indigo-500 focus:text-indigo-100">
-                          <span className="whitespace-nowrap">İletişim</span>
-                        </a>
-                      </Menu.Item>
+                      {links.map((link) => (
+                        <Menu.Item key={link.name} href={link.target}>
+                          <a className="flex w-full px-5 py-2.5 text-gray-300 transition hover:bg-gray-600 hover:text-gray-100 focus:outline-none focus:bg-indigo-500 focus:text-indigo-100">
+                            <span className="whitespace-nowrap">
+                              {link.name}
+                            </span>
+                          </a>
+                        </Menu.Item>
+                      ))}
                     </div>
                   </Menu.Items>
                 </Transition>
