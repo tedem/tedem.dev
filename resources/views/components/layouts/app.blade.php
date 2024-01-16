@@ -15,8 +15,10 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-slate-100">
+    <body class="bg-slate-950 font-sans text-base antialiased isolate">
+        <div class="my-2 min-h-[calc(theme(height.lvh)-theme(spacing.4))] rounded-t-lg bg-slate-50">
+            @include('partials.header')
+
             <!-- Page Content -->
             <main>
                 {{ $slot }}
