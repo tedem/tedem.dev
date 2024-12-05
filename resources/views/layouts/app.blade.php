@@ -20,7 +20,7 @@
 
 <body
     class="isolate bg-slate-950 font-sans text-base antialiased [text-rendering:optimizeLegibility] selection:bg-teal-300 selection:text-teal-950">
-    <div class="my-2 min-h-[calc(theme(height.lvh)-theme(spacing.4))] rounded-lg bg-slate-50 lg:mx-2">
+    <div class="my-2 min-h-[calc(100lvh-calc(var(--spacing)*4))] rounded-lg bg-slate-50 lg:mx-2">
         @include('partials.header')
 
         <main>

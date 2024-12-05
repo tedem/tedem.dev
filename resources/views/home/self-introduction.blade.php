@@ -21,7 +21,7 @@
                     <span class="h-px w-8 rounded-full bg-slate-300" aria-hidden="true"></span>
                 </div>
 
-                <a class="group -m-1 rounded p-1 transition-transform hover:scale-105 focus:outline-0 focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50"
+                <a class="group -m-1 rounded p-1 transition-transform hover:scale-105 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50"
                     aria-label="Follow on X (Formally known as Twitter)" href="https://x.com/tedemedet" target="_blank">
                     {{-- https://icons.getbootstrap.com/icons/twitter-x/ --}}
                     <svg class="size-6 fill-slate-500 transition group-hover:fill-black"
@@ -31,7 +31,7 @@
                     </svg>
                 </a>
 
-                <a class="group -m-1 rounded p-1 transition-transform hover:scale-105 focus:outline-0 focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50"
+                <a class="group -m-1 rounded p-1 transition-transform hover:scale-105 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50"
                     aria-label="Follow on Instagram" href="https://www.instagram.com/tedem.dev/" target="_blank">
                     {{-- https://icons.getbootstrap.com/icons/instagram/ --}}
                     <svg class="size-6 fill-slate-500 transition group-hover:fill-[#e1306c]"
@@ -41,7 +41,7 @@
                     </svg>
                 </a>
 
-                <a class="group -m-1 rounded p-1 transition-transform hover:scale-105 focus:outline-0 focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50"
+                <a class="group -m-1 rounded p-1 transition-transform hover:scale-105 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50"
                     aria-label="Follow on GitHub" href="https://github.com/tedem" target="_blank">
                     {{-- https://icons.getbootstrap.com/icons/github/ --}}
                     <svg class="size-6 fill-slate-500 transition group-hover:fill-[#333]"
@@ -51,7 +51,7 @@
                     </svg>
                 </a>
 
-                <a class="group -m-1 rounded p-1 transition-transform hover:scale-105 focus:outline-0 focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50"
+                <a class="group -m-1 rounded p-1 transition-transform hover:scale-105 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50"
                     aria-label="Follow on LinkedIn" href="https://linkedin.com/in/tedem" target="_blank">
                     {{-- https://icons.getbootstrap.com/icons/linkedin/ --}}
                     <svg class="size-6 fill-slate-500 transition group-hover:fill-[#0a66c2]"

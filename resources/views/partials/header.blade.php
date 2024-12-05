@@ -5,7 +5,7 @@
             {{-- Identity --}}
             <div class="flex items-center gap-4">
                 <div class="flex shrink-0 items-center">
-                    <a class="group inline-flex outline-0" href="{{ route('home') }}">
+                    <a class="group inline-flex outline-hidden" href="{{ route('home') }}">
                         <div class="size-9 flex items-center justify-center rounded-md bg-slate-950 shadow-[0_1px_3px_theme(colors.black/0.24),inset_0_1px_theme(colors.white/0.24)] group-focus-visible:ring-2 group-focus-visible:ring-teal-500 group-focus-visible:ring-offset-2 group-focus-visible:ring-offset-slate-50 motion-safe:transition-all motion-safe:group-hover:scale-105 motion-safe:group-focus:-translate-y-1 motion-safe:group-focus:scale-105"
                             aria-hidden="true">
                             {{-- https://lucide.dev/icons/terminal --}}
@@ -20,7 +20,7 @@
                     </a>
                 </div>
                 <div>
-                    <a class="group outline-0" href="{{ route('home') }}">
+                    <a class="group outline-hidden" href="{{ route('home') }}">
                         <h1 class="text-xl font-semibold lowercase text-slate-950 group-focus-visible:text-teal-700">
                             {{ config('app.name') }}
                         </h1>
@@ -58,25 +58,25 @@
                 <nav class="max-md:hidden">
                     <ul class="flex items-center gap-x-12">
                         <li>
-                            <a class="whitespace-nowrap text-sm font-semibold leading-6 text-slate-800 outline-0 transition-all hover:text-teal-700 focus-visible:text-teal-700"
+                            <a class="whitespace-nowrap text-sm font-semibold leading-6 text-slate-800 outline-hidden transition-all hover:text-teal-700 focus-visible:text-teal-700"
                                 href="{{ route('home') }}">
                                 Blog
                             </a>
                         </li>
                         <li>
-                            <a class="whitespace-nowrap text-sm font-semibold leading-6 text-slate-800 outline-0 transition-all hover:text-teal-700 focus-visible:text-teal-700"
+                            <a class="whitespace-nowrap text-sm font-semibold leading-6 text-slate-800 outline-hidden transition-all hover:text-teal-700 focus-visible:text-teal-700"
                                 href="{{ route('home') }}">
                                 Works
                             </a>
                         </li>
                         <li>
-                            <a class="whitespace-nowrap text-sm font-semibold leading-6 text-slate-800 outline-0 transition-all hover:text-teal-700 focus-visible:text-teal-700"
+                            <a class="whitespace-nowrap text-sm font-semibold leading-6 text-slate-800 outline-hidden transition-all hover:text-teal-700 focus-visible:text-teal-700"
                                 href="{{ route('home') }}">
                                 About
                             </a>
                         </li>
                         <li class="inline-flex">
-                            <a class="group inline-flex h-9 items-center gap-2.5 rounded-full bg-slate-950 px-4 shadow-[0_1px_3px_theme(colors.black/0.24),inset_0_1px_theme(colors.white/0.16)] outline-0 transition hover:bg-slate-800 focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50"
+                            <a class="group inline-flex h-9 items-center gap-2.5 rounded-full bg-slate-950 px-4 shadow-[0_1px_3px_theme(colors.black/0.24),inset_0_1px_theme(colors.white/0.16)] outline-hidden transition hover:bg-slate-800 focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50"
                                 href="{{ route('home') }}">
                                 <span
                                     class="relative -ml-3.5 inline-flex h-8 w-11 overflow-clip rounded-full bg-slate-50">
@@ -113,7 +113,7 @@
                     x-id="['responsive-navigation']">
                     {{-- Button --}}
                     <button
-                        class="flex h-9 items-center justify-center rounded-md border border-slate-300 bg-slate-50 px-4 shadow-[0_1px_2px_theme(colors.black/0.06),_inset_0_1px_theme(colors.white)] outline-0 transition hover:bg-white focus:bg-white focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50"
+                        class="flex h-9 items-center justify-center rounded-md border border-slate-300 bg-slate-50 px-4 shadow-[0_1px_2px_theme(colors.black/0.06),_inset_0_1px_theme(colors.white)] outline-hidden transition hover:bg-white focus:bg-white focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50"
                         x-ref="button" x-on:click="toggle()" :aria-expanded="open"
                         :aria-controls="$id('responsive-navigation')">
                         {{-- https://lucide.dev/icons/menu --}}
