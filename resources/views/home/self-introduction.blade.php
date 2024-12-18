@@ -1,5 +1,5 @@
 <section class="py-12" id="self-introduction">
-    <div class="mx-auto max-w-7xl max-lg:px-4 lg:px-8">
+    <x-container>
         <div class="max-w-3xl">
             <h1 class="inline-block font-bold tracking-tight text-slate-950 max-sm:text-4xl sm:text-5xl">
                 Hey, I am <span class="underline decoration-slate-300 underline-offset-4">Medet</span>.
@@ -62,5 +62,5 @@
                 </a>
             </div>
         </div>
-    </div>
+    </x-container>
 </section>

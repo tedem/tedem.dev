@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-slate-100">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <x-container>
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
@@ -62,7 +62,7 @@
                 </button>
             </div>
         </div>
-    </div>
+    </x-container>
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">

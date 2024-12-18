@@ -1,6 +1,6 @@
 {{-- Footer --}}
 <footer class="sticky top-full py-12">
-    <div class="mx-auto max-w-7xl max-lg:px-4 lg:px-8">
+    <x-container>
         {{-- Primary --}}
         <div
             class="relative bg-slate-900 text-slate-300 max-lg:-mx-4 max-lg:px-4 max-lg:py-12 lg:rounded-2xl lg:p-12 lg:shadow-2xl 2xl:-mx-12">
@@ -202,5 +202,5 @@
                 </p>
             </div>
         </div>
-    </div>
+    </x-container>
 </footer>

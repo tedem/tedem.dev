@@ -1,5 +1,5 @@
 <section class="py-12" id="latest-blog-posts">
-    <div class="mx-auto max-w-7xl max-lg:px-4 lg:px-8">
+    <x-container>
         <div class="grid grid-cols-1 gap-16">
             <div>
                 <div class="space-y-6">
@@ -119,5 +119,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </x-container>
 </section>

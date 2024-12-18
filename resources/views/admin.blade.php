@@ -6,12 +6,12 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <x-container>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-slate-900">
                     {{ __("Admin") }}
                 </div>
             </div>
-        </div>
+        </x-container>
     </div>
 </x-layouts.admin>

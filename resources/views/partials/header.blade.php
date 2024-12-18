@@ -1,6 +1,6 @@
 {{-- Header --}}
 <header class="py-12">
-    <div class="mx-auto max-w-7xl max-lg:px-4 lg:px-8">
+    <x-container>
         <div class="flex items-center gap-x-8 lg:gap-x-12">
             {{-- Identity --}}
             <div class="flex items-center gap-4">
@@ -179,5 +179,5 @@
                 </script>
             </div>
         </div>
-    </div>
+    </x-container>
 </header>
