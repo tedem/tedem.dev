@@ -24,11 +24,12 @@
                     <li>
                         <article class="flex gap-4 p-4">
                             {{-- Photo --}}
-                            <div class="group relative aspect-video h-14 rounded-(--radius) motion-safe:overflow-clip [--radius:var(--radius-lg)]">
-                                <img class="size-full absolute inset-0 rounded-(--radius) object-cover motion-safe:transition-transform motion-safe:group-hover:scale-110"
-                                    src="https://picsum.photos/1280/720">
+                            <div
+                                class="rounded-(--radius) group relative aspect-video h-14 [--radius:var(--radius-lg)] motion-safe:overflow-clip">
+                                <img class="size-full rounded-(--radius) absolute inset-0 object-cover motion-safe:transition-transform motion-safe:group-hover:scale-110"
+                                    src="https://picsum.photos/1280/720" alt="">
 
-                                <div class="absolute inset-0 rounded-(--radius) ring-1 ring-inset ring-slate-950/10"
+                                <div class="rounded-(--radius) absolute inset-0 ring-1 ring-inset ring-slate-950/10"
                                     aria-hidden="true"></div>
                             </div>
 
@@ -51,14 +52,15 @@
                                     <span class="text-slate-200">/</span>
 
                                     <div class="flex items-center gap-2">
-                                        <div class="size-6 relative shrink-0 rounded-(--radius) [--radius:_calc(infinity_*_1px)]">
-                                            <img class="absolute inset-0 rounded-(--radius) object-cover"
-                                                src="https://i.pravatar.cc/300">
-                                            <div class="absolute inset-0 rounded-(--radius) ring-1 ring-inset ring-slate-950/10"
+                                        <div
+                                            class="size-6 rounded-(--radius) relative shrink-0 [--radius:_calc(infinity_*_1px)]">
+                                            <img class="rounded-(--radius) absolute inset-0 object-cover"
+                                                src="https://i.pravatar.cc/300" alt="">
+                                            <div class="rounded-(--radius) absolute inset-0 ring-1 ring-inset ring-slate-950/10"
                                                 aria-hidden="true"></div>
                                         </div>
 
-                                        <a class="whitespace-nowrap text-xs font-medium focus:outline-hidden focus-visible:text-teal-600"
+                                        <a class="focus:outline-hidden whitespace-nowrap text-xs font-medium focus-visible:text-teal-600"
                                             href="#">
                                             Medet Erdal
                                         </a>
@@ -70,13 +72,14 @@
 
                             <div class="grid content-between gap-1 max-md:hidden">
                                 <div class="flex items-center justify-end gap-4">
-                                    <ul class="flex items-center gap-x-0.5 text-xs *:first:*:rounded-l-full *:last:*:rounded-r-full">
+                                    <ul
+                                        class="*:first:*:rounded-l-full *:last:*:rounded-r-full flex items-center gap-x-0.5 text-xs">
                                         <li class="">
-                                            <a class="inline-block whitespace-nowrap bg-slate-100 px-3 py-1.5 font-medium text-slate-600 hover:bg-slate-200 focus:outline-hidden focus-visible:bg-slate-200"
+                                            <a class="focus:outline-hidden inline-block whitespace-nowrap bg-slate-100 px-3 py-1.5 font-medium text-slate-600 hover:bg-slate-200 focus-visible:bg-slate-200"
                                                 href="#">Marketing</a>
                                         </li>
                                         <li>
-                                            <a class="inline-block whitespace-nowrap bg-slate-100 px-3 py-1.5 font-medium text-slate-600 hover:bg-slate-200 focus:outline-hidden focus-visible:bg-slate-200"
+                                            <a class="focus:outline-hidden inline-block whitespace-nowrap bg-slate-100 px-3 py-1.5 font-medium text-slate-600 hover:bg-slate-200 focus-visible:bg-slate-200"
                                                 href="#">Development</a>
                                         </li>
                                     </ul>
@@ -95,7 +98,7 @@
                             </div>
 
                             <div class="flex items-center">
-                                <a class="flex h-14 w-10 items-center justify-center rounded-lg bg-white transition hover:bg-slate-100 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50 motion-safe:focus:translate-x-1"
+                                <a class="focus:outline-hidden flex h-14 w-10 items-center justify-center rounded-lg bg-white transition hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50 motion-safe:focus:translate-x-1"
                                     href="#">
                                     <span class="sr-only">Read more</span>
                                     <svg class="size-4" xmlns="http://www.w3.org/2000/svg" fill="none"
