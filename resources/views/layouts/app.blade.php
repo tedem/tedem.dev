@@ -11,10 +11,14 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="min-h-lvh bg-white font-sans text-gray-950 antialiased selection:bg-teal-100 selection:text-teal-700">
-    <main>
-        {{ $slot }}
-    </main>
+<body class="min-h-lvh bg-gray-50 font-sans text-gray-950 antialiased selection:bg-teal-100 selection:text-teal-700">
+    <div class="mx-auto min-h-lvh max-w-4xl border-x border-gray-200 bg-white">
+        @include('partials.header')
+
+        <main class="p-8">
+            {{ $slot }}
+        </main>
+    </div>
 </body>
 
 </html>
