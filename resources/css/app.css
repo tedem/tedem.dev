@@ -2,10 +2,27 @@
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 
+@font-face {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('../fonts/InterVariable.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: Inter;
+    font-style: italic;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('../fonts/InterVariable-Italic.woff2') format('woff2');
+}
+
 @theme {
-    --font-sans: Figtree, ui-sans-serif, system-ui, sans-serif,
+    --font-sans: Inter, ui-sans-serif, system-ui, sans-serif,
         'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
         'Noto Color Emoji';
+    --font-sans--font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
 }
 
 /*
