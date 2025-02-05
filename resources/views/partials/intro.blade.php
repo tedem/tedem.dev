@@ -1,4 +1,11 @@
-<section class="p-8" id="intro">
+<section class="relative p-8" id="intro">
+    {{-- Absolute --}}
+    <div class="absolute -right-px top-8 translate-x-full" aria-hidden="true">
+        <span class="select-none uppercase leading-loose tracking-widest text-gray-400 [writing-mode:vertical-rl]">
+            About
+        </span>
+    </div>
+
     <div class="flex gap-8">
         <div class="flex">
             {{-- Avatar --}}
