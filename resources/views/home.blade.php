@@ -1,3 +1,4 @@
 <x-layouts.app>
-    Home
+    {{-- Intro --}}
+    @include('partials.intro')
 </x-layouts.app>

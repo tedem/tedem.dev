@@ -15,7 +15,7 @@
     <div class="mx-auto min-h-lvh max-w-4xl border-x border-gray-200 bg-white">
         @include('partials.header')
 
-        <main class="p-8">
+        <main class="divide-y divide-gray-200">
             {{ $slot }}
         </main>
     </div>
