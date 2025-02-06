@@ -119,7 +119,7 @@
 
                 {{-- Repositories --}}
                 <div class="grid grid-cols-2 gap-8">
-                    @foreach ($githubRepos->take(4) as $repo)
+                    @foreach ($githubRepos->sortByDesc('created_at')->take(4) as $repo)
                         @php
                             $repo = (object) $repo;
                         @endphp
