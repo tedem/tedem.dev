@@ -1,6 +1,6 @@
 <section class="relative p-8" id="intro">
     {{-- Label --}}
-    <div class="absolute -right-px top-8 translate-x-full" aria-hidden="true">
+    <div class="absolute -right-px top-8 translate-x-full max-xl:hidden" aria-hidden="true">
         <span
             class="select-none uppercase leading-loose tracking-widest text-gray-400 [writing-mode:vertical-rl] dark:text-gray-500">
             // About
@@ -8,7 +8,7 @@
     </div>
 
     {{-- Main --}}
-    <div class="flex gap-8">
+    <div class="flex flex-col gap-8 md:flex-row">
         <div class="flex">
             {{-- Avatar --}}
             <div
@@ -23,11 +23,10 @@
 
         <div>
             {{-- About --}}
-            <div class="flex h-24 flex-col justify-center gap-4">
+            <div class="flex flex-col justify-center gap-4 md:h-24">
                 <h1 class="text-4xl font-medium tracking-tight text-gray-950 dark:text-gray-50">Hey, I am Medet.</h1>
-                <h2 class="text-xl font-medium text-gray-950 dark:text-gray-50">Crafting code, launching ideas, and
-                    building
-                    solutions.
+                <h2 class="text-balance text-xl font-medium text-gray-950 dark:text-gray-50">
+                    Crafting code, launching ideas, and building solutions.
                 </h2>
             </div>
 

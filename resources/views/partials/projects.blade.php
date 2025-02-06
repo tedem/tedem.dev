@@ -1,6 +1,6 @@
 <section class="relative space-y-8 p-8" id="projects">
     {{-- Label --}}
-    <div class="absolute -right-px top-8 translate-x-full" aria-hidden="true">
+    <div class="absolute -right-px top-8 translate-x-full max-xl:hidden" aria-hidden="true">
         <span
             class="select-none uppercase leading-loose tracking-widest text-gray-400 [writing-mode:vertical-rl] dark:text-gray-500">
             // Projects
@@ -16,12 +16,14 @@
         </h2>
 
         {{-- Description --}}
-        <p class="text-gray-600 dark:text-gray-400">Explore my personal projects and open-source contributions.</p>
+        <p class="text-balance text-gray-600 dark:text-gray-400">
+            Explore my personal projects and open-source contributions.
+        </p>
     </div>
 
     {{-- Main --}}
     <div class="space-y-8">
-        <div class="grid grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
             {{-- mybbcode.com --}}
             <div
                 class="relative space-y-4 rounded-2xl border border-gray-200 p-4 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600">
@@ -115,15 +117,15 @@
                         <span>{{ $githubRepos->count() }}</span>
                     </h3>
                     <div class="h-px flex-1 bg-gray-200 dark:bg-gray-700" aria-hidden="true"></div>
-                    <div>
+                    <div class="max-md:hidden">
                         <a class="text-sm" href="https://github.com/{{ env('GITHUB_USERNAME') }}?tab=repositories"
                             rel="noopener noreferrer nofollow" target="_blank">View all &rarr;</a>
                     </div>
-                    <div class="h-px w-4 bg-gray-200 dark:bg-gray-700" aria-hidden="true"></div>
+                    <div class="h-px w-4 bg-gray-200 max-md:hidden dark:bg-gray-700" aria-hidden="true"></div>
                 </div>
 
                 {{-- Repositories --}}
-                <div class="grid grid-cols-2 gap-8">
+                <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
                     @foreach ($githubRepos->sortByDesc('created_at')->take(4) as $repo)
                         @php
                             $repo = (object) $repo;

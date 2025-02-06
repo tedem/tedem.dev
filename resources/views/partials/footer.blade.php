@@ -1,5 +1,5 @@
 <header class="sticky top-full border-t border-gray-200 p-8 dark:border-gray-700">
-    <div class="flex items-start justify-between">
+    <div class="flex gap-8 max-md:flex-col-reverse md:items-start md:justify-between">
         {{-- Copy --}}
         <div class="flex items-start gap-1">
             <div aria-hidden="true">&copy;</div>
@@ -29,14 +29,14 @@
 
         <div class="flex items-center gap-8">
             {{-- Navigation --}}
-            <nav class="flex items-center gap-8">
+            <nav class="flex items-center gap-8 max-md:order-2">
                 <a class="text-gray-900 hover:underline hover:decoration-current hover:underline-offset-4 dark:text-gray-300"
                     href="javascript:void(0);" rel="noopener noreferrer nofollow"
                     onclick="window.scrollTo({top: 0});">Top</a>
             </nav>
 
             {{-- Theme Switcher --}}
-            <div class="flex h-11 items-center gap-1 rounded-full bg-gray-100 p-1 dark:bg-gray-800">
+            <div class="flex h-11 items-center gap-1 rounded-full bg-gray-100 p-1 max-md:order-1 dark:bg-gray-800">
                 <button class="flex size-9 items-center justify-center rounded-full"
                     x-on:click="setThemeModePreference('system')"
                     x-bind:class="{ 'bg-white dark:bg-gray-700 ring-1 ring-gray-950/10 shadow-xs': themeModeStatus === 'system' }">

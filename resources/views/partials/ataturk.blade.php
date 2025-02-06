@@ -1,6 +1,6 @@
-<section class="relative space-y-8 px-8 py-16" id="ataturk">
+<section class="relative space-y-8 px-8 py-8 md:py-16" id="ataturk">
     {{-- Label --}}
-    <div class="absolute -right-px top-8 translate-x-full" aria-hidden="true">
+    <div class="absolute -right-px top-8 translate-x-full max-xl:hidden" aria-hidden="true">
         <span
             class="select-none uppercase leading-loose tracking-widest text-gray-400 [writing-mode:vertical-rl] dark:text-gray-500">
             // Ataturk

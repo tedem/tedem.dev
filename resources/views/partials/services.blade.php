@@ -1,6 +1,6 @@
 <section class="relative space-y-8 p-8 dark:bg-gray-900" id="services">
     {{-- Label --}}
-    <div class="absolute -right-px top-8 translate-x-full" aria-hidden="true">
+    <div class="absolute -right-px top-8 translate-x-full max-xl:hidden" aria-hidden="true">
         <span
             class="select-none uppercase leading-loose tracking-widest text-gray-400 [writing-mode:vertical-rl] dark:text-gray-500">
             // Services
@@ -16,13 +16,14 @@
         </h2>
 
         {{-- Description --}}
-        <p class="text-gray-600 dark:text-gray-300">Discover the range of services I offer to help you achieve your
-            goals.</p>
+        <p class="text-gray-600 dark:text-gray-300 text-balance">
+            Discover the range of services I offer to help you achieve your goals.
+        </p>
     </div>
 
     {{-- Main --}}
     <div class="space-y-8">
-        <div class="grid grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             @php
                 $services = [
                     [
