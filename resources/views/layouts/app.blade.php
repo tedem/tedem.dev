@@ -18,6 +18,8 @@
         <main class="divide-y divide-gray-200">
             {{ $slot }}
         </main>
+
+        @include('partials.footer')
     </div>
 </body>
 
