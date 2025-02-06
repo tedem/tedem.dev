@@ -49,9 +49,13 @@
                 @endphp
 
                 @foreach ($socialAccounts as $account)
-                    <a class="text-gray-950 hover:text-teal-600" href="{{ $account['url'] }}"
+                    @php
+                        $account = (object) $account;
+                    @endphp
+
+                    <a class="text-gray-950 hover:text-teal-600" href="{{ $account->url }}"
                         rel="noopener noreferrer nofollow" target="_blank">
-                        {{ $account['name'] }}
+                        {{ $account->name }}
                     </a>
                 @endforeach
             </div>
