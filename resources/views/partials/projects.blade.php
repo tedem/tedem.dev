@@ -1,5 +1,5 @@
 <section class="relative space-y-8 p-8" id="projects">
-    {{-- Absolute --}}
+    {{-- Label --}}
     <div class="absolute -right-px top-8 translate-x-full" aria-hidden="true">
         <span class="select-none uppercase leading-loose tracking-widest text-gray-400 [writing-mode:vertical-rl]">
             // Projects
