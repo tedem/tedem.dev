@@ -4,4 +4,7 @@
 
     {{-- Projects --}}
     @include('partials.projects')
+
+    {{-- Services --}}
+    @include('partials.services')
 </x-layouts.app>
