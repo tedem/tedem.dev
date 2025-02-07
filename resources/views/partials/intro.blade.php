@@ -41,15 +41,6 @@
 
             {{-- Social Accounts --}}
             <div class="mt-8 flex items-center gap-4">
-                @php
-                    $socialAccounts = [
-                        ['name' => 'X', 'url' => 'https://x.com/tedemedet'],
-                        ['name' => 'Instagram', 'url' => 'https://www.instagram.com/tedem.dev/'],
-                        ['name' => 'Bluesky', 'url' => 'https://bsky.app/profile/tedem.dev'],
-                        ['name' => 'Github', 'url' => 'https://github.com/tedem'],
-                    ];
-                @endphp
-
                 @foreach ($socialAccounts as $account)
                     @php
                         $account = (object) $account;
