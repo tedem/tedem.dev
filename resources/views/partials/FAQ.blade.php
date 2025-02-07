@@ -109,7 +109,7 @@
                 {{-- Answer --}}
                 <dd class="pl-11" id="FAQ-{{ $index }}" x-show="open === {{ $index }}" x-cloak
                     x-bind:aria-hidden="open !== {{ $index }}">
-                    <p class="text-gray-600 dark:text-gray-400">
+                    <p class="text-balance text-gray-600 dark:text-gray-400">
                         {{ $FAQ->answer }}
                     </p>
                 </dd>
