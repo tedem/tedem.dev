@@ -36,6 +36,22 @@ final class User extends Authenticatable
     ];
 
     /**
+     * Get the Gravatar URL for the user's email.
+     *
+     * This method generates a URL to the Gravatar image associated with the user's email address.
+     * Gravatar is a service that provides globally recognized avatars based on email addresses.
+     *
+     * @param  int  $size  The size of the Gravatar image in pixels. Default is 200.
+     * @return string The URL to the Gravatar image.
+     */
+    public function getGravatarUrl(int $size = 200): string
+    {
+        $emailHash = md5(mb_strtolower(mb_trim('hello@tedem.dev')));
+
+        return "https://www.gravatar.com/avatar/{$emailHash}?s={$size}";
+    }
+
+    /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>

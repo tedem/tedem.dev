@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+
 final class HomeController extends Controller
 {
     /**
@@ -25,6 +27,7 @@ final class HomeController extends Controller
     {
         return view('home', [
             'githubRepos' => $this->getGithubRepos(),
+            'gravatarUrl' => (new User())->getGravatarUrl(),
         ]);
     }
 

@@ -14,7 +14,7 @@
             <div
                 class="rounded-(--radius) size-(--size) relative shrink-0 bg-white [--radius:calc(infinity*1px)] [--size:calc(var(--spacing)*24)] dark:bg-gray-800">
                 <img class="rounded-(--radius) size-(--size) absolute inset-0 object-cover object-center"
-                    src="{{ asset('images/avatar.jpeg') }}" alt="tedem's Avatar" loading="lazy">
+                    src="{{ $gravatarUrl }}" alt="tedem's Avatar" loading="lazy">
                 <div class="rounded-(--radius) absolute inset-0 ring-1 ring-inset ring-gray-950/10 dark:ring-gray-50/10"
                     aria-hidden="true">
                 </div>
