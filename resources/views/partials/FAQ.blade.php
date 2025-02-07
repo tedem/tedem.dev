@@ -22,7 +22,7 @@
     </div>
 
     {{-- Main --}}
-    <div class="space-y-8">
+    <div class="space-y-8" x-data="{ open: 0 }">
         {{-- FAQs --}}
         @php
             $FAQs = [
@@ -71,11 +71,12 @@
             @endphp
 
             {{-- FAQ --}}
-            <dl class="space-y-4" x-data="{ open: false }">
+            <dl class="space-y-4">
                 {{-- Question --}}
                 <dt>
-                    <button class="flex w-full select-none items-start gap-4 text-left" x-on:click="open = !open"
-                        x-bind:aria-expanded="open" aria-expanded="false" type="button"
+                    <button class="flex w-full select-none items-start gap-4 text-left"
+                        x-on:click="open === {{ $index }} ? open = 0 : open = {{ $index }}"
+                        x-bind:aria-expanded="open === {{ $index }}" aria-expanded="false" type="button"
                         aria-controls="FAQ-{{ $index }}">
                         {{-- Number --}}
                         <div
@@ -97,15 +98,16 @@
                         {{-- Toggle --}}
                         <div class="flex items-start">
                             <span class="text-2xl/7 font-light text-gray-500 dark:text-gray-400" aria-hidden="true">
-                                <span x-cloak x-show="!open">&plus;</span>
-                                <span x-cloak x-show="open">&minus;</span>
+                                <span x-cloak x-show="open !== {{ $index }}">&plus;</span>
+                                <span x-cloak x-show="open === {{ $index }}">&minus;</span>
                             </span>
                         </div>
                     </button>
                 </dt>
 
                 {{-- Answer --}}
-                <dd class="pl-11" id="FAQ-{{ $index }}" x-show="open" x-cloak x-bind:aria-hidden="!open">
+                <dd class="pl-11" id="FAQ-{{ $index }}" x-show="open === {{ $index }}" x-cloak
+                    x-bind:aria-hidden="open !== {{ $index }}">
                     <p class="text-gray-600 dark:text-gray-400">
                         {{ $FAQ->answer }}
                     </p>
