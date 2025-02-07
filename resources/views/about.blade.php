@@ -1,7 +1,18 @@
 <x-layouts.app>
     {{-- Header --}}
-    <div class="space-y-4 p-8">
+    <div class="relative space-y-4 p-8">
+        {{-- Label --}}
+        <div class="absolute -right-px top-8 translate-x-full max-xl:hidden" aria-hidden="true">
+            <span
+                class="select-none uppercase leading-loose tracking-widest text-gray-400 [writing-mode:vertical-rl] dark:text-gray-500">
+                // About
+            </span>
+        </div>
+
+        {{-- Title --}}
         <h1 class="text-4xl font-medium tracking-tight text-gray-950 dark:text-gray-50">About Us</h1>
+
+        {{-- Description --}}
         <p class="text-balance text-xl font-medium text-gray-950 dark:text-gray-50">
             Welcome to my personal about page. Here you can learn more about my mission, vision, and values.
         </p>

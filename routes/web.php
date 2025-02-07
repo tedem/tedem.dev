@@ -8,6 +8,4 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::get('/about', [App\Http\Controllers\AboutController::class, 'index'])->name('about');
 
-Route::get('/contact', function () {
-    return view('home');
-})->name('contact');
+Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
