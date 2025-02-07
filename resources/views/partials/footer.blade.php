@@ -1,4 +1,4 @@
-<header class="sticky top-full border-t border-gray-200 p-8 dark:border-gray-700" role="contentinfo">
+<footer class="sticky top-full border-t border-gray-200 p-8 dark:border-gray-700" role="contentinfo">
     <div class="flex gap-8 max-md:flex-col-reverse md:items-start md:justify-between">
         {{-- Copy --}}
         <div class="flex items-start gap-1">
@@ -59,4 +59,4 @@
             </div>
         </div>
     </div>
-</header>
+</footer>
