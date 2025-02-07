@@ -10,7 +10,7 @@
         </div>
 
         {{-- Title --}}
-        <h1 class="text-4xl font-medium tracking-tight text-gray-950 dark:text-gray-50" id="contact-title">Contact Me</h1>
+        <h1 class="text-4xl font-medium tracking-tight text-gray-950 dark:text-gray-50" id="contact-title">Contact</h1>
 
         {{-- Description --}}
         <p class="text-balance text-xl font-medium text-gray-950 dark:text-gray-50" id="contact-description"

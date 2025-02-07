@@ -10,7 +10,7 @@
         </div>
 
         {{-- Title --}}
-        <h1 class="text-4xl font-medium tracking-tight text-gray-950 dark:text-gray-50" id="about-title">About Us</h1>
+        <h1 class="text-4xl font-medium tracking-tight text-gray-950 dark:text-gray-50" id="about-title">About</h1>
 
         {{-- Description --}}
         <p class="text-balance text-xl font-medium text-gray-950 dark:text-gray-50" aria-labelledby="about-title">
