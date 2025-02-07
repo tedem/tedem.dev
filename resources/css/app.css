@@ -43,3 +43,7 @@
         border-color: var(--color-gray-200, currentColor);
     }
 }
+
+[x-cloak] {
+    display: none !important;
+}
