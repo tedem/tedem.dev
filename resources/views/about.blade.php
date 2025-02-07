@@ -2,7 +2,7 @@
     {{-- Header --}}
     <div class="space-y-4 p-8">
         <h1 class="text-4xl font-medium tracking-tight text-gray-950 dark:text-gray-50">About Us</h1>
-        <p class="text-balance text-lg font-medium text-gray-600 dark:text-gray-400">
+        <p class="text-balance text-xl font-medium text-gray-600 dark:text-gray-400">
             Welcome to my personal about page. Here you can learn more about my mission, vision, and values.
         </p>
     </div>
