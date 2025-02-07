@@ -21,7 +21,7 @@
                 {{-- Torchlight --}}
                 <p class="text-xs text-gray-600 dark:text-gray-400">
                     Code highlighting provided by
-                    <a class="text-gray-950 hover:underline dark:text-gray-300" href="https://torchlight.dev"
+                    <a class="text-gray-950 hover:underline dark:text-gray-50 font-medium" href="https://torchlight.dev"
                         rel="noopener noreferrer nofollow" target="_blank">Torchlight</a>
                 </p>
             </div>
