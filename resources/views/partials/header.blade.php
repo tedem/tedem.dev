@@ -10,7 +10,7 @@
         {{-- Navigation --}}
         <nav class="flex items-center gap-8" aria-label="Main Navigation">
             @foreach (['home' => 'Home', 'about' => 'About', 'contact' => 'Contact'] as $route => $label)
-                <a class="text-gray-900 hover:underline hover:decoration-current hover:underline-offset-4 dark:text-gray-100"
+                <a class="{{ request()->routeIs($route . '*') ? 'underline decoration-current underline-offset-4' : '' }} text-gray-900 hover:underline hover:decoration-current hover:underline-offset-4 dark:text-gray-100"
                     href="{{ route($route) }}">{{ $label }}</a>
             @endforeach
         </nav>
