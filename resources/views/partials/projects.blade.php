@@ -1,4 +1,4 @@
-<section class="relative space-y-8 p-8" id="projects">
+<section class="relative space-y-8 p-8" id="projects" aria-labelledby="projects-heading">
     {{-- Label --}}
     <div class="absolute -right-px top-8 translate-x-full max-xl:hidden" aria-hidden="true">
         <span
@@ -10,7 +10,7 @@
     {{-- Header --}}
     <div class="space-y-2">
         {{-- Title --}}
-        <h2 class="text-2xl font-medium text-gray-950 dark:text-gray-50">
+        <h2 class="text-2xl font-medium text-gray-950 dark:text-gray-50" id="projects-heading">
             <span class="text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
             <a href="#projects">Projects</a>
         </h2>
@@ -25,19 +25,19 @@
     <div class="space-y-8">
         <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
             {{-- mybbcode.com --}}
-            <div
-                class="relative space-y-4 rounded-2xl border border-gray-200 p-4 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600">
+            <div class="relative space-y-4 rounded-2xl border border-gray-200 p-4 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600"
+                role="article" aria-labelledby="mybbcode-title">
                 <div class="flex items-center gap-4">
                     {{-- Figure --}}
-                    <div
-                        class="flex size-12 shrink-0 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800">
-                        <span class="uppercase text-gray-600 dark:text-gray-400" aria-hidden="true">m</span>
+                    <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800"
+                        aria-hidden="true">
+                        <span class="uppercase text-gray-600 dark:text-gray-400">m</span>
                     </div>
 
                     {{-- Heading --}}
                     <div class="space-y-1">
                         {{-- Title --}}
-                        <h3 class="text-lg font-medium text-gray-950 dark:text-gray-50">
+                        <h3 class="text-lg font-medium text-gray-950 dark:text-gray-50" id="mybbcode-title">
                             <a href="https://mybbcode.com/" rel="noopener noreferrer nofollow" target="_blank">
                                 <span>mybbcode.com</span>
                                 <span class="absolute inset-0" aria-hidden="true"></span>
@@ -65,19 +65,19 @@
             </div>
 
             {{-- settiny.com --}}
-            <div
-                class="relative space-y-4 rounded-2xl border border-gray-200 p-4 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600">
+            <div class="relative space-y-4 rounded-2xl border border-gray-200 p-4 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600"
+                role="article" aria-labelledby="settiny-title">
                 <div class="flex items-center gap-4">
                     {{-- Figure --}}
-                    <div
-                        class="flex size-12 shrink-0 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800">
-                        <span class="uppercase text-gray-600 dark:text-gray-400" aria-hidden="true">s</span>
+                    <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800"
+                        aria-hidden="true">
+                        <span class="uppercase text-gray-600 dark:text-gray-400">s</span>
                     </div>
 
                     {{-- Heading --}}
                     <div class="space-y-1">
                         {{-- Title --}}
-                        <h3 class="text-lg/tight font-medium text-gray-950 dark:text-gray-50">
+                        <h3 class="text-lg/tight font-medium text-gray-950 dark:text-gray-50" id="settiny-title">
                             <a href="https://settiny.com/" rel="noopener noreferrer nofollow" target="_blank">
                                 <span>settiny.com</span>
                                 <span class="absolute inset-0" aria-hidden="true"></span>
@@ -132,20 +132,21 @@
                         @endphp
 
                         {{-- Repo --}}
-                        <div
-                            class="relative space-y-4 rounded-2xl border border-gray-200 p-4 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600">
+                        <div class="relative space-y-4 rounded-2xl border border-gray-200 p-4 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600"
+                            role="article" aria-labelledby="repo-{{ $repo->id }}-title">
                             <div class="flex items-center gap-4">
                                 {{-- Figure --}}
-                                <div
-                                    class="flex size-12 shrink-0 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800">
-                                    <span class="uppercase text-gray-600 dark:text-gray-400"
-                                        aria-hidden="true">{{ Str::substr($repo->name, 0, 1) }}</span>
+                                <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800"
+                                    aria-hidden="true">
+                                    <span
+                                        class="uppercase text-gray-600 dark:text-gray-400">{{ Str::substr($repo->name, 0, 1) }}</span>
                                 </div>
 
                                 {{-- Main --}}
                                 <div class="space-y-1">
                                     {{-- Title --}}
-                                    <h3 class="text-lg font-medium text-gray-950 dark:text-gray-50">
+                                    <h3 class="text-lg font-medium text-gray-950 dark:text-gray-50"
+                                        id="repo-{{ $repo->id }}-title">
                                         <a href="{{ $repo->html_url }}" rel="noopener noreferrer nofollow"
                                             target="_blank">
                                             <span>{{ $repo->name }}</span>

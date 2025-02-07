@@ -1,4 +1,4 @@
-<header class="sticky top-full border-t border-gray-200 p-8 dark:border-gray-700">
+<header class="sticky top-full border-t border-gray-200 p-8 dark:border-gray-700" role="contentinfo">
     <div class="flex gap-8 max-md:flex-col-reverse md:items-start md:justify-between">
         {{-- Copy --}}
         <div class="flex items-start gap-1">
@@ -29,31 +29,32 @@
 
         <div class="flex items-center gap-8">
             {{-- Navigation --}}
-            <nav class="flex items-center gap-8 max-md:order-2">
+            <nav class="flex items-center gap-8 max-md:order-2" aria-label="Footer Navigation">
                 <a class="text-gray-900 hover:underline hover:decoration-current hover:underline-offset-4 dark:text-gray-300"
                     href="javascript:void(0);" rel="noopener noreferrer nofollow"
                     onclick="window.scrollTo({top: 0});">Top</a>
             </nav>
 
             {{-- Theme Switcher --}}
-            <div class="flex h-11 items-center gap-1 rounded-full bg-gray-100 p-1 max-md:order-1 dark:bg-gray-800">
+            <div class="flex h-11 items-center gap-1 rounded-full bg-gray-100 p-1 max-md:order-1 dark:bg-gray-800"
+                role="group" aria-label="Theme Switcher">
                 <button class="flex size-9 items-center justify-center rounded-full"
                     x-on:click="setThemeModePreference('system')"
-                    x-bind:class="{ 'bg-white dark:bg-gray-700 ring-1 ring-gray-950/10 shadow-xs': themeModeStatus === 'system' }">
+                    x-bind:class="{ 'bg-white dark:bg-gray-700 ring-1 ring-gray-950/10 shadow-xs': themeModeStatus === 'system' }"
+                    aria-pressed="false" aria-label="System Theme">
                     <span>&#9680;</span>
-                    <span class="sr-only">System</span>
                 </button>
                 <button class="flex size-9 items-center justify-center rounded-full"
                     x-on:click="setThemeModePreference('light')"
-                    x-bind:class="{ 'bg-white dark:bg-gray-700 ring-1 ring-gray-950/10 shadow-xs': themeModeStatus === 'light' }">
+                    x-bind:class="{ 'bg-white dark:bg-gray-700 ring-1 ring-gray-950/10 shadow-xs': themeModeStatus === 'light' }"
+                    aria-pressed="false" aria-label="Light Theme">
                     <span>&#9728;</span>
-                    <span class="sr-only">Light</span>
                 </button>
                 <button class="flex size-9 items-center justify-center rounded-full"
                     x-on:click="setThemeModePreference('dark')"
-                    x-bind:class="{ 'bg-white dark:bg-gray-700 ring-1 ring-gray-950/10 shadow-xs': themeModeStatus === 'dark' }">
+                    x-bind:class="{ 'bg-white dark:bg-gray-700 ring-1 ring-gray-950/10 shadow-xs': themeModeStatus === 'dark' }"
+                    aria-pressed="false" aria-label="Dark Theme">
                     <span>&#9790;</span>
-                    <span class="sr-only">Dark</span>
                 </button>
             </div>
         </div>

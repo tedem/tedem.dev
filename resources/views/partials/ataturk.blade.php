@@ -1,4 +1,4 @@
-<section class="relative space-y-8 px-8 py-8 md:py-16" id="ataturk">
+<section class="relative space-y-8 px-8 py-8 md:py-16" id="ataturk" aria-label="Mustafa Kemal Atatürk">
     {{-- Label --}}
     <div class="absolute -right-px top-8 translate-x-full max-xl:hidden" aria-hidden="true">
         <span
@@ -17,7 +17,7 @@
             </blockquote>
             <figcaption class="mt-8">
                 <div class="text-center">
-                    <span class="text-gray-400 dark:text-gray-500">&mdash;</span>
+                    <span class="text-gray-400 dark:text-gray-500" aria-hidden="true">&mdash;</span>
                     <span class="dark:text-gray-300">Mustafa Kemal Atatürk</span>
                 </div>
             </figcaption>

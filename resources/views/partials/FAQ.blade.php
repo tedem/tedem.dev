@@ -1,4 +1,4 @@
-<section class="relative space-y-8 p-8" id="FAQ">
+<section class="relative space-y-8 p-8" id="FAQ" aria-labelledby="FAQ-heading">
     {{-- Label --}}
     <div class="absolute -right-px top-8 translate-x-full max-xl:hidden" aria-hidden="true">
         <span
@@ -10,7 +10,8 @@
     {{-- Header --}}
     <div class="space-y-2">
         {{-- Title --}}
-        <h2 class="text-2xl font-medium text-gray-950 dark:text-gray-50">
+        <h2 class="text-2xl font-medium text-gray-950 dark:text-gray-50" id="FAQ-heading">
+            {{-- FAQ --}}
             <span class="text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
             <a href="#FAQ">FAQ</a>
         </h2>

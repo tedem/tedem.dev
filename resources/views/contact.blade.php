@@ -10,17 +10,18 @@
         </div>
 
         {{-- Title --}}
-        <h1 class="text-4xl font-medium tracking-tight text-gray-950 dark:text-gray-50">Contact Me</h1>
+        <h1 class="text-4xl font-medium tracking-tight text-gray-950 dark:text-gray-50" id="contact-title">Contact Me</h1>
 
         {{-- Description --}}
-        <p class="text-balance text-xl font-medium text-gray-950 dark:text-gray-50">
+        <p class="text-balance text-xl font-medium text-gray-950 dark:text-gray-50" id="contact-description"
+            aria-labelledby="contact-title">
             Welcome to my personal contact page. Here you can learn more about how to reach me. I'm always open to new
             ideas.
         </p>
     </div>
 
     {{-- Main --}}
-    <div class="p-8">
+    <div class="p-8" role="main" aria-labelledby="contact-title" aria-describedby="contact-description">
         <article class="max-w-[65ch] text-gray-700 dark:text-gray-300">
             <p class="text-lg">
                 You can contact me via email at
