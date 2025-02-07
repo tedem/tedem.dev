@@ -26,16 +26,15 @@
             <div class="flex flex-col justify-center gap-4 md:h-24">
                 <h1 class="text-4xl font-medium tracking-tight text-gray-950 dark:text-gray-50">Hey, I am Medet.</h1>
                 <h2 class="text-balance text-xl font-medium text-gray-950 dark:text-gray-50">
-                    Crafting code, launching ideas, and building solutions.
+                    Full-stack Developer & Freelancer
                 </h2>
             </div>
 
             {{-- Description --}}
             <div class="mt-4">
                 <p class="text-balance text-gray-950 dark:text-gray-50">
-                    I’m a full-stack developer and freelancer, creating custom software and sharing my tech
-                    knowledge to
-                    deliver efficient solutions.
+                    I am a full-stack developer with a passion for building applications. I have been working in the
+                    industry for over 10 years and have experience in a wide range of technologies.
                 </p>
             </div>
 

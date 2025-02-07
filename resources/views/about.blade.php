@@ -2,7 +2,7 @@
     {{-- Header --}}
     <div class="space-y-4 p-8">
         <h1 class="text-4xl font-medium tracking-tight text-gray-950 dark:text-gray-50">About Us</h1>
-        <p class="text-balance text-xl font-medium text-gray-600 dark:text-gray-400">
+        <p class="text-balance text-xl font-medium text-gray-950 dark:text-gray-50">
             Welcome to my personal about page. Here you can learn more about my mission, vision, and values.
         </p>
     </div>
@@ -22,9 +22,7 @@
                 challenges. Let’s build something amazing together!
             </p>
             <h2 class="mb-2.5 mt-6 text-2xl font-medium text-gray-950 dark:text-gray-50">
-                <span
-                    class="select-none text-gray-400 dark:text-gray-500"
-                    aria-hidden="true">//</span>
+                <span class="select-none text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
                 Mission
             </h2>
             <p>
@@ -34,9 +32,7 @@
                 succeed in their own projects. I believe that by working together, we can achieve great things.
             </p>
             <h2 class="mb-2.5 mt-6 text-2xl font-medium text-gray-950 dark:text-gray-50">
-                <span
-                    class="select-none text-gray-400 dark:text-gray-500"
-                    aria-hidden="true">//</span>
+                <span class="select-none text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
                 Vision
             </h2>
             <p>
@@ -47,9 +43,7 @@
                 things.
             </p>
             <h2 class="mb-2.5 mt-6 text-2xl font-medium text-gray-950 dark:text-gray-50">
-                <span
-                    class="select-none text-gray-400 dark:text-gray-500"
-                    aria-hidden="true">//</span>
+                <span class="select-none text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
                 Values
             </h2>
             <p>
@@ -60,9 +54,7 @@
                 achieve great things.
             </p>
             <h2 class="mb-2.5 mt-6 text-2xl font-medium text-gray-950 dark:text-gray-50">
-                <span
-                    class="select-none text-gray-400 dark:text-gray-500"
-                    aria-hidden="true">//</span>
+                <span class="select-none text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
                 Feedback
             </h2>
             <p>
@@ -71,18 +63,16 @@
                 collaborations!
             </p>
             <h2 class="mb-2.5 mt-6 text-2xl font-medium text-gray-950 dark:text-gray-50">
-                <span
-                    class="select-none text-gray-400 dark:text-gray-500"
-                    aria-hidden="true">//</span>
+                <span class="select-none text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
                 Contact
             </h2>
             <p>
                 You can
-                <a class="text-gray-950 hover:text-teal-600 dark:text-gray-50 dark:hover:text-teal-400 font-medium"
+                <a class="font-medium text-gray-950 hover:text-teal-600 dark:text-gray-50 dark:hover:text-teal-400"
                     href="{{ route('contact') }}">contact</a>
                 me through the contact form on the website. I will get back to you as soon as possible.
                 You can also reach out to me on social media accounts or send me an
-                <a class="text-gray-950 hover:text-teal-600 dark:text-gray-50 dark:hover:text-teal-400 font-medium"
+                <a class="font-medium text-gray-950 hover:text-teal-600 dark:text-gray-50 dark:hover:text-teal-400"
                     href="mailto:hello@tedem.dev">email</a>.
             </p>
             <p class="mt-5">
