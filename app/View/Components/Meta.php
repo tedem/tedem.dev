@@ -16,7 +16,7 @@ final class Meta extends Component
     public function __construct(
         private readonly string $title = '',
         private readonly string $description = '',
-        private readonly string $ogImage = '',
+        private readonly string $openGraphImage = '',
         private readonly string $twitterImage = '',
     ) {}
 
@@ -31,7 +31,7 @@ final class Meta extends Component
             'author' => $this->author(),
             'date' => $this->date(),
             'language' => $this->language(),
-            'ogImage' => $this->ogImage(),
+            'openGraphImage' => $this->openGraphImage(),
             'twitterImage' => $this->twitterImage(),
         ]);
     }
@@ -56,9 +56,9 @@ final class Meta extends Component
         return app()->getLocale();
     }
 
-    private function ogImage(): string
+    private function openGraphImage(): string
     {
-        return $this->ogImage === '' ? asset('og-image.jpg') : $this->ogImage;
+        return $this->openGraphImage === '' ? asset('open-graph-image.jpg') : $this->openGraphImage;
     }
 
     private function twitterImage(): string
