@@ -3,7 +3,8 @@
 /config
 /database
 /node_modules
-/public
+/public/build
+/public/storage
 /resources/fonts
 /resources/views
 /routes
