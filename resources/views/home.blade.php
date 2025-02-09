@@ -9,7 +9,7 @@
     @include('partials.services')
 
     {{-- FAQ --}}
-    @include('partials.faq')
+    @include('partials.FAQ')
 
     {{-- Ataturk --}}
     @include('partials.ataturk')
