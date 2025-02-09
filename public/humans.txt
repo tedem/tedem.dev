@@ -1,0 +1,7 @@
+# TEAM
+
+  Medet "tedem" Erdal -- Founder
+
+# TECHNOLOGY COLOPHON
+
+  Laravel, Tailwind CSS, HTML5, CSS3

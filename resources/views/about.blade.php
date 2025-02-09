@@ -1,4 +1,9 @@
 <x-layouts.app>
+    <x-slot name="head">
+        <x-meta title="About — {{ config('app.name') }}"
+            description="Welcome to my personal about page. Here you can learn more about my mission, vision, and values." />
+    </x-slot>
+
     {{-- Header --}}
     <div class="relative space-y-4 p-8">
         {{-- Label --}}
