@@ -31,7 +31,7 @@
             {{-- Navigation --}}
             <nav class="flex items-center gap-8 max-md:order-2" aria-label="Footer Navigation">
                 <a class="text-gray-900 hover:underline hover:decoration-current hover:underline-offset-4 dark:text-gray-300"
-                    href="javascript:void(0);" rel="noopener noreferrer nofollow"
+                    href="#top" rel="noopener noreferrer nofollow"
                     onclick="window.scrollTo({top: 0});">Top</a>
             </nav>
 

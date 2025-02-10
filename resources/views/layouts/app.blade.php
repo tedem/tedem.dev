@@ -21,6 +21,10 @@
 <body
     class="min-h-lvh bg-gray-50 font-sans text-gray-950 antialiased selection:bg-teal-100 selection:text-teal-700 dark:bg-gray-950 dark:text-gray-50 dark:selection:bg-teal-900 dark:selection:text-teal-100">
     <div class="mx-auto min-h-lvh max-w-4xl border-x border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
+        <div class="sr-only" id="top">
+            Top of the page
+        </div>
+
         @include('partials.header')
 
         <main class="divide-y divide-gray-200 dark:divide-gray-700">
