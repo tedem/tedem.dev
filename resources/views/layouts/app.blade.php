@@ -25,9 +25,12 @@
             Top of the page
         </div>
 
+        <a href="#main-content" class="sr-only focus:not-sr-only">Skip to main content</a>
+
+        {{-- Header --}}
         @include('partials.header')
 
-        <main class="divide-y divide-gray-200 dark:divide-gray-700">
+        <main class="divide-y divide-gray-200 dark:divide-gray-700" id="main-content">
             {{ $slot }}
         </main>
 
