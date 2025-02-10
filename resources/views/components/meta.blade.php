@@ -49,13 +49,13 @@
 <link rel="manifest" href="{{ asset('site.webmanifest') }}">
 
 {{-- Apple --}}
-<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}" />
-<meta name="apple-mobile-web-app-title" content="{{ $title }}" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
+<meta name="apple-mobile-web-app-title" content="{{ $title }}">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 {{-- Miscellaneous --}}
 <meta name="application-name" content="{{ config('app.name') }}">
 <link rel="author" href="{{ asset('humans.txt') }}">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="generator" content="Laravel">
 <meta name="rating" content="general">
