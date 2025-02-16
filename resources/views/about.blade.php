@@ -25,19 +25,19 @@
 
     {{-- Main --}}
     <div class="p-8" role="main" aria-labelledby="about-title" aria-describedby="about-description">
-        <article class="max-w-[65ch] text-gray-700 dark:text-gray-300">
+        <article class="prose dark:prose-invert">
             <p class="text-lg">
                 I’m a full-stack developer and freelancer, creating custom software and sharing my tech knowledge to
                 deliver efficient solutions.
             </p>
-            <p class="mt-5">
+            <p>
                 I’m passionate about building software that is scalable, maintainable, and
                 secure. I’m also a strong advocate for open-source software and the Laravel PHP framework. I’m always
                 looking for new opportunities to collaborate with other developers and businesses. Feel free to reach
                 out to me if you have any questions or would like to work together. I’m always open to new ideas and
                 challenges. Let’s build something amazing together!
             </p>
-            <h2 class="mb-2.5 mt-6 text-2xl font-medium text-gray-950 dark:text-gray-50" id="mission-title">
+            <h2 id="mission-title">
                 <span class="select-none text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
                 Mission
             </h2>
@@ -47,7 +47,7 @@
                 reliable, and secure. I’m also dedicated to sharing my knowledge and expertise with others to help them
                 succeed in their own projects. I believe that by working together, we can achieve great things.
             </p>
-            <h2 class="mb-2.5 mt-6 text-2xl font-medium text-gray-950 dark:text-gray-50" id="vision-title">
+            <h2 id="vision-title">
                 <span class="select-none text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
                 Vision
             </h2>
@@ -58,7 +58,7 @@
                 to help them succeed in their own projects. I believe that by working together, we can achieve great
                 things.
             </p>
-            <h2 class="mb-2.5 mt-6 text-2xl font-medium text-gray-950 dark:text-gray-50" id="values-title">
+            <h2 id="values-title">
                 <span class="select-none text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
                 Values
             </h2>
@@ -69,7 +69,7 @@
                 can
                 achieve great things.
             </p>
-            <h2 class="mb-2.5 mt-6 text-2xl font-medium text-gray-950 dark:text-gray-50" id="feedback-title">
+            <h2 id="feedback-title">
                 <span class="select-none text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
                 Feedback
             </h2>
@@ -78,7 +78,7 @@
                 together. Thank you for visiting my page. I value every connection and am excited about potential
                 collaborations!
             </p>
-            <h2 class="mb-2.5 mt-6 text-2xl font-medium text-gray-950 dark:text-gray-50" id="contact-title">
+            <h2 id="contact-title">
                 <span class="select-none text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
                 Contact
             </h2>
@@ -91,7 +91,7 @@
                 <a class="font-medium text-gray-950 hover:text-teal-600 dark:text-gray-50 dark:hover:text-teal-400"
                     href="mailto:hello@tedem.dev">email</a>.
             </p>
-            <p class="mt-5">
+            <p>
                 I'm always open to suggestions, so don't hesitate to reach out!
             </p>
         </article>

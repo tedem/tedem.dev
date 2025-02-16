@@ -27,7 +27,7 @@
 
     {{-- Main --}}
     <div class="p-8" role="main" aria-labelledby="contact-title" aria-describedby="contact-description">
-        <article class="max-w-[65ch] text-gray-700 dark:text-gray-300">
+        <article class="prose dark:prose-invert">
             <p class="text-lg">
                 You can contact me via email at
                 <a class="font-medium text-gray-950 hover:text-teal-600 dark:text-gray-50 dark:hover:text-teal-400"
