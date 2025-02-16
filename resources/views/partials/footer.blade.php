@@ -18,10 +18,19 @@
                     (PHP v{{ PHP_VERSION }})
                 </p>
 
+                {{-- Source Code Repository --}}
+                <p class="text-xs text-gray-600 dark:text-gray-400">
+                    Source code available on
+                    <a class="font-medium text-gray-950 hover:underline dark:text-gray-50"
+                        href="https://github.com/tedem/tedem.dev" rel="noopener noreferrer nofollow" target="_blank">
+                        GitHub
+                    </a>
+                </p>
+
                 {{-- Torchlight --}}
                 <p class="text-xs text-gray-600 dark:text-gray-400">
                     Code highlighting provided by
-                    <a class="text-gray-950 hover:underline dark:text-gray-50 font-medium" href="https://torchlight.dev"
+                    <a class="font-medium text-gray-950 hover:underline dark:text-gray-50" href="https://torchlight.dev"
                         rel="noopener noreferrer nofollow" target="_blank">Torchlight</a>
                 </p>
             </div>
@@ -31,8 +40,7 @@
             {{-- Navigation --}}
             <nav class="flex items-center gap-8 max-md:order-2" aria-label="Footer Navigation">
                 <a class="text-gray-900 hover:underline hover:decoration-current hover:underline-offset-4 dark:text-gray-300"
-                    href="#top" rel="noopener noreferrer nofollow"
-                    onclick="window.scrollTo({top: 0});">Top</a>
+                    href="#top" rel="noopener noreferrer nofollow" onclick="window.scrollTo({top: 0});">Top</a>
             </nav>
 
             {{-- Theme Switcher --}}
