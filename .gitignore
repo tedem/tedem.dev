@@ -1,24 +1,45 @@
-/.phpunit.cache
-/node_modules
-/public/build
-/public/hot
-/public/storage
-/storage/*.key
-/storage/pail
-/vendor
+# System files
 .DS_Store
+
+# Environment files
 .env
 .env.backup
 .env.production
-.phpactor.json
-.phpunit.result.cache
-Homestead.json
-Homestead.yaml
+
+# Log files
 npm-debug.log
 yarn-error.log
-/auth.json
+
+# PHPUnit files
+/.phpunit.cache
+.phpunit.result.cache
+
+# PHP related files
+.phpactor.json
+Homestead.json
+Homestead.yaml
+
+# Node.js related files
+/node_modules
+
+# Public directories
+/public/build
+/public/hot
+/public/storage
+
+# Storage files
+/storage/*.key
+/storage/pail
+
+# Vendor directory
+/vendor
+
+# IDE and editor files
 /.fleet
 /.idea
 /.nova
 /.vscode
 /.zed
+
+# Authentication files
+/auth.json
