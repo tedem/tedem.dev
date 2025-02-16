@@ -4,8 +4,6 @@
 
 [tedem.dev](https://tedem.dev/) gets its power from [Laravel](https://laravel.com/). 🚀
 
-### Project Components and Versions
-
 | **Component**                                                 | **Version** |
 | ------------------------------------------------------------- | ----------- |
 | **[Laravel](https://github.com/laravel/laravel)**             | v11.6.1     |
