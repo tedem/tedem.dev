@@ -14,12 +14,14 @@
 
                 {{-- Laravel --}}
                 <p class="text-xs text-gray-600 dark:text-gray-400">
+                    <span aria-hidden="true">&ndash;</span>
                     Laravel v{{ Illuminate\Foundation\Application::VERSION }}
                     (PHP v{{ PHP_VERSION }})
                 </p>
 
                 {{-- Source Code Repository --}}
                 <p class="text-xs text-gray-600 dark:text-gray-400">
+                    <span aria-hidden="true">&ndash;</span>
                     Source code available on
                     <a class="font-medium text-gray-950 hover:underline dark:text-gray-50"
                         href="https://github.com/tedem/tedem.dev" rel="noopener noreferrer nofollow" target="_blank">
@@ -29,6 +31,7 @@
 
                 {{-- Torchlight --}}
                 <p class="text-xs text-gray-600 dark:text-gray-400">
+                    <span aria-hidden="true">&ndash;</span>
                     Code highlighting provided by
                     <a class="font-medium text-gray-950 hover:underline dark:text-gray-50" href="https://torchlight.dev"
                         rel="noopener noreferrer nofollow" target="_blank">Torchlight</a>
