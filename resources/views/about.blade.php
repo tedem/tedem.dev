@@ -84,12 +84,10 @@
             </h2>
             <p aria-labelledby="contact-title">
                 You can
-                <a class="font-medium text-gray-950 hover:text-teal-600 dark:text-gray-50 dark:hover:text-teal-400"
-                    href="{{ route('contact') }}">contact</a>
+                <a href="{{ route('contact') }}">contact</a>
                 me through the contact form on the website. I will get back to you as soon as possible.
                 You can also reach out to me on social media accounts or send me an
-                <a class="font-medium text-gray-950 hover:text-teal-600 dark:text-gray-50 dark:hover:text-teal-400"
-                    href="mailto:hello@tedem.dev">email</a>.
+                <a href="mailto:hello@tedem.dev">email</a>.
             </p>
             <p>
                 I'm always open to suggestions, so don't hesitate to reach out!

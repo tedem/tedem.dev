@@ -30,8 +30,7 @@
         <article class="prose dark:prose-invert">
             <p class="text-lg">
                 You can contact me via email at
-                <a class="font-medium text-gray-950 hover:text-teal-600 dark:text-gray-50 dark:hover:text-teal-400"
-                    href="mailto:hello@tedem.dev">hello@tedem.dev</a> or through my social media accounts linked below.
+                <a href="mailto:hello@tedem.dev">hello@tedem.dev</a> or through my social media accounts linked below.
             </p>
             <p class="mt-5">
                 Please find my social media links below to connect further!
