@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 final class AppServiceProvider extends ServiceProvider
@@ -22,6 +23,18 @@ final class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         /**
+         * Registers a view composer that is applied to all views.
+         *
+         * This composer adds a 'locale' variable to each view, which contains the current
+         * application locale with underscores replaced by hyphens.
+         *
+         * @param  \Illuminate\View\View  $view  The view instance being composed.
+         */
+        View::composer('*', function ($view): void {
+            $view->with('locale', str_replace('_', '-', app()->getLocale()));
+        });
+
+        /**
          * Register a view composer that binds social media accounts data to all views.
          *
          * This view composer will attach an array of social media accounts to every view
@@ -29,7 +42,7 @@ final class AppServiceProvider extends ServiceProvider
          *
          * @param  \Illuminate\View\View  $view  The view instance being composed.
          */
-        view()->composer('*', function ($view): void {
+        View::composer('*', function ($view): void {
             $view->with('socialAccounts', [
                 ['name' => 'X', 'url' => 'https://x.com/tedemedet'],
                 ['name' => 'Instagram', 'url' => 'https://www.instagram.com/tedem.dev/'],

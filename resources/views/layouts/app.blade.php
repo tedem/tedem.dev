@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html class="overflow-y-scroll scroll-smooth" lang="{{ str_replace('_', '-', app()->getLocale()) }}"
-    x-data="themeModeController()">
+<html class="overflow-y-scroll scroll-smooth" dir="ltr" lang="{{ $locale }}" x-data="themeModeController()">
 
 {{-- Init JS --}}
 @include('partials.init')
