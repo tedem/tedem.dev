@@ -3,7 +3,9 @@
         {{-- Logo --}}
         <a class="flex items-center gap-2 text-lg font-medium text-gray-900 dark:text-gray-100" href="{{ route('home') }}"
             aria-label="Homepage">
-            <span class="text-gray-500 dark:text-gray-400" aria-hidden="true">//.</span>
+            <span
+                class="size-7 rounded-full bg-gray-950 text-center text-xs/7 text-gray-50 dark:bg-gray-50 dark:text-gray-950"
+                aria-hidden="true">//.</span>
             <span>{{ config('app.name', 'tedem') }}</span>
         </a>
 
