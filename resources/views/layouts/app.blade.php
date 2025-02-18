@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="{{ str_replace('_', '-', app()->getLocale()) }}" x-data="themeModeController()">
+<html class="overflow-y-scroll scroll-smooth" lang="{{ str_replace('_', '-', app()->getLocale()) }}"
+    x-data="themeModeController()">
 
 {{-- Init JS --}}
 @include('partials.init')
@@ -25,7 +26,7 @@
             Top of the page
         </div>
 
-        <a href="#main-content" class="sr-only focus:not-sr-only">Skip to main content</a>
+        <a class="sr-only focus:not-sr-only" href="#main-content">Skip to main content</a>
 
         {{-- Header --}}
         @include('partials.header')
