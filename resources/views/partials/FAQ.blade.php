@@ -1,11 +1,6 @@
 <section class="relative space-y-8 p-8" id="FAQ" aria-labelledby="FAQ-heading">
     {{-- Label --}}
-    <div class="absolute -right-px top-8 translate-x-full max-xl:hidden" aria-hidden="true">
-        <span
-            class="select-none uppercase leading-loose tracking-widest text-gray-500 [writing-mode:vertical-rl] dark:text-gray-400">
-            // FAQ
-        </span>
-    </div>
+    <x-vertical-label value="FAQ" />
 
     {{-- Header --}}
     <div class="space-y-2">

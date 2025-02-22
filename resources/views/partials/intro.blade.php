@@ -1,11 +1,6 @@
 <section class="relative p-8" id="intro" aria-labelledby="intro-heading">
     {{-- Label --}}
-    <div class="absolute -right-px top-8 translate-x-full max-xl:hidden" aria-hidden="true">
-        <span
-            class="select-none uppercase leading-loose tracking-widest text-gray-500 [writing-mode:vertical-rl] dark:text-gray-400">
-            // Intro
-        </span>
-    </div>
+    <x-vertical-label value="Intro" />
 
     {{-- Main --}}
     <div class="flex flex-col gap-8 md:flex-row">

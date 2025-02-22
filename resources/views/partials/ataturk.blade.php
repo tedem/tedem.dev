@@ -1,11 +1,6 @@
 <section class="relative space-y-8 px-8 py-8 md:py-16" id="ataturk" aria-label="Mustafa Kemal Atatürk">
     {{-- Label --}}
-    <div class="absolute -right-px top-8 translate-x-full max-xl:hidden" aria-hidden="true">
-        <span
-            class="select-none uppercase leading-loose tracking-widest text-gray-500 [writing-mode:vertical-rl] dark:text-gray-400">
-            // Ataturk
-        </span>
-    </div>
+    <x-vertical-label value="Ataturk" />
 
     {{-- Main --}}
     <div class="mx-auto">

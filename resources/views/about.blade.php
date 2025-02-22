@@ -14,12 +14,7 @@
     {{-- Header --}}
     <div class="relative space-y-4 p-8">
         {{-- Label --}}
-        <div class="absolute -right-px top-8 translate-x-full max-xl:hidden" aria-hidden="true">
-            <span
-                class="select-none uppercase leading-loose tracking-widest text-gray-500 [writing-mode:vertical-rl] dark:text-gray-400">
-                // About
-            </span>
-        </div>
+        <x-vertical-label value="About" />
 
         {{-- Title --}}
         <h1 class="text-4xl font-medium tracking-tight text-gray-950 dark:text-gray-50" id="about-title">About</h1>
