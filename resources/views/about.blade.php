@@ -18,7 +18,7 @@
         <h1 class="text-4xl font-medium tracking-tight text-gray-950 dark:text-gray-50" id="about-title">About</h1>
 
         {{-- Description --}}
-        <p class="text-balance text-xl font-medium text-gray-950 dark:text-gray-50" aria-labelledby="about-title">
+        <p class="text-balance text-xl font-light text-gray-950 dark:text-gray-50" aria-labelledby="about-title">
             Welcome to my personal about page. Here you can learn more about my mission, vision, and values.
         </p>
     </div>
@@ -37,7 +37,7 @@
                 out to me if you have any questions or would like to work together. I’m always open to new ideas and
                 challenges. Let’s build something amazing together!
             </p>
-            <h2 id="mission-title">
+            <h2 class="flex items-center gap-3" id="mission-title">
                 <span class="select-none text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
                 Mission
             </h2>
@@ -47,7 +47,7 @@
                 reliable, and secure. I’m also dedicated to sharing my knowledge and expertise with others to help them
                 succeed in their own projects. I believe that by working together, we can achieve great things.
             </p>
-            <h2 id="vision-title">
+            <h2 class="flex items-center gap-3" id="vision-title">
                 <span class="select-none text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
                 Vision
             </h2>
@@ -58,7 +58,7 @@
                 to help them succeed in their own projects. I believe that by working together, we can achieve great
                 things.
             </p>
-            <h2 id="values-title">
+            <h2 class="flex items-center gap-3" id="values-title">
                 <span class="select-none text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
                 Values
             </h2>
@@ -69,7 +69,7 @@
                 can
                 achieve great things.
             </p>
-            <h2 id="feedback-title">
+            <h2 class="flex items-center gap-3" id="feedback-title">
                 <span class="select-none text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
                 Feedback
             </h2>
@@ -78,7 +78,7 @@
                 together. Thank you for visiting my page. I value every connection and am excited about potential
                 collaborations!
             </p>
-            <h2 id="contact-title">
+            <h2 class="flex items-center gap-3" id="contact-title">
                 <span class="select-none text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
                 Contact
             </h2>

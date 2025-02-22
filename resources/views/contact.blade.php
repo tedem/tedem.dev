@@ -18,7 +18,7 @@
         <h1 class="text-4xl font-medium tracking-tight text-gray-950 dark:text-gray-50" id="contact-title">Contact</h1>
 
         {{-- Description --}}
-        <p class="text-balance text-xl font-medium text-gray-950 dark:text-gray-50" id="contact-description"
+        <p class="text-balance text-xl font-light text-gray-950 dark:text-gray-50" id="contact-description"
             aria-labelledby="contact-title">
             Welcome to my personal contact page. Here you can learn more about how to reach me. I'm always open to new
             ideas.

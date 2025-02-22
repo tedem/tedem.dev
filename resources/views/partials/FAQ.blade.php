@@ -10,8 +10,7 @@
     {{-- Header --}}
     <div class="space-y-2">
         {{-- Title --}}
-        <h2 class="text-2xl font-medium text-gray-950 dark:text-gray-50" id="FAQ-heading">
-            {{-- FAQ --}}
+        <h2 class="flex items-center gap-3 text-2xl font-medium text-gray-950 dark:text-gray-50" id="FAQ-heading">
             <span class="text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
             <a href="#FAQ">FAQ</a>
         </h2>
