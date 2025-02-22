@@ -1,7 +1,14 @@
+@php
+    $title = 'Developer';
+    $description = implode(' ', [
+        'I am a full-stack developer with a passion for creating web applications.',
+        'I have experience in building web applications using Laravel, Vue.js, and Tailwind CSS.',
+    ]);
+@endphp
+
 <x-layouts.app>
     <x-slot name="head">
-        <x-meta title="{{ config('app.name') }} — Developer"
-            description="I'm a full-stack developer with 10+ years of experience, passionate about building applications and skilled in a wide range of technologies." />
+        <x-meta title="{{ $title }}" description="{{ $description }}" />
     </x-slot>
 
     {{-- Intro --}}
