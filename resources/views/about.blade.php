@@ -1,7 +1,14 @@
+@php
+    $title = 'About — ' . config('app.name');
+    $description = implode(' ', [
+        'Welcome to my personal about page.',
+        'Here you can learn more about my mission, vision, and values.',
+    ]);
+@endphp
+
 <x-layouts.app>
     <x-slot name="head">
-        <x-meta title="About — {{ config('app.name') }}"
-            description="Welcome to my personal about page. Here you can learn more about my mission, vision, and values." />
+        <x-meta title="{{ $title }}" description="{{ $description }}" />
     </x-slot>
 
     {{-- Header --}}

@@ -8,7 +8,7 @@
 
 <x-layouts.app>
     <x-slot name="head">
-        <x-meta title="{{ $title }}" description="{{ $description }}" />
+        <x-meta :title="$title" :description="$description" />
     </x-slot>
 
     {{-- Intro --}}
