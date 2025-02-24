@@ -38,6 +38,10 @@ final class GitHubService
      */
     public function getRepos(string $username)
     {
+        if (! env('GITHUB_USERNAME') && ! env('GITHUB_PERSONAL_ACCESS_TOKEN')) {
+            return [];
+        }
+
         if ($username === '' || $username === '0') {
             Log::error('Invalid username provided');
 
