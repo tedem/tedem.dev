@@ -1,5 +1,5 @@
 @php
-    $title = 'Developer';
+    $title = config('app.name') . ' — ' . 'Developer';
     $description = implode(' ', [
         'I am a full-stack developer with a passion for creating web applications.',
         'I have experience in building web applications using Laravel, Vue.js, and Tailwind CSS.',
