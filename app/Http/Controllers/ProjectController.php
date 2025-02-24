@@ -16,16 +16,26 @@ final class ProjectController extends Controller
     public function __construct(private readonly GitHubService $gitHubService) {}
 
     /**
-     * Retrieve GitHub repositories for the configured username.
+     * Retrieve GitHub repositories for the configured user.
      *
-     * This method uses the GitHub service to fetch repositories for the username
-     * specified in the environment variable 'GITHUB_USERNAME' and returns them
-     * as a collection.
+     * This method fetches the GitHub repositories for the user specified in the
+     * environment variables `GITHUB_USERNAME` and `GITHUB_PERSONAL_ACCESS_TOKEN`.
+     * If either of these environment variables is not set, an empty collection
+     * is returned.
      *
      * @return \Illuminate\Support\Collection A collection of GitHub repositories.
      */
     public function getGithubRepos(): \Illuminate\Support\Collection
     {
-        return collect($this->gitHubService->getRepos(env('GITHUB_USERNAME')));
+        $username = env('GITHUB_USERNAME');
+        $personalAccessToken = env('GITHUB_PERSONAL_ACCESS_TOKEN');
+
+        if (empty($username) || empty($personalAccessToken)) {
+            return collect([]);
+        }
+
+        $repos = $this->gitHubService->getRepos($username);
+
+        return collect($repos);
     }
 }

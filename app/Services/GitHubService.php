@@ -22,28 +22,30 @@ final class GitHubService
     private int $cacheDuration = 3600 * 24;
 
     /**
-     * Fetches the repositories of a given GitHub user.
+     * Fetches the repositories of a GitHub user.
      *
-     * @param  string  $username  The GitHub username.
-     * @return array The list of repositories or an empty array if an error occurs.
+     * This method retrieves the repositories of a GitHub user using the GitHub API.
+     * It first checks for cached data and returns it if available. If not, it makes
+     * an HTTP request to the GitHub API to fetch the repositories. The results are
+     * then cached for future use.
      *
-     * This method performs the following steps:
-     * 1. Validates the provided username.
-     * 2. Checks if the repositories are cached and returns them if available.
-     * 3. Makes an HTTP request to the GitHub API to fetch the repositories.
-     * 4. Caches the fetched repositories for future requests.
-     * 5. Logs errors if the request fails or if an exception is thrown.
+     * @return array The list of repositories for the GitHub user.
      *
-     * @throws Exception If an error occurs during the HTTP request.
+     * @throws Exception If there is an error during the HTTP request.
      */
-    public function getRepos(string $username)
+    public function getRepos(): array
     {
-        if (! env('GITHUB_USERNAME') && ! env('GITHUB_PERSONAL_ACCESS_TOKEN')) {
+        $username = env('GITHUB_USERNAME');
+        $personalAccessToken = env('GITHUB_PERSONAL_ACCESS_TOKEN');
+
+        if (empty($username) || empty($personalAccessToken)) {
+            Log::error('[GitHubService] GitHub credentials not set');
+
             return [];
         }
 
         if ($username === '' || $username === '0') {
-            Log::error('Invalid username provided');
+            Log::error('[GitHubService] Invalid username provided');
 
             return [];
         }
@@ -56,11 +58,9 @@ final class GitHubService
         }
 
         try {
-            $token = env('GITHUB_PERSONAL_ACCESS_TOKEN');
-
             $response = Http::withHeaders([
                 'Accept' => 'application/vnd.github.v3+json',
-                'Authorization' => "token {$token}",
+                'Authorization' => "token {$personalAccessToken}",
             ])->get($this->baseUrl.$username.'/repos');
 
             if ($response->successful()) {
@@ -78,7 +78,7 @@ final class GitHubService
 
             return [];
         } catch (Exception $e) {
-            Log::error('Failed to fetch GitHub repos', [
+            Log::error('[GitHubService] Failed to fetch GitHub repos', [
                 'message' => $e->getMessage(),
             ]);
 
