@@ -34,7 +34,7 @@ final class ProjectController extends Controller
             return collect([]);
         }
 
-        $repos = $this->gitHubService->getRepos($username);
+        $repos = $this->gitHubService->getRepos();
 
         return collect($repos);
     }
