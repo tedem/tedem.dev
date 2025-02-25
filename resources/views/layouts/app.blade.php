@@ -25,7 +25,7 @@
 
     {{-- Container --}}
     <div
-        class="mx-auto min-h-lvh max-w-4xl border-x border-gray-200 bg-white ring-4 ring-gray-300/20 dark:border-gray-700 dark:bg-gray-900 dark:ring-gray-600/20 isolate">
+        class="mx-auto min-h-lvh max-w-4xl border-x border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900 isolate">
         {{-- Top --}}
         <div class="sr-only" id="top">
             Top of the page
