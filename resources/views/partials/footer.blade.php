@@ -72,6 +72,15 @@
         </div>
     </div>
 
+    {{-- Time --}}
+    <div
+        class="flex items-center justify-center border-t border-gray-200 p-8 text-sm text-gray-600 dark:border-gray-700 dark:text-gray-400">
+        <time datetime="{{ now('GMT+3')->toIso8601String() }}" title="{{ now('GMT+3')->toDayDateTimeString() }}">
+            {{ now('GMT+3')->format('l, F j, Y') }}
+            <span class="text-gray-500">({{ now('GMT+3')->format('H:i') }})</span>
+        </time>
+    </div>
+
     {{-- tedem --}}
     <div class="grid grid-cols-5 gap-px border-t border-gray-200 bg-gray-200 dark:border-gray-700 dark:bg-gray-700"
         role="presentation">
