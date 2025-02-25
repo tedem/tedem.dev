@@ -34,6 +34,18 @@ Upload the project to the server:
 git clone https://github.com/tedem/tedem.dev.git
 ```
 
+Rename the folder:
+
+```shell
+sudo mv tedem.dev tedem
+```
+
+Set ownership user group:
+
+```shell
+sudo chown -R www-data:www-data tedem
+```
+
 ### 3. Configure Environmental Variables
 
 Create the environmental variable file:
@@ -78,7 +90,7 @@ npm install && npm run build
 Set the permissions of the directories correctly:
 
 ```shell
-chmod -R 775 storage bootstrap/cache
+sudo chmod -R 775 storage bootstrap/cache
 ```
 
 ### 6. Database Configuration and Migration
