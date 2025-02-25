@@ -1,5 +1,6 @@
-<footer class="sticky top-full border-t border-gray-200 p-8 dark:border-gray-700" role="contentinfo">
-    <div class="flex gap-8 max-md:flex-col-reverse md:items-start md:justify-between">
+<footer class="sticky top-full border-t border-gray-200 dark:border-gray-700" role="contentinfo">
+    {{-- Main --}}
+    <div class="flex gap-8 p-8 max-md:flex-col-reverse md:items-start md:justify-between">
         {{-- Copy --}}
         <div class="flex items-start gap-1">
             <div aria-hidden="true">&copy;</div>
@@ -68,6 +69,26 @@
                     <span>&#9790;</span>
                 </button>
             </div>
+        </div>
+    </div>
+
+    {{-- tedem --}}
+    <div class="grid grid-cols-5 gap-px border-t border-gray-200 bg-gray-200 dark:border-gray-700 dark:bg-gray-700"
+        role="presentation">
+        <div class="bg-white p-8 text-center dark:bg-gray-900" aria-hidden="true">
+            <span class="text-2xl uppercase md:text-7xl xl:text-9xl">t</span>
+        </div>
+        <div class="bg-white p-8 text-center dark:bg-gray-900" aria-hidden="true">
+            <span class="text-2xl uppercase md:text-7xl xl:text-9xl">e</span>
+        </div>
+        <div class="bg-white p-8 text-center dark:bg-gray-900" aria-hidden="true">
+            <span class="text-2xl uppercase md:text-7xl xl:text-9xl">d</span>
+        </div>
+        <div class="bg-white p-8 text-center dark:bg-gray-900" aria-hidden="true">
+            <span class="text-2xl uppercase md:text-7xl xl:text-9xl">e</span>
+        </div>
+        <div class="bg-white p-8 text-center dark:bg-gray-900" aria-hidden="true">
+            <span class="text-2xl uppercase md:text-7xl xl:text-9xl">m</span>
         </div>
     </div>
 </footer>
