@@ -29,14 +29,6 @@
                         GitHub
                     </a>
                 </p>
-
-                {{-- Torchlight --}}
-                <p class="text-xs text-gray-600 dark:text-gray-400">
-                    <span aria-hidden="true">&ndash;</span>
-                    Code highlighting provided by
-                    <a class="font-medium text-gray-950 hover:underline dark:text-gray-50" href="https://torchlight.dev"
-                        rel="noopener noreferrer nofollow" target="_blank">Torchlight</a>
-                </p>
             </div>
         </div>
 
