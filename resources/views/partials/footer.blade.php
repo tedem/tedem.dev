@@ -84,20 +84,10 @@
     {{-- tedem --}}
     <div class="grid grid-cols-5 gap-px border-t border-gray-200 bg-gray-200 dark:border-gray-700 dark:bg-gray-700"
         role="presentation">
-        <div class="bg-white p-8 text-center dark:bg-gray-900" aria-hidden="true">
-            <span class="text-2xl uppercase md:text-7xl xl:text-9xl">t</span>
-        </div>
-        <div class="bg-white p-8 text-center dark:bg-gray-900" aria-hidden="true">
-            <span class="text-2xl uppercase md:text-7xl xl:text-9xl">e</span>
-        </div>
-        <div class="bg-white p-8 text-center dark:bg-gray-900" aria-hidden="true">
-            <span class="text-2xl uppercase md:text-7xl xl:text-9xl">d</span>
-        </div>
-        <div class="bg-white p-8 text-center dark:bg-gray-900" aria-hidden="true">
-            <span class="text-2xl uppercase md:text-7xl xl:text-9xl">e</span>
-        </div>
-        <div class="bg-white p-8 text-center dark:bg-gray-900" aria-hidden="true">
-            <span class="text-2xl uppercase md:text-7xl xl:text-9xl">m</span>
-        </div>
+        @foreach (str_split('tedem') as $char)
+            <div class="bg-white p-8 text-center dark:bg-gray-900" aria-hidden="true">
+                <span class="text-2xl font-thin uppercase md:text-7xl xl:text-9xl">{{ $char }}</span>
+            </div>
+        @endforeach
     </div>
 </footer>
