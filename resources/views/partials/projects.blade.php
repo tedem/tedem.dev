@@ -113,7 +113,8 @@
                     </h3>
                     <div class="h-px flex-1 bg-gray-200 dark:bg-gray-700" aria-hidden="true"></div>
                     <div class="max-md:hidden">
-                        <a class="text-sm" href="https://github.com/{{ env('GITHUB_USERNAME') }}?tab=repositories"
+                        <a class="text-sm"
+                            href="https://github.com/{{ config('services.github.username') }}?tab=repositories"
                             rel="noopener noreferrer nofollow" target="_blank">View all &rarr;</a>
                     </div>
                     <div class="h-px w-4 bg-gray-200 max-md:hidden dark:bg-gray-700" aria-hidden="true"></div>
