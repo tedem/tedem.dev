@@ -24,7 +24,7 @@
                 role="article" aria-labelledby="mybbcode-title">
                 <div class="flex items-center gap-4">
                     {{-- Figure --}}
-                    <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800"
+                    <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800"
                         aria-hidden="true">
                         <span class="uppercase text-gray-600 dark:text-gray-400">m</span>
                     </div>
@@ -64,7 +64,7 @@
                 role="article" aria-labelledby="settiny-title">
                 <div class="flex items-center gap-4">
                     {{-- Figure --}}
-                    <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800"
+                    <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800"
                         aria-hidden="true">
                         <span class="uppercase text-gray-600 dark:text-gray-400">s</span>
                     </div>
@@ -132,7 +132,7 @@
                             role="article" aria-labelledby="repo-{{ $repo->id }}-title">
                             <div class="flex items-center gap-4">
                                 {{-- Figure --}}
-                                <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800"
+                                <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800"
                                     aria-hidden="true">
                                     <span
                                         class="uppercase text-gray-600 dark:text-gray-400">{{ Str::substr($repo->name, 0, 1) }}</span>
