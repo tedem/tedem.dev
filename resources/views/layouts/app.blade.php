@@ -19,10 +19,7 @@
 </head>
 
 <body
-    class="relative min-h-lvh bg-gray-50 font-sans text-gray-950 antialiased selection:bg-teal-100 selection:text-teal-700 dark:bg-gray-950 dark:text-gray-50 dark:selection:bg-teal-900 dark:selection:text-teal-100">
-    {{-- Grid pattern --}}
-    <div class="bg-grid-pattern inset-0 absolute pointer-events-none" aria-hidden="true" role="presentation"></div>
-
+    class="min-h-lvh bg-gray-50 font-sans text-gray-950 antialiased selection:bg-teal-100 selection:text-teal-700 dark:bg-gray-950 dark:text-gray-50 dark:selection:bg-teal-900 dark:selection:text-teal-100">
     {{-- Container --}}
     <div
         class="mx-auto min-h-lvh max-w-4xl border-x border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900 isolate">

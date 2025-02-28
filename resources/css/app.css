@@ -44,9 +44,3 @@
         @apply hidden;
     }
 }
-
-@layer utilities {
-    .bg-grid-pattern {
-        @apply bg-[linear-gradient(to_right,var(--color-gray-100)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-gray-100)_1px,transparent_1px)] [background-size:_40px_40px] dark:bg-[linear-gradient(to_right,var(--color-gray-900)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-gray-900)_1px,transparent_1px)];
-    }
-}
