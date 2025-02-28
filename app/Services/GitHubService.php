@@ -22,34 +22,20 @@ final class GitHubService
     private int $cacheDuration = 3600 * 24;
 
     /**
-     * Fetches the repositories of a GitHub user.
+     * Fetches the repositories of a given GitHub user.
      *
-     * This method retrieves the repositories of a GitHub user using the GitHub API.
-     * It first checks for cached data and returns it if available. If not, it makes
-     * an HTTP request to the GitHub API to fetch the repositories. The results are
-     * then cached for future use.
+     * This method attempts to retrieve the repositories from the cache first.
+     * If the repositories are not cached, it fetches them from the GitHub API,
+     * caches the result, and then returns the repositories.
      *
-     * @return array The list of repositories for the GitHub user.
+     * @param  string  $username  The GitHub username.
+     * @param  string  $personalAccessToken  The personal access token for GitHub API authentication.
+     * @return array The list of repositories.
      *
-     * @throws Exception If there is an error during the HTTP request.
+     * @throws Exception If there is an error during the API request.
      */
-    public function getRepos(): array
+    public function getRepos(string $username, string $personalAccessToken): array
     {
-        $username = env('GITHUB_USERNAME');
-        $personalAccessToken = env('GITHUB_PERSONAL_ACCESS_TOKEN');
-
-        if (empty($username) || empty($personalAccessToken)) {
-            Log::error('[GitHubService] GitHub credentials not set');
-
-            return [];
-        }
-
-        if ($username === '' || $username === '0') {
-            Log::error('[GitHubService] Invalid username provided');
-
-            return [];
-        }
-
         $cacheKey = "github.user.repos.{$username}";
         $cachedRepos = Cache::get($cacheKey);
 
