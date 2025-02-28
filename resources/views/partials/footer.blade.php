@@ -83,3 +83,5 @@
         @endforeach
     </div>
 </footer>
+
+@include('partials.google-analytics')
