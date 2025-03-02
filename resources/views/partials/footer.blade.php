@@ -84,4 +84,6 @@
     </div>
 </footer>
 
-@include('partials.google-analytics')
+@if (app()->environment('production'))
+    @include('partials.google-analytics')
+@endif
