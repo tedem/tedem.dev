@@ -15,6 +15,8 @@
         You need to enable JavaScript to run this app.
     </noscript>
 
+    @livewireStyles
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -41,6 +43,8 @@
 
         {{-- Footer --}}
         @include('partials.footer')
+
+        @livewireScripts
     </div>
 </body>
 
