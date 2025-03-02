@@ -33,5 +33,3 @@ Alpine.data('themeModeController', () => ({
         }
     },
 }));
-
-Alpine.start();
