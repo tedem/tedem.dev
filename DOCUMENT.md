@@ -31,13 +31,7 @@ cd /var/www
 Upload the project to the server:
 
 ```shell
-git clone https://github.com/tedem/tedem.dev.git
-```
-
-Rename the folder:
-
-```shell
-sudo mv tedem.dev tedem
+sudo git clone https://github.com/tedem/tedem.dev.git
 ```
 
 Set ownership user group:
@@ -46,46 +40,17 @@ Set ownership user group:
 sudo chown -R www-data:www-data tedem
 ```
 
-### 3. Configure Environmental Variables
-
-Create the environmental variable file:
+Navigate to the project directory:
 
 ```shell
-cp .env.example .env
+cd tedem
 ```
 
-Then edit the `.env` file
-
-Considerations:
+Disable file mode changes in Git:
 
 ```shell
-APP_NAME=tedem
-APP_ENV=production
-APP_DEBUG=false
-APP_URL=https://tedem.dev
+sudo git config core.fileMode false
 ```
-
-Generate an application key:
-
-```shell
-php artisan key:generate
-```
-
-### 4. Install Requirements
-
-Install composer requirements:
-
-```shell
-composer install --optimize-autoloader --no-dev
-```
-
-Install and build NPM requirements:
-
-```shell
-npm install && npm run build
-```
-
-### 5. Edit File Permissions
 
 Set the permissions of the directories correctly:
 
@@ -93,12 +58,57 @@ Set the permissions of the directories correctly:
 sudo chmod -R 775 storage bootstrap/cache
 ```
 
+### 3. Configure Environmental Variables
+
+Create the environmental variable file:
+
+```shell
+sudo cp .env.example .env
+```
+
+Then edit the `.env` file:
+
+```shell
+sudo nano .env
+```
+
+Considerations:
+
+```text
+APP_NAME=tedem
+APP_ENV=production
+APP_DEBUG=false
+APP_URL=https://tedem.dev
+```
+
+Save and close the file.
+
+Generate an application key:
+
+```shell
+sudo php artisan key:generate
+```
+
+### 4. Install Requirements
+
+Install composer requirements:
+
+```shell
+sudo composer install --optimize-autoloader --no-dev
+```
+
+Install and build NPM requirements:
+
+```shell
+sudo npm install && sudo npm run build
+```
+
 ### 6. Database Configuration and Migration
 
 Run migrations using the following command to create or update database schemas:
 
 ```shell
-php artisan migrate --force
+sudo php artisan migrate --force
 ```
 
 If you want to add seed (sample data), you can do this as follows:
@@ -112,7 +122,7 @@ php artisan db:seed --force
 Execute the necessary commands:
 
 ```shell
-php artisan optimize:clear && php artisan optimize
+sudo php artisan optimize:clear && sudo php artisan optimize
 ```
 
 ### 8. Log Check
@@ -138,21 +148,11 @@ ssh [username]@[your_server_ip]
 Navigate to the directory where the project is located:
 
 ```shell
-cd /var/www/tedem
+cd /var/www/tedem.dev
 ```
-
-Update project files:
-
-```shell
-git pull origin main
-```
-
-### 2. Execute Commands
 
 Execute the necessary commands:
 
 ```shell
-composer install --no-dev --optimize-autoloader && npm install && npm run build && php artisan migrate --force && php artisan optimize:clear && php artisan optimize
+sudo php artisan optimize:clear && sudo git pull origin main && sudo composer install --no-dev --optimize-autoloader && sudo npm install && sudo npm run build && sudo php artisan migrate && sudo php artisan optimize
 ```
-
-Enjoy!
