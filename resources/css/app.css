@@ -39,8 +39,4 @@
     ::file-selector-button {
         border-color: var(--color-gray-200, currentColor);
     }
-
-    [x-cloak] {
-        @apply hidden;
-    }
 }
