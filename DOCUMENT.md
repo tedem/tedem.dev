@@ -43,7 +43,7 @@ sudo chown -R www-data:www-data tedem
 Navigate to the project directory:
 
 ```shell
-cd tedem
+cd tedem.dev
 ```
 
 Disable file mode changes in Git:
