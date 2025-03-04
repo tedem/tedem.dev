@@ -6,14 +6,14 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-final class DeployAppCommand extends Command
+final class AppDeployCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'app:deploy {type=update : The deployment type (install or update)}';
+    protected $signature = 'app:deploy {--install : Perform a fresh install} {--update : Perform an update}';
 
     /**
      * The console command description.
@@ -27,16 +27,14 @@ final class DeployAppCommand extends Command
      */
     public function handle(): void
     {
-        $type = $this->argument('type');
-
-        if ($type === 'install') {
+        if ($this->option('install')) {
             $this->info('Starting full installation process...');
             $this->install();
-        } elseif ($type === 'update') {
+        } elseif ($this->option('update')) {
             $this->info('Starting update process...');
             $this->update();
         } else {
-            $this->error("Invalid type provided: {$type}. Use 'install' or 'update'.");
+            $this->error('Please specify either --install or --update.');
         }
     }
 
