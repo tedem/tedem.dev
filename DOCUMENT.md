@@ -154,5 +154,5 @@ cd /var/www/tedem.dev
 Execute the necessary commands:
 
 ```shell
-sudo php artisan optimize:clear && sudo git pull origin main && sudo composer install --no-dev --optimize-autoloader && sudo npm install && sudo npm run build && sudo php artisan migrate && sudo php artisan optimize
+sudo php artisan optimize:clear && sudo git pull origin main && sudo COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader && sudo npm install && sudo npm run build && sudo php artisan migrate --force && sudo php artisan optimize
 ```
