@@ -64,7 +64,7 @@ final class DeployAppCommand extends Command
         exec('sudo chmod -R 775 storage bootstrap/cache');
 
         $this->info('Installing PHP dependencies...');
-        exec('sudo composer install --no-dev --optimize-autoloader');
+        exec('sudo COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader');
 
         $this->info('Installing NPM dependencies...');
         exec('sudo npm install');
@@ -96,7 +96,7 @@ final class DeployAppCommand extends Command
         exec('sudo git pull origin main');
 
         $this->info('Installing PHP dependencies...');
-        exec('sudo composer install --no-dev --optimize-autoloader');
+        exec('sudo COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader');
 
         $this->info('Installing NPM dependencies...');
         exec('sudo npm install');
