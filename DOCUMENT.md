@@ -37,7 +37,7 @@ sudo git clone https://github.com/tedem/tedem.dev.git
 Set ownership user group:
 
 ```shell
-sudo chown -R www-data:www-data tedem
+sudo chown -R www-data:www-data tedem.dev
 ```
 
 Navigate to the project directory:
