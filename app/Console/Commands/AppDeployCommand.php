@@ -20,7 +20,7 @@ final class AppDeployCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Deploy the application to the server';
+    protected $description = 'Deploy the application to the server.';
 
     /**
      * Execute the console command.
