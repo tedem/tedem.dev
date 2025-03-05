@@ -19,46 +19,6 @@
     {{-- Main --}}
     <div class="space-y-8">
         <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-            {{-- mybbcode.com --}}
-            <div class="relative space-y-4 rounded-2xl border border-gray-200 p-4 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600"
-                role="article" aria-labelledby="mybbcode-title">
-                <div class="flex items-center gap-4">
-                    {{-- Figure --}}
-                    <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800"
-                        aria-hidden="true">
-                        <span class="uppercase text-gray-600 dark:text-gray-400">m</span>
-                    </div>
-
-                    {{-- Heading --}}
-                    <div class="space-y-1">
-                        {{-- Title --}}
-                        <h3 class="text-lg font-medium text-gray-950 dark:text-gray-50" id="mybbcode-title">
-                            <a href="https://mybbcode.com/" rel="noopener noreferrer nofollow" target="_blank">
-                                <span>mybbcode.com</span>
-                                <span class="absolute inset-0" aria-hidden="true"></span>
-                            </a>
-                        </h3>
-
-                        {{-- Year --}}
-                        <p class="text-xs text-gray-600 dark:text-gray-400">
-                            2019 &mdash; Present
-                        </p>
-                    </div>
-
-                    {{-- External --}}
-                    <div class="ml-auto">
-                        <span class="text-2xl font-light text-gray-500 dark:text-gray-400"
-                            aria-hidden="true">&#x2197;</span>
-                    </div>
-                </div>
-
-                {{-- Description --}}
-                <p class="relative line-clamp-3 text-balance text-sm text-gray-700 dark:text-gray-300">
-                    MyBBCode is a comprehensive platform offering plugins, themes, modifications, translations and more
-                    for the free and open source forum software MyBB.
-                </p>
-            </div>
-
             {{-- settiny.com --}}
             <div class="relative space-y-4 rounded-2xl border border-gray-200 p-4 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600"
                 role="article" aria-labelledby="settiny-title">
