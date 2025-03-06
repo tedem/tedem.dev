@@ -15,14 +15,11 @@ document.addEventListener('livewire:navigated', () => {
 
 // HTML: wire:navigate
 // Fix for wire:navigate not focusing on the element when clicked.
+// Add the attribute wire:navigate-focusable to the element that should be focused.
 document.addEventListener('livewire:navigated', () => {
-    const elements = document.querySelectorAll('[wire\\:navigate]');
+    const elements = document.querySelectorAll('[wire\\:navigate-focusable]');
 
     elements.forEach(element => {
-        if (!element.classList.contains('focus:outline-none')) {
-            element.classList.add('focus:outline-none');
-        }
-
         element.addEventListener('mousedown', () => {
             element.focus();
         });
