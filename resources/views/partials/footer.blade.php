@@ -43,20 +43,20 @@
             <div class="flex h-11 items-center gap-1 rounded-full bg-gray-100 p-1 max-md:order-1 dark:bg-gray-800"
                 role="group" aria-label="Theme Switcher">
                 <button class="flex size-9 items-center justify-center rounded-full"
-                    x-on:click="setThemeModePreference('system')"
-                    x-bind:class="{ 'bg-white dark:bg-gray-700 ring-1 ring-gray-950/10 shadow-xs': themeModeStatus === 'system' }"
+                    x-on:click="applyAppearanceMode('system')"
+                    x-bind:class="{ 'bg-white dark:bg-gray-700 ring-1 ring-gray-950/10 shadow-xs': appearanceModeStatus === 'system' }"
                     aria-pressed="false" aria-label="System Theme">
                     <span>&#9680;</span>
                 </button>
                 <button class="flex size-9 items-center justify-center rounded-full"
-                    x-on:click="setThemeModePreference('light')"
-                    x-bind:class="{ 'bg-white dark:bg-gray-700 ring-1 ring-gray-950/10 shadow-xs': themeModeStatus === 'light' }"
+                    x-on:click="applyAppearanceMode('light')"
+                    x-bind:class="{ 'bg-white dark:bg-gray-700 ring-1 ring-gray-950/10 shadow-xs': appearanceModeStatus === 'light' }"
                     aria-pressed="false" aria-label="Light Theme">
                     <span>&#9728;</span>
                 </button>
                 <button class="flex size-9 items-center justify-center rounded-full"
-                    x-on:click="setThemeModePreference('dark')"
-                    x-bind:class="{ 'bg-white dark:bg-gray-700 ring-1 ring-gray-950/10 shadow-xs': themeModeStatus === 'dark' }"
+                    x-on:click="applyAppearanceMode('dark')"
+                    x-bind:class="{ 'bg-white dark:bg-gray-700 ring-1 ring-gray-950/10 shadow-xs': appearanceModeStatus === 'dark' }"
                     aria-pressed="false" aria-label="Dark Theme">
                     <span>&#9790;</span>
                 </button>
