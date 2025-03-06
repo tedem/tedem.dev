@@ -1,43 +1,67 @@
 <script>
-    (function() {
-        window.app = {
-            applyAppearanceMode(mode) {
-                const applyDark = () => document.documentElement.classList.add('dark');
-                const applyLight = () => document.documentElement.classList.remove('dark');
-                const systemPreference = window.matchMedia('(prefers-color-scheme: dark)');
+(function() {
+    const appearanceManager = {
+        appearanceModeKey: 'appearance.mode',
 
-                if (mode === 'system') {
-                    window.localStorage.removeItem('appearance.mode');
-                    systemPreference.matches ? applyDark() : applyLight();
+        applyAppearanceMode(mode) {
+            const applyDarkMode = () => document.documentElement.classList.add('dark');
+            const applyLightMode = () => document.documentElement.classList.remove('dark');
+            const systemPreference = window.matchMedia('(prefers-color-scheme: dark)');
+
+            switch (mode) {
+                case 'system':
+                    this.resetAppearanceMode();
+                    systemPreference.matches ? applyDarkMode() : applyLightMode();
                     this.setColorModeAttribute(systemPreference.matches ? 'dark' : 'light');
-                } else if (mode === 'dark') {
-                    window.localStorage.setItem('appearance.mode', 'dark');
-                    applyDark();
+                    break;
+
+                case 'dark':
+                    this.setAppearanceMode('dark');
+                    applyDarkMode();
                     this.setColorModeAttribute('dark');
-                } else if (mode === 'light') {
-                    window.localStorage.setItem('appearance.mode', 'light');
-                    applyLight();
+                    break;
+
+                case 'light':
+                    this.setAppearanceMode('light');
+                    applyLightMode();
                     this.setColorModeAttribute('light');
-                }
-            },
+                    break;
 
-            setColorModeAttribute(mode) {
-                document.documentElement.setAttribute('color-mode', mode);
-            },
+                default:
+                    this.resetAppearanceMode();
+                    break;
+            }
+        },
 
-            getPreferredAppearanceMode() {
-                return window.localStorage.getItem('appearance.mode') || 'system';
-            },
-        };
+        getPreferredAppearanceMode() {
+            return window.localStorage.getItem(this.appearanceModeKey) || 'system';
+        },
 
-        window.app.applyAppearanceMode(window.app.getPreferredAppearanceMode());
+        setAppearanceMode(mode) {
+            window.localStorage.setItem(this.appearanceModeKey, mode);
+        },
 
-        document.addEventListener('livewire:navigated', () => {
-            window.app.applyAppearanceMode(window.app.getPreferredAppearanceMode());
-        });
-    })();
+        resetAppearanceMode() {
+            window.localStorage.removeItem(this.appearanceModeKey);
+        },
+
+        setColorModeAttribute(mode) {
+            document.documentElement.setAttribute('color-mode', mode);
+        },
+    };
+
+    appearanceManager.applyAppearanceMode(appearanceManager.getPreferredAppearanceMode());
+
+    document.addEventListener('livewire:navigated', () => {
+        appearanceManager.applyAppearanceMode(appearanceManager.getPreferredAppearanceMode());
+    });
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+        if (appearanceManager.getPreferredAppearanceMode() === 'system') {
+            appearanceManager.applyAppearanceMode('system');
+        }
+    });
+
+    window.appearanceManager = appearanceManager;
+})();
 </script>
-
-@livewireStyles
-
-@vite(['resources/css/app.css', 'resources/js/app.js'])

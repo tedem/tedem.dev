@@ -9,6 +9,6 @@ Alpine.data('appearanceModeController', () => ({
     applyAppearanceMode(mode) {
         this.appearanceModeStatus = mode;
 
-        window.app.applyAppearanceMode(mode);
+        window.appearanceManager.applyAppearanceMode(mode);
     },
 }));
