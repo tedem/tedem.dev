@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html class="overflow-y-scroll scroll-smooth" dir="ltr" lang="{{ $locale }}" x-data="appearanceModeController()">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
