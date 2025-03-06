@@ -1,4 +1,5 @@
 @props([
+    'as' => 'button',
     'variant' => 'primary',
     'size' => 'md',
     'rounded' => 'md',
@@ -55,7 +56,7 @@
     $classes = implode(
         ' ',
         array_filter([
-            'inline-flex items-center justify-center whitespace-nowrap text-sm select-none px-3.5 font-medium',
+            'inline-flex items-center justify-center whitespace-nowrap text-sm select-none font-medium',
             'focus:outline-none',
             $variantClasses,
             $sizeClasses,
@@ -65,6 +66,14 @@
     );
 @endphp
 
-<button {{ $attributes->merge(['class' => $classes]) }}>
-    {{ $value ?? $slot }}
-</button>
+@if ($as === 'button')
+    <button {{ $attributes->merge(['class' => $classes]) }}>
+        {{ $value ?? $slot }}
+    </button>
+@endif
+
+@if ($as === 'link')
+    <a {{ $attributes->merge(['class' => $classes]) }}>
+        {{ $value ?? $slot }}
+    </a>
+@endif
