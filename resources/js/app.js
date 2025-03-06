@@ -19,11 +19,11 @@ document.addEventListener('livewire:navigated', () => {
     const elements = document.querySelectorAll('[wire\\:navigate]');
 
     elements.forEach(element => {
-        element.addEventListener('mousedown', () => {
-            if (!element.classList.contains('focus:outline-none')) {
-                element.classList.add('focus:outline-none');
-            }
+        if (!element.classList.contains('focus:outline-none')) {
+            element.classList.add('focus:outline-none');
+        }
 
+        element.addEventListener('mousedown', () => {
             element.focus();
         });
     });
