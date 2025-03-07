@@ -2,7 +2,6 @@
     "name": "tedem — Developer",
     "short_name": "tedem",
     "description": "I am a full-stack developer with a passion for creating web applications.",
-    "id": "/",
     "icons": [
         {
             "src": "/web-app-manifest-192x192.png",
@@ -17,9 +16,8 @@
     ],
     "start_url": "/",
     "scope": "/",
-    "theme_color": "#030712",
-    "background_color": "#fbf9fa",
-    "display_override": ["fullscreen", "minimal-ui"],
+    "theme_color": "#101828",
+    "background_color": "#ffffff",
     "display": "standalone",
     "orientation": "any"
 }
