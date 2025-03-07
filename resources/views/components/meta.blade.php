@@ -45,13 +45,23 @@
 <meta name="referrer" content="no-referrer-when-downgrade">
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
-{{-- PWA --}}
-<link rel="manifest" href="{{ asset('site.webmanifest') }}">
+{{-- Web Application Manifest --}}
+<link rel="manifest" href="{{ asset('manifest.json') }}" crossorigin="use-credentials">
 
-{{-- Apple --}}
-<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
-<meta name="apple-mobile-web-app-title" content="{{ $title }}">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Add to homescreen for Safari on iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#030712">
+<meta name="apple-mobile-web-app-title" content="{{ config('app.name') }}">
+<link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
+
+<!-- Add to homescreen for Chrome on Android -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="{{ config('app.name') }}">
+<link rel="icon" sizes="192x192" href="{{ asset('web-app-manifest-192x192.png') }}">
+
+{{-- Theme Color --}}
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbf9fa">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#030712">
 
 {{-- Miscellaneous --}}
 <meta name="application-name" content="{{ config('app.name') }}">
