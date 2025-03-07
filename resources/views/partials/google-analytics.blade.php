@@ -7,5 +7,7 @@
     }
 
     gtag('js', new Date());
-    gtag('config', 'G-KN1GPKR9KH');
+    gtag('config', 'G-KN1GPKR9KH', {
+        'cookie_flags': 'SameSite=None; Secure'
+    });
 </script>
