@@ -1,14 +1,9 @@
-@php
-    $title = 'Contact — ' . config('app.name');
-    $description = implode(' ', [
-        'Welcome to my personal contact page. Here you can learn more about how to reach me.',
-        "I'm always open to new ideas.",
-    ]);
-@endphp
-
 <x-layouts.app>
     <x-slot name="head">
-        <x-meta :title="$title" :description="$description" />
+        <x-meta :title="title('Contact')" :description="description([
+            'Welcome to my personal contact page. Here you can learn more about how to reach me.',
+            'I’m always open to new ideas.',
+        ])" />
     </x-slot>
 
     {{-- Header --}}

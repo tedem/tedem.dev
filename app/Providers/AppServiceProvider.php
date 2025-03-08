@@ -23,6 +23,13 @@ final class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         /**
+         * Load the application helpers file.
+         */
+        if (file_exists($helper = app_path('helpers.php'))) {
+            require_once $helper;
+        }
+
+        /**
          * Registers a view composer that is applied to all views.
          *
          * This composer adds a 'locale' variable to each view, which contains the current
