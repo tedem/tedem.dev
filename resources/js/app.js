@@ -13,6 +13,31 @@ Alpine.data('appearanceModeController', () => ({
     },
 }));
 
+// State Controller
+// This controller is used to manage the state of components.
+// The state can be set to 'open' or 'closed'.
+Alpine.data('stateController', function () {
+    return {
+        open: false,
+
+        toggle() {
+            this.open = !this.open;
+
+            if (this.open) {
+                this.$refs.button.focus();
+            }
+        },
+
+        close(element) {
+            if (this.open) {
+                this.open = false;
+
+                element && element.focus();
+            }
+        },
+    };
+});
+
 // HTML: autofocus
 // Fix for autofocus not focusing on the element when navigating to a new page.
 document.addEventListener('livewire:navigated', () => {

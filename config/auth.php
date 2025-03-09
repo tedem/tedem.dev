@@ -114,4 +114,16 @@ return [
 
     'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 10800),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Registration
+    |--------------------------------------------------------------------------
+    |
+    | Here you may define if the registration is enabled or not. By default,
+    | this is set to true.
+    |
+    */
+
+    'registration' => env('AUTH_REGISTRATION', true),
+
 ];
