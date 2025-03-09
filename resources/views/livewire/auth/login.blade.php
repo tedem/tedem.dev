@@ -13,7 +13,7 @@
     </nav>
 
     {{-- Main --}}
-    <div class="p-8" role="main" aria-labelledby="register-title" aria-describedby="register-description">
+    <div class="p-8" role="main">
         {{-- Form --}}
         <form class="space-y-8" wire:submit="login">
             @csrf
