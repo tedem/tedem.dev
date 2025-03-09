@@ -57,7 +57,7 @@ final class GitHubService
                 return $repos;
             }
 
-            Log::error('Failed to fetch GitHub repos', [
+            Log::error('[GitHubService] Failed to fetch GitHub repos', [
                 'status' => $response->status(),
                 'body' => $response->body(),
             ]);
