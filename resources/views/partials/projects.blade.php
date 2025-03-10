@@ -6,7 +6,7 @@
     <div class="space-y-2">
         {{-- Title --}}
         <h2 class="flex items-center gap-3 text-2xl font-medium text-gray-950 dark:text-gray-50" id="projects-heading">
-            <span class="text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
+            <span class="select-none text-gray-600 dark:text-gray-400" aria-hidden="true">//</span>
             <a href="#projects">Projects</a>
         </h2>
 
@@ -68,7 +68,7 @@
                     <div class="h-px w-4 bg-gray-200 dark:bg-gray-700" aria-hidden="true"></div>
                     <h3>
                         <span class="font-medium">GitHub Repositories</span>
-                        <span class="text-gray-400 dark:text-gray-500">/</span>
+                        <span class="text-gray-600 dark:text-gray-400">/</span>
                         <span>{{ $githubRepos->count() }}</span>
                     </h3>
                     <div class="h-px flex-1 bg-gray-200 dark:bg-gray-700" aria-hidden="true"></div>

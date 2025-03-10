@@ -35,7 +35,7 @@
                 challenges. Let’s build something amazing together!
             </p>
             <h2 class="flex items-center gap-3" id="mission-title">
-                <span class="select-none text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
+                <span class="select-none text-gray-600 dark:text-gray-400" aria-hidden="true">//</span>
                 Mission
             </h2>
             <p aria-labelledby="mission-title">
@@ -45,7 +45,7 @@
                 succeed in their own projects. I believe that by working together, we can achieve great things.
             </p>
             <h2 class="flex items-center gap-3" id="vision-title">
-                <span class="select-none text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
+                <span class="select-none text-gray-600 dark:text-gray-400" aria-hidden="true">//</span>
                 Vision
             </h2>
             <p aria-labelledby="vision-title">
@@ -56,7 +56,7 @@
                 things.
             </p>
             <h2 class="flex items-center gap-3" id="values-title">
-                <span class="select-none text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
+                <span class="select-none text-gray-600 dark:text-gray-400" aria-hidden="true">//</span>
                 Values
             </h2>
             <p aria-labelledby="values-title">
@@ -67,7 +67,7 @@
                 achieve great things.
             </p>
             <h2 class="flex items-center gap-3" id="feedback-title">
-                <span class="select-none text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
+                <span class="select-none text-gray-600 dark:text-gray-400" aria-hidden="true">//</span>
                 Feedback
             </h2>
             <p aria-labelledby="feedback-title">
@@ -76,7 +76,7 @@
                 collaborations!
             </p>
             <h2 class="flex items-center gap-3" id="contact-title">
-                <span class="select-none text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
+                <span class="select-none text-gray-600 dark:text-gray-400" aria-hidden="true">//</span>
                 Contact
             </h2>
             <p aria-labelledby="contact-title">

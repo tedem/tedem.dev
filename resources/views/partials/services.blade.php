@@ -6,12 +6,12 @@
     <div class="space-y-2">
         {{-- Title --}}
         <h2 class="flex items-center gap-3 text-2xl font-medium text-gray-950 dark:text-gray-50" id="services-heading">
-            <span class="text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
+            <span class="select-none text-gray-600 dark:text-gray-400" aria-hidden="true">//</span>
             <a href="#services">Services</a>
         </h2>
 
         {{-- Description --}}
-        <p class="text-balance text-gray-600 dark:text-gray-300">
+        <p class="text-balance text-gray-600 dark:text-gray-400">
             Discover the range of services I offer to help you achieve your goals.
         </p>
     </div>

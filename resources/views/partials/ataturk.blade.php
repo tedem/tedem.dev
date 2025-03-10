@@ -12,7 +12,7 @@
             </blockquote>
             <figcaption class="mt-8">
                 <div class="text-center">
-                    <span class="text-gray-400 dark:text-gray-500" aria-hidden="true">&mdash;</span>
+                    <span class="text-gray-600 dark:text-gray-400" aria-hidden="true">&mdash;</span>
                     <span class="dark:text-gray-300">Mustafa Kemal Atatürk</span>
                 </div>
             </figcaption>

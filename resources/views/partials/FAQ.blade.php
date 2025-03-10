@@ -6,7 +6,7 @@
     <div class="space-y-2">
         {{-- Title --}}
         <h2 class="flex items-center gap-3 text-2xl font-medium text-gray-950 dark:text-gray-50" id="FAQ-heading">
-            <span class="text-gray-400 dark:text-gray-500" aria-hidden="true">//</span>
+            <span class="select-none text-gray-600 dark:text-gray-400" aria-hidden="true">//</span>
             <a href="#FAQ">FAQ</a>
         </h2>
 
@@ -92,7 +92,7 @@
 
                         {{-- Toggle --}}
                         <div class="flex items-start">
-                            <span class="text-2xl/7 font-light text-gray-500 dark:text-gray-400" aria-hidden="true">
+                            <span class="text-2xl/7 font-light text-gray-600 dark:text-gray-400" aria-hidden="true">
                                 <span x-cloak x-show="open !== {{ $index }}">&plus;</span>
                                 <span x-cloak x-show="open === {{ $index }}">&minus;</span>
                             </span>
