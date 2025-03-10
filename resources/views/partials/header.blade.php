@@ -30,7 +30,7 @@
             <div class="relative" x-data="stateController()" x-on:keydown.escape.prevent.stop="close($refs.button)"
                 x-on:focusin.window="!$refs.panel.contains($event.target) && close()">
                 {{-- Button --}}
-                <button class="flex items-center rounded-full p-1 hover:bg-gray-100 dark:hover:bg-gray-800"
+                <button class="-my-1 flex items-center rounded-full p-1 hover:bg-gray-100 dark:hover:bg-gray-800"
                     id="userProfileNavigationButton" x-ref="button" x-on:click="toggle()" :aria-expanded="open"
                     aria-haspopup="menu" aria-controls="userProfileNavigationPanel" type="button">
                     <span class="sr-only">User profile navigation</span>
