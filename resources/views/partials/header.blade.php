@@ -73,7 +73,7 @@
                         <div role="group">
                             <div data-orientation="vertical" role="menuitem" tabindex="-1">
                                 <a class="relative flex cursor-default select-none items-center gap-3 rounded-sm px-3 py-2.5 text-sm outline-none transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
-                                    href="{{ route('home') }}">
+                                    href="{{ route('home') }}" wire:navigate>
                                     <span class="flex w-8 justify-center">
                                         <x-icon.lucide class="size-4 text-gray-600 dark:text-gray-400">
                                             <path
@@ -89,7 +89,7 @@
                         <div role="group">
                             <div data-orientation="vertical" role="menuitem" tabindex="-1">
                                 <a class="relative flex cursor-default select-none items-center gap-3 rounded-sm px-3 py-2.5 text-sm outline-none transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
-                                    href="{{ route('home') }}">
+                                    href="{{ route('home') }}" wire:navigate>
                                     <span class="flex w-8 justify-center">
                                         <x-icon.lucide class="size-4 text-gray-600 dark:text-gray-400">
                                             <circle cx="12" cy="16" r="1" />
@@ -123,7 +123,7 @@
                         <div role="group">
                             <div data-orientation="vertical" role="menuitem" tabindex="-1">
                                 <a class="relative flex cursor-default select-none items-center gap-3 rounded-sm px-3 py-2.5 text-sm outline-none transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
-                                    href="{{ route('login') }}">
+                                    href="{{ route('login') }}" wire:navigate>
                                     <span class="flex justify-center">
                                         <x-icon.lucide class="size-4 text-gray-600 dark:text-gray-400">
                                             <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
@@ -136,7 +136,7 @@
                             </div>
                             <div data-orientation="vertical" role="menuitem" tabindex="-1">
                                 <a class="relative flex cursor-default select-none items-center gap-3 rounded-sm px-3 py-2.5 text-sm outline-none transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
-                                    href="{{ route('register') }}">
+                                    href="{{ route('register') }}" wire:navigate>
                                     <span class="flex justify-center">
                                         <x-icon.lucide class="size-4 text-gray-600 dark:text-gray-400">
                                             <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
