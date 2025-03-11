@@ -13,7 +13,7 @@
     </nav>
 
     {{-- Main --}}
-    <div class="p-8" role="main">
+    <div class="space-y-8 p-8" role="main">
         @if (config('auth.registration'))
             {{-- Form --}}
             <form class="space-y-8" wire:submit="register">

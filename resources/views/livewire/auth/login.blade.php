@@ -13,7 +13,7 @@
     </nav>
 
     {{-- Main --}}
-    <div class="p-8" role="main">
+    <div class="space-y-8 p-8" role="main">
         {{-- Form --}}
         <form class="space-y-8" wire:submit="login">
             @csrf
@@ -30,6 +30,10 @@
                 <x-label for="password" value="Password" />
                 <x-input id="password" type="password" name="password" wire:model.blur="password" required
                     autocomplete="new-password" placeholder="••••••••••" />
+                <p class="px-4">
+                    <a class="text-sm text-gray-950 hover:underline dark:text-gray-50"
+                        href="{{ route('password.request') }}" wire:navigate>Forgot your password?</a>
+                </p>
             </x-field>
 
             {{-- Submit --}}
