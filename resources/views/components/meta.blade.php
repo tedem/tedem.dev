@@ -66,7 +66,6 @@
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101828">
 
 {{-- Miscellaneous --}}
-<meta name="application-name" content="{{ config('app.name') }}">
 <link rel="author" href="{{ asset('humans.txt') }}">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="generator" content="Laravel">
