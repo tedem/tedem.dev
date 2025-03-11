@@ -49,7 +49,21 @@
 
                 {{-- Submit --}}
                 <div class="flex items-center gap-4">
-                    <x-button class="w-full" type="submit">Register</x-button>
+                    <x-button class="w-full" type="submit" aria-label="Register">
+                        <span wire:target="register" wire:loading.remove>Register</span>
+                        <span wire:target="register" wire:loading>
+                            <x-icon.lucide class="size-5 animate-spin">
+                                <path d="M12 2v4" />
+                                <path d="m16.2 7.8 2.9-2.9" />
+                                <path d="M18 12h4" />
+                                <path d="m16.2 16.2 2.9 2.9" />
+                                <path d="M12 18v4" />
+                                <path d="m4.9 19.1 2.9-2.9" />
+                                <path d="M2 12h4" />
+                                <path d="m4.9 4.9 2.9 2.9" />
+                            </x-icon.lucide>
+                        </span>
+                    </x-button>
 
                     <x-button as="link" href="{{ route('login') }}" variant="plain" wire:navigate
                         wire:navigate-focusable>
