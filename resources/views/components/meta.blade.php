@@ -42,8 +42,10 @@
 <meta name="yandex" content="index, follow">
 
 {{-- Security --}}
-<meta name="referrer" content="no-referrer-when-downgrade">
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+@if (app()->environment('production'))
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+@endif
 
 {{-- Web Application Manifest --}}
 <link rel="manifest" href="{{ asset('manifest.json') }}" crossorigin="use-credentials">
