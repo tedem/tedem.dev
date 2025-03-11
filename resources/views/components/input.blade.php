@@ -12,7 +12,7 @@
 
     {{-- Input --}}
     <input
-        class="h-full flex-1 rounded-[calc(var(--rounded)-(4px-1px))] border-0 bg-transparent px-3 text-sm text-gray-950 focus:outline-none dark:text-white"
+        class="size-full flex-1 rounded-[calc(var(--rounded)-(4px-1px))] border-0 bg-transparent px-3 text-sm text-gray-950 focus:outline-none dark:text-white"
         {{ $attributes }}>
 
     {{-- Status Label --}}
