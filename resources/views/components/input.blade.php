@@ -18,7 +18,7 @@
     {{-- Status Label --}}
     @if ($attributes->has('required'))
         <span
-            class="flex size-[calc((var(--spacing)*8)-2px)] items-center justify-center rounded-[calc(var(--rounded)-(4px-1px))] hover:bg-gray-200/60 dark:hover:bg-gray-800/60"
+            class="flex size-[calc((var(--spacing)*8)-2px)] shrink-0 items-center justify-center rounded-[calc(var(--rounded)-(4px-1px))] hover:bg-gray-200/60 dark:hover:bg-gray-800/60"
             aria-label="Required" title="Required">
             <x-icon.lucide class="size-3.5 text-gray-950 dark:text-white">
                 <path d="M12 6v12" />
