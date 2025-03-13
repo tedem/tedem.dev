@@ -5,18 +5,18 @@
 
 @php
     $sizeClasses = match ($size) {
-        'xs' => '[--size:calc(var(--spacing)*4)]',
-        'sm' => '[--size:calc(var(--spacing)*6)]',
-        'md' => '[--size:calc(var(--spacing)*8)]',
-        'lg' => '[--size:calc(var(--spacing)*10)]',
-        'xl' => '[--size:calc(var(--spacing)*12)]',
-        '2xl' => '[--size:calc(var(--spacing)*14)]',
-        '3xl' => '[--size:calc(var(--spacing)*16)]',
-        '4xl' => '[--size:calc(var(--spacing)*18)]',
-        '5xl' => '[--size:calc(var(--spacing)*20)]',
-        '6xl' => '[--size:calc(var(--spacing)*22)]',
-        '7xl' => '[--size:calc(var(--spacing)*24)]',
-        default => '[--size:calc(var(--spacing)*8)]',
+        'xs' => 'size-4',
+        'sm' => 'size-6',
+        'md' => 'size-8',
+        'lg' => 'size-10',
+        'xl' => 'size-12',
+        '2xl' => 'size-14',
+        '3xl' => 'size-16',
+        '4xl' => 'size-18',
+        '5xl' => 'size-20',
+        '6xl' => 'size-22',
+        '7xl' => 'size-24',
+        default => 'size-8',
     };
 
     $roundedClasses = match ($rounded) {
