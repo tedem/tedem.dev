@@ -25,14 +25,14 @@
             <x-field class="space-y-3" error="email">
                 <x-label for="email" value="Email" />
                 <x-input id="email" type="email" name="email" wire:model.blur="email" required autofocus
-                    autocomplete="email" placeholder="email@example.com" />
+                    autocomplete="email" placeholder="email@domain.com" />
             </x-field>
 
             {{-- Password --}}
             <x-field class="space-y-3" error="password">
                 <x-label for="password" value="Password" />
                 <x-input id="password" type="password" name="password" wire:model.blur="password" required
-                    autocomplete="new-password" placeholder="Password" />
+                    autocomplete="new-password" placeholder="••••••••••" />
             </x-field>
 
             {{-- Confirm Password --}}

@@ -27,7 +27,7 @@
             <x-field class="space-y-3" error="password">
                 <x-label for="password" value="Password" />
                 <x-input id="password" type="password" name="password" wire:model.blur="password" required autofocus
-                    autocomplete="new-password" placeholder="Password" />
+                    autocomplete="new-password" placeholder="••••••••••" />
             </x-field>
 
             {{-- Submit --}}
