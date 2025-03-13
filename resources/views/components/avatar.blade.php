@@ -31,7 +31,7 @@
     };
 
     $classes = collect([
-        'rounded-(--radius) relative shrink-0 bg-white dark:bg-gray-800',
+        'rounded-(--radius) relative shrink-0 bg-white dark:bg-gray-800 select-none',
         $sizeClasses,
         $roundedClasses,
     ])->filter()->implode(' ');
