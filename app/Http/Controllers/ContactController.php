@@ -11,6 +11,6 @@ final class ContactController extends Controller
      */
     public function index(): \Illuminate\View\View
     {
-        return view('contact');
+        return view('contact.index');
     }
 }

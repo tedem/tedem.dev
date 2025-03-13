@@ -25,7 +25,7 @@ final class HomeController extends Controller
      */
     public function index(): \Illuminate\View\View
     {
-        return view('home', [
+        return view('home.index', [
             'githubRepos' => $this->getGithubRepos(),
             'gravatarUrl' => (new User())->getGravatarUrl(),
         ]);

@@ -11,6 +11,6 @@ final class AboutController extends Controller
      */
     public function index(): \Illuminate\View\View
     {
-        return view('about');
+        return view('about.index');
     }
 }
