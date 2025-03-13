@@ -1,7 +1,10 @@
-@props(['size' => 'md', 'radius' => 'md', 'src' => '', 'alt' => ''])
+@props([
+    'size' => 'md',
+    'rounded' => 'md',
+])
 
 @php
-    $sizeClasses = [
+    $sizeClasses = match ($size) {
         'xs' => '[--size:calc(var(--spacing)*4)]',
         'sm' => '[--size:calc(var(--spacing)*6)]',
         'md' => '[--size:calc(var(--spacing)*8)]',
@@ -13,9 +16,10 @@
         '5xl' => '[--size:calc(var(--spacing)*20)]',
         '6xl' => '[--size:calc(var(--spacing)*22)]',
         '7xl' => '[--size:calc(var(--spacing)*24)]',
-    ][$size];
+        default => '',
+    };
 
-    $radiusClasses = [
+    $roundedClasses = match ($rounded) {
         'none' => '[--radius:0]',
         'xs' => '[--radius:var(--radius-xs)]',
         'sm' => '[--radius:var(--radius-sm)]',
@@ -23,13 +27,25 @@
         'lg' => '[--radius:var(--radius-lg)]',
         'xl' => '[--radius:var(--radius-xl)]',
         'full' => '[--radius:calc(infinity*1px)]',
-    ][$radius];
+        default => '',
+    };
+
+    $classes = collect([
+        'rounded-(--radius) size-(--size) relative shrink-0 bg-white dark:bg-gray-800',
+        $sizeClasses,
+        $roundedClasses,
+    ])->filter()->implode(' ');
+
+    $baseAttributes = $attributes->only('class')->merge(['class' => $classes]);
+
+    $imageAttributes = $attributes->except('class')->merge([
+        'class' => 'rounded-(--radius) absolute inset-0 object-cover object-center',
+        'loading' => 'lazy',
+    ]);
 @endphp
 
-<div
-    class="rounded-(--radius) size-(--size) {{ $radiusClasses }} {{ $sizeClasses }} relative shrink-0 bg-white dark:bg-gray-800">
-    <img class="rounded-(--radius) absolute inset-0 object-cover object-center" src="{{ $src }}"
-        alt="{{ $alt }}" loading="lazy">
+<div {{ $baseAttributes }}>
+    <img {{ $imageAttributes }}>
     <div class="rounded-(--radius) absolute inset-0 ring-1 ring-inset ring-gray-950/10 dark:ring-gray-50/10"
         aria-hidden="true"></div>
 </div>
