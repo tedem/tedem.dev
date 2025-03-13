@@ -104,7 +104,7 @@
                         </div>
                         <x-dropdown.divider />
                         <div data-orientation="vertical" role="menuitem" tabindex="-1">
-                            <form class="w-full" method="POST" action="{{ route('signOut') }}">
+                            <form class="w-full" method="POST" action="{{ route('sign-out') }}">
                                 @csrf
                                 <button
                                     class="relative flex w-full cursor-default select-none items-center gap-3 rounded-sm px-3 py-2.5 text-sm outline-none transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -124,7 +124,7 @@
                         <div role="group">
                             <div data-orientation="vertical" role="menuitem" tabindex="-1">
                                 <a class="relative flex cursor-default select-none items-center gap-3 rounded-sm px-3 py-2.5 text-sm outline-none transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
-                                    href="{{ route('signIn') }}" wire:navigate>
+                                    href="{{ route('sign-in') }}" wire:navigate>
                                     <span class="flex justify-center">
                                         <x-icon.lucide class="size-4 text-gray-600 dark:text-gray-400">
                                             <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
@@ -137,7 +137,7 @@
                             </div>
                             <div data-orientation="vertical" role="menuitem" tabindex="-1">
                                 <a class="relative flex cursor-default select-none items-center gap-3 rounded-sm px-3 py-2.5 text-sm outline-none transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
-                                    href="{{ route('signUp') }}" wire:navigate>
+                                    href="{{ route('sign-up') }}" wire:navigate>
                                     <span class="flex justify-center">
                                         <x-icon.lucide class="size-4 text-gray-600 dark:text-gray-400">
                                             <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />

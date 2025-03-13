@@ -8,7 +8,7 @@
         aria-label="Auth navigation">
         <x-button class="w-full" as="link" href="{{ route('password.reset') }}" variant="primary" wire:navigate
             wire:navigate-focusable>Reset Password</x-button>
-        <x-button class="w-full" as="link" href="{{ route('signIn') }}" variant="plain" wire:navigate
+        <x-button class="w-full" as="link" href="{{ route('sign-in') }}" variant="plain" wire:navigate
             wire:navigate-focusable>Sign In</x-button>
     </nav>
 
@@ -60,7 +60,7 @@
                     </span>
                 </x-button>
 
-                <x-button as="link" href="{{ route('signIn') }}" variant="plain" wire:navigate
+                <x-button as="link" href="{{ route('sign-in') }}" variant="plain" wire:navigate
                     wire:navigate-focusable>
                     Sign In
                 </x-button>

@@ -6,9 +6,9 @@
     {{-- Navigation --}}
     <nav class="grid grid-cols-2 gap-4 border-b border-gray-200 p-8 px-8 py-4 dark:border-gray-700"
         aria-label="Auth navigation">
-        <x-button class="w-full" as="link" href="{{ route('signIn') }}" variant="primary" wire:navigate
+        <x-button class="w-full" as="link" href="{{ route('sign-in') }}" variant="primary" wire:navigate
             wire:navigate-focusable>Sign In</x-button>
-        <x-button class="w-full" as="link" href="{{ route('signUp') }}" variant="plain" wire:navigate
+        <x-button class="w-full" as="link" href="{{ route('sign-up') }}" variant="plain" wire:navigate
             wire:navigate-focusable>Sign Up</x-button>
     </nav>
 
@@ -54,7 +54,7 @@
                     </span>
                 </x-button>
 
-                <x-button as="link" href="{{ route('signUp') }}" variant="plain" wire:navigate
+                <x-button as="link" href="{{ route('sign-up') }}" variant="plain" wire:navigate
                     wire:navigate-focusable>
                     Sign Up
                 </x-button>
