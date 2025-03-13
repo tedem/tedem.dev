@@ -33,12 +33,6 @@
         </div>
 
         <div class="flex items-center gap-8">
-            {{-- Navigation --}}
-            <nav class="flex items-center gap-8 max-md:order-2" aria-label="Footer Navigation">
-                <a class="text-gray-900 hover:underline hover:decoration-current hover:underline-offset-4 dark:text-gray-300"
-                    href="#top" rel="noopener noreferrer nofollow" onclick="window.scrollTo({top: 0});">Top</a>
-            </nav>
-
             {{-- Theme Switcher --}}
             <div class="flex h-11 items-center gap-1 rounded-full bg-gray-100 p-1 max-md:order-1 dark:bg-gray-800"
                 role="group" aria-label="Theme Switcher">
@@ -64,13 +58,23 @@
         </div>
     </div>
 
-    {{-- Time --}}
+    {{-- Navigation --}}
     <div
-        class="flex items-center justify-center border-t border-gray-200 p-8 text-sm text-gray-600 dark:border-gray-700 dark:text-gray-400">
-        <time datetime="{{ now('GMT+3')->toIso8601String() }}" title="{{ now('GMT+3')->toDayDateTimeString() }}">
+        class="flex gap-8 border-t border-gray-200 p-8 max-md:flex-col md:items-center md:justify-between dark:border-gray-700 dark:text-gray-400">
+        <time class="text-sm" datetime="{{ now('GMT+3')->toIso8601String() }}"
+            title="{{ now('GMT+3')->toDayDateTimeString() }}">
             {{ now('GMT+3')->format('l, F j, Y') }}
             <span>({{ now('GMT+3')->format('H:i') }})</span>
         </time>
+
+        <nav class="flex items-center gap-8 text-sm max-md:order-2" aria-label="Footer Navigation">
+            <a class="text-gray-900 hover:underline hover:decoration-current hover:underline-offset-4 dark:text-gray-300"
+                href="{{ route('terms-of-service') }}" wire:navigate>Terms of Service</a>
+            <a class="text-gray-900 hover:underline hover:decoration-current hover:underline-offset-4 dark:text-gray-300"
+                href="{{ route('privacy-policy') }}" wire:navigate>Privacy Policy</a>
+            <a class="text-gray-900 hover:underline hover:decoration-current hover:underline-offset-4 dark:text-gray-300"
+                href="#top" rel="noopener noreferrer nofollow" onclick="window.scrollTo({top: 0});">Top</a>
+        </nav>
     </div>
 
     {{-- tedem --}}

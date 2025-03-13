@@ -40,11 +40,11 @@
                 <div class="border-b border-gray-200 p-8 dark:border-gray-700">
                     <p class="text-balance text-center text-sm text-gray-600 dark:text-gray-400">
                         By signing up, you agree to our
-                        <a class="font-medium text-gray-950 underline dark:text-white" href="{{ route('home') }}"
-                            target="_blank">Terms of Service</a>
+                        <a class="font-medium text-gray-950 underline dark:text-white"
+                            href="{{ route('terms-of-service') }}" wire:navigate>Terms of Service</a>
                         and
-                        <a class="font-medium text-gray-950 underline dark:text-white" href="{{ route('home') }}"
-                            target="_blank">Privacy Policy</a>.
+                        <a class="font-medium text-gray-950 underline dark:text-white"
+                            href="{{ route('privacy-policy') }}" wire:navigate>Privacy Policy</a>.
                     </p>
                 </div>
             @endif
