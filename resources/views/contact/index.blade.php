@@ -1,9 +1,6 @@
 <x-layouts.app>
     <x-slot name="head">
-        <x-meta :title="title('Contact')" :description="description([
-            'Welcome to my personal contact page. Here you can learn more about how to reach me.',
-            'I’m always open to new ideas.',
-        ])" />
+        <x-meta :title="title('Contact')" :description="description(['Here you can learn more about how to reach me.', 'I’m always open to new ideas.'])" />
     </x-slot>
 
     {{-- Header --}}
@@ -17,8 +14,7 @@
         {{-- Description --}}
         <p class="text-balance text-xl font-light text-gray-950 dark:text-gray-50" id="contact-description"
             aria-labelledby="contact-title">
-            Welcome to my personal contact page. Here you can learn more about how to reach me. I'm always open to new
-            ideas.
+            Here you can learn more about how to reach me. I'm always open to new ideas.
         </p>
     </div>
 
