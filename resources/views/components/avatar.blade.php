@@ -16,7 +16,7 @@
         '5xl' => '[--size:calc(var(--spacing)*20)]',
         '6xl' => '[--size:calc(var(--spacing)*22)]',
         '7xl' => '[--size:calc(var(--spacing)*24)]',
-        default => '',
+        default => '[--size:calc(var(--spacing)*8)]',
     };
 
     $roundedClasses = match ($rounded) {
@@ -27,7 +27,7 @@
         'lg' => '[--radius:var(--radius-lg)]',
         'xl' => '[--radius:var(--radius-xl)]',
         'full' => '[--radius:calc(infinity*1px)]',
-        default => '',
+        default => '[--radius:var(--radius-md)]',
     };
 
     $classes = collect([

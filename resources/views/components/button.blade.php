@@ -41,6 +41,7 @@
         'md' => 'h-10 px-4 gap-2',
         'lg' => 'h-12 px-5 gap-2.5',
         'xl' => 'h-14 px-6 gap-3',
+        default => 'h-10 px-4 gap-2',
     };
 
     $roundedClasses = match ($rounded) {
@@ -51,6 +52,7 @@
         'lg' => 'rounded-lg',
         'xl' => 'rounded-xl',
         'full' => 'rounded-full',
+        default => 'rounded-md',
     };
 
     $classes = collect([
