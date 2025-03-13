@@ -9,7 +9,8 @@
         <x-vertical-label value="Terms of Service" />
 
         {{-- Title --}}
-        <h1 class="text-4xl font-medium tracking-tight text-gray-950 dark:text-gray-50" id="about-title">Terms of Service
+        <h1 class="text-4xl font-medium tracking-tight text-gray-950 dark:text-gray-50" id="terms-title">
+            Terms of Service
         </h1>
 
         {{-- Description --}}

@@ -9,7 +9,7 @@
         <x-vertical-label value="Privacy Policy" />
 
         {{-- Title --}}
-        <h1 class="text-4xl font-medium tracking-tight text-gray-950 dark:text-gray-50" id="about-title">
+        <h1 class="text-4xl font-medium tracking-tight text-gray-950 dark:text-gray-50" id="privacy-title">
             Privacy Policy
         </h1>
 
