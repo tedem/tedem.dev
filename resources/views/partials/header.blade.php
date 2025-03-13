@@ -104,7 +104,7 @@
                         </div>
                         <x-dropdown.divider />
                         <div data-orientation="vertical" role="menuitem" tabindex="-1">
-                            <form class="w-full" method="POST" action="{{ route('logout') }}">
+                            <form class="w-full" method="POST" action="{{ route('signOut') }}">
                                 @csrf
                                 <button
                                     class="relative flex w-full cursor-default select-none items-center gap-3 rounded-sm px-3 py-2.5 text-sm outline-none transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -116,7 +116,7 @@
                                             <line x1="21" x2="9" y1="12" y2="12" />
                                         </x-icon.lucide>
                                     </span>
-                                    <span>Logout</span>
+                                    <span>Sign Out</span>
                                 </button>
                             </form>
                         </div>
@@ -124,7 +124,7 @@
                         <div role="group">
                             <div data-orientation="vertical" role="menuitem" tabindex="-1">
                                 <a class="relative flex cursor-default select-none items-center gap-3 rounded-sm px-3 py-2.5 text-sm outline-none transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
-                                    href="{{ route('login') }}" wire:navigate>
+                                    href="{{ route('signIn') }}" wire:navigate>
                                     <span class="flex justify-center">
                                         <x-icon.lucide class="size-4 text-gray-600 dark:text-gray-400">
                                             <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
@@ -132,12 +132,12 @@
                                             <line x1="15" x2="3" y1="12" y2="12" />
                                         </x-icon.lucide>
                                     </span>
-                                    <span>Login</span>
+                                    <span>Sign In</span>
                                 </a>
                             </div>
                             <div data-orientation="vertical" role="menuitem" tabindex="-1">
                                 <a class="relative flex cursor-default select-none items-center gap-3 rounded-sm px-3 py-2.5 text-sm outline-none transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
-                                    href="{{ route('register') }}" wire:navigate>
+                                    href="{{ route('signUp') }}" wire:navigate>
                                     <span class="flex justify-center">
                                         <x-icon.lucide class="size-4 text-gray-600 dark:text-gray-400">
                                             <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
@@ -146,7 +146,7 @@
                                             <line x1="22" x2="16" y1="11" y2="11" />
                                         </x-icon.lucide>
                                     </span>
-                                    <span>Register</span>
+                                    <span>Sign Up</span>
                                 </a>
                             </div>
                         </div>

@@ -15,7 +15,7 @@ use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 #[Layout('layouts.plain')]
-final class Register extends Component
+final class SignUp extends Component
 {
     #[Validate]
     public string $username = '';
@@ -29,7 +29,7 @@ final class Register extends Component
     #[Validate]
     public string $password_confirmation = '';
 
-    public function register(): void
+    public function signUp(): void
     {
         $validated = $this->validate();
 
@@ -54,6 +54,6 @@ final class Register extends Component
 
     public function render()
     {
-        return view('livewire.auth.register');
+        return view('livewire.auth.sign-up');
     }
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Livewire\Auth;
 
-use App\Livewire\Actions\Logout;
+use App\Livewire\Actions\SignOut;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Layout;
@@ -26,9 +26,9 @@ final class VerifyEmail extends Component
         Session::flash('status', 'verification-link-sent');
     }
 
-    public function logout(Logout $logout): void
+    public function signOut(SignOut $signOut): void
     {
-        $logout();
+        $signOut();
 
         $this->redirect('/', navigate: true);
     }

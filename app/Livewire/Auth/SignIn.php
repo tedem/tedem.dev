@@ -15,7 +15,7 @@ use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 #[Layout('layouts.plain')]
-final class Login extends Component
+final class SignIn extends Component
 {
     #[Validate('required|string|exists:users,username')]
     public string $username = '';
@@ -25,7 +25,7 @@ final class Login extends Component
 
     public bool $remember = false;
 
-    public function login(): void
+    public function signIn(): void
     {
         $this->validate();
 
@@ -47,7 +47,7 @@ final class Login extends Component
 
     public function render()
     {
-        return view('livewire.auth.login');
+        return view('livewire.auth.sign-in');
     }
 
     private function ensureIsNotRateLimited(): void
