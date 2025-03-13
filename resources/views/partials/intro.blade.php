@@ -6,7 +6,7 @@
     <div class="flex flex-col gap-8 md:flex-row">
         <div class="flex">
             {{-- Avatar --}}
-            <x-avatar size="7xl" radius="full" src="{{ $gravatarUrl }}" alt="tedem's Avatar" />
+            <x-avatar size="7xl" rounded="full" src="{{ $gravatarUrl }}" alt="tedem's Avatar" />
         </div>
 
         <div>

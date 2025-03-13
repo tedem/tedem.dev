@@ -36,7 +36,7 @@
                     aria-haspopup="menu" aria-controls="userProfileNavigationPanel">
                     <span class="sr-only">User profile navigation</span>
                     @auth
-                        <x-avatar radius="full" src="{{ auth()->user()->getGravatarUrl() }}"
+                        <x-avatar rounded="full" src="{{ auth()->user()->getGravatarUrl() }}"
                             alt="{{ auth()->user()->username }}" />
                     @else
                         <div class="flex size-8 items-center justify-center rounded-full bg-gray-950/5 dark:bg-white/5">
