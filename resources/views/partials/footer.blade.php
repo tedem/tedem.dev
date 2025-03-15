@@ -69,6 +69,8 @@
 
         <nav class="flex items-center gap-8 text-sm max-md:order-2" aria-label="Footer Navigation">
             <a class="text-gray-900 hover:underline hover:decoration-current hover:underline-offset-4 dark:text-gray-300"
+                href="{{ route('cookie-consent') }}" wire:navigate>Cookie Consent</a>
+            <a class="text-gray-900 hover:underline hover:decoration-current hover:underline-offset-4 dark:text-gray-300"
                 href="{{ route('terms-of-service') }}" wire:navigate>Terms of Service</a>
             <a class="text-gray-900 hover:underline hover:decoration-current hover:underline-offset-4 dark:text-gray-300"
                 href="{{ route('privacy-policy') }}" wire:navigate>Privacy Policy</a>
@@ -88,6 +90,6 @@
     </div>
 </footer>
 
-@if (app()->environment('production'))
+@if (app()->environment('production') && $cookieConsent->get('analytic', false))
     @include('partials.google-analytics')
 @endif
