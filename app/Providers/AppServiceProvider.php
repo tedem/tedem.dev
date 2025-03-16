@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -61,6 +62,7 @@ final class AppServiceProvider extends ServiceProvider
         });
 
         $this->configureForceHttps();
+        $this->configureCommands();
     }
 
     /**
@@ -69,5 +71,14 @@ final class AppServiceProvider extends ServiceProvider
     private function configureForceHttps(): void
     {
         URL::forceHttps(App::isProduction());
+    }
+
+    /**
+     * Configure the application commands.
+     */
+    private function configureCommands(): void
+    {
+        // Disable destructive commands in production.
+        DB::prohibitDestructiveCommands(App::isProduction());
     }
 }
