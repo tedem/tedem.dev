@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Livewire\CookieConsent;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -13,7 +12,5 @@ Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])
 
 Route::get('/terms-of-service', fn () => view('terms-of-service.index'))->name('terms-of-service');
 Route::get('/privacy-policy', fn () => view('privacy-policy.index'))->name('privacy-policy');
-
-Route::get('/cookie-consent', CookieConsent::class)->name('cookie-consent');
 
 require __DIR__.'/auth.php';

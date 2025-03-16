@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
-use App\Services\CookieConsentService;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -16,11 +15,7 @@ final class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        /**
-         * Register the CookieConsentService class in the service container.
-         */
-        $this->app->singleton(CookieConsentService::class,
-            fn (): CookieConsentService => new CookieConsentService());
+        //
     }
 
     /**
@@ -62,19 +57,6 @@ final class AppServiceProvider extends ServiceProvider
                 ['name' => 'Bluesky', 'url' => 'https://bsky.app/profile/tedem.dev'],
                 ['name' => 'Github', 'url' => 'https://github.com/tedem'],
             ]);
-        });
-
-        /**
-         * Registers a view composer that attaches the 'cookieConsent' variable to all views.
-         *
-         * This view composer is applied to all views ('*') and adds a 'cookieConsent' variable
-         * which is an instance of the CookieConsentService class.
-         *
-         * @param  \Illuminate\View\View  $view  The view instance being composed.
-         * @return void
-         */
-        View::composer('*', function ($view): void {
-            $view->with('cookieConsent', app(CookieConsentService::class));
         });
 
         $this->configureForceHttps();
