@@ -6,6 +6,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 
 final class AppServiceProvider extends ServiceProvider
@@ -63,15 +64,10 @@ final class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Configure the application to force HTTPS in production environment.
-     *
-     * This method checks if the application is running in the 'production' environment.
-     * If it is, it forces all URLs to use the HTTPS scheme.
+     * Configure the application to force HTTPS URLs in production.
      */
     private function configureForceHttps(): void
     {
-        if ($this->app->environment('production')) {
-            URL::forceScheme('https');
-        }
+        URL::forceHttps(App::isProduction());
     }
 }
