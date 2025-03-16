@@ -61,15 +61,16 @@ final class AppServiceProvider extends ServiceProvider
             ]);
         });
 
-        $this->configureForceHttps();
+        $this->configureURL();
         $this->configureCommands();
     }
 
     /**
-     * Configure the application to force HTTPS URLs in production.
+     * Configure the application URL.
      */
-    private function configureForceHttps(): void
+    private function configureURL(): void
     {
+        // Force HTTPS in production.
         URL::forceHttps(App::isProduction());
     }
 
