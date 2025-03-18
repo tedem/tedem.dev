@@ -32,6 +32,34 @@ final class AppServiceProvider extends ServiceProvider
             require_once $helper;
         }
 
+        $this->configureView();
+        $this->configureURL();
+        $this->configureCommands();
+    }
+
+    /**
+     * Configure the application URL.
+     */
+    private function configureURL(): void
+    {
+        // Force HTTPS in production.
+        URL::forceHttps(App::isProduction());
+    }
+
+    /**
+     * Configure the application commands.
+     */
+    private function configureCommands(): void
+    {
+        // Disable destructive commands in production.
+        DB::prohibitDestructiveCommands(App::isProduction());
+    }
+
+    /**
+     * Configure the application view.
+     */
+    private function configureView(): void
+    {
         /**
          * Registers a view composer that is applied to all views.
          *
@@ -60,26 +88,5 @@ final class AppServiceProvider extends ServiceProvider
                 ['name' => 'Github', 'url' => 'https://github.com/tedem'],
             ]);
         });
-
-        $this->configureURL();
-        $this->configureCommands();
-    }
-
-    /**
-     * Configure the application URL.
-     */
-    private function configureURL(): void
-    {
-        // Force HTTPS in production.
-        URL::forceHttps(App::isProduction());
-    }
-
-    /**
-     * Configure the application commands.
-     */
-    private function configureCommands(): void
-    {
-        // Disable destructive commands in production.
-        DB::prohibitDestructiveCommands(App::isProduction());
     }
 }
