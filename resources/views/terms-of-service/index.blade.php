@@ -9,9 +9,7 @@
         <x-vertical-label value="Terms of Service" />
 
         {{-- Title --}}
-        <h1 class="text-4xl font-medium tracking-tight text-gray-950 dark:text-gray-50" id="terms-title">
-            Terms of Service
-        </h1>
+        <x-headline level="1" size="4xl" value="Terms of Service" id="terms-title" />
 
         {{-- Description --}}
         <p class="text-balance text-xl font-light text-gray-950 dark:text-gray-50" aria-labelledby="terms-title">

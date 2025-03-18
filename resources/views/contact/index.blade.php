@@ -9,7 +9,7 @@
         <x-vertical-label value="Contact" />
 
         {{-- Title --}}
-        <h1 class="text-4xl font-medium tracking-tight text-gray-950 dark:text-gray-50" id="contact-title">Contact</h1>
+        <x-headline level="1" size="4xl" value="Contact" id="contact-title" />
 
         {{-- Description --}}
         <p class="text-balance text-xl font-light text-gray-950 dark:text-gray-50" id="contact-description"

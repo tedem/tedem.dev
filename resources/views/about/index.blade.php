@@ -9,9 +9,7 @@
         <x-vertical-label value="About" />
 
         {{-- Title --}}
-        <h1 class="text-4xl font-medium tracking-tight text-gray-950 dark:text-gray-50" id="about-title">
-            About
-        </h1>
+        <x-headline level="1" size="4xl" value="About" id="about-title" />
 
         {{-- Description --}}
         <p class="text-balance text-xl font-light text-gray-950 dark:text-gray-50" aria-labelledby="about-title">

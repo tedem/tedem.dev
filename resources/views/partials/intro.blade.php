@@ -12,12 +12,8 @@
         <div>
             {{-- About --}}
             <div class="flex flex-col justify-center gap-4 md:h-24">
-                <h1 class="text-4xl font-medium tracking-tight text-gray-950 dark:text-gray-50" id="intro-heading">
-                    Hey, I am Medet.
-                </h1>
-                <h2 class="text-balance text-xl font-medium text-gray-950 dark:text-gray-50">
-                    Full-stack Developer & Freelancer
-                </h2>
+                <x-headline level="1" size="4xl" value="Hey, I am Medet." id="intro-heading" />
+                <x-headline level="2" size="xl" value="Full-stack Developer & Freelancer" class="text-balance" />
             </div>
 
             {{-- Description --}}

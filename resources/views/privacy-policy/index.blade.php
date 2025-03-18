@@ -9,9 +9,7 @@
         <x-vertical-label value="Privacy Policy" />
 
         {{-- Title --}}
-        <h1 class="text-4xl font-medium tracking-tight text-gray-950 dark:text-gray-50" id="privacy-title">
-            Privacy Policy
-        </h1>
+        <x-headline level="1" size="4xl" value="Privacy Policy" id="privacy-title" />
 
         {{-- Description --}}
         <p class="text-balance text-xl font-light text-gray-950 dark:text-gray-50" aria-labelledby="privacy-title">
