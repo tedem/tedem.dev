@@ -69,7 +69,7 @@
 @if ($level === 1)
     <h1 {{ $baseAttributes }}>
         @if ($prefix)
-            <span class="{{ $prefixClasses }}">{{ $prefix }}</span>
+            <span class="{{ $prefixClasses }}" aria-hidden="true">{{ $prefix }}</span>
         @endif
         @if ($link)
         <a {!! $linkAttributes !!}>{{ $value ?? $slot }}</a>
@@ -82,7 +82,7 @@
 @if ($level === 2)
     <h2 {{ $baseAttributes }}>
         @if ($prefix)
-            <span class="{{ $prefixClasses }}">{{ $prefix }}</span>
+            <span class="{{ $prefixClasses }}" aria-hidden="true">{{ $prefix }}</span>
         @endif
         @if ($link)
         <a {!! $linkAttributes !!}>{{ $value ?? $slot }}</a>
@@ -95,7 +95,7 @@
 @if ($level === 3)
     <h3 {{ $baseAttributes }}>
         @if ($prefix)
-            <span class="{{ $prefixClasses }}">{{ $prefix }}</span>
+            <span class="{{ $prefixClasses }}" aria-hidden="true">{{ $prefix }}</span>
         @endif
         @if ($link)
         <a {!! $linkAttributes !!}>{{ $value ?? $slot }}</a>
