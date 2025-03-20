@@ -14,8 +14,8 @@
             Resend Verification Email
         </x-button>
 
-        <x-button variant="plain" wire:click="signOut">
-            Sign Out
+        <x-button variant="plain" wire:click="logout">
+            Logout
         </x-button>
     </div>
 </div>

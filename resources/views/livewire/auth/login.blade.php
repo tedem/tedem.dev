@@ -1,21 +1,21 @@
 <div>
     <x-slot name="head">
-        <x-meta :title="title('Sign In')" :description="description(['Sign in to access all the features.'])" />
+        <x-meta :title="title('Login')" :description="description(['Login to access all the features.'])" />
     </x-slot>
 
     {{-- Navigation --}}
     <nav class="grid grid-cols-2 gap-4 border-b border-gray-200 p-8 px-8 py-4 dark:border-gray-700"
         aria-label="Auth navigation">
-        <x-button class="w-full" as="link" href="{{ route('sign-in') }}" variant="primary" wire:navigate
-            wire:navigate-focusable>Sign In</x-button>
-        <x-button class="w-full" as="link" href="{{ route('sign-up') }}" variant="plain" wire:navigate
-            wire:navigate-focusable>Sign Up</x-button>
+        <x-button class="w-full" as="link" href="{{ route('login') }}" variant="primary" wire:navigate
+            wire:navigate-focusable>Login</x-button>
+        <x-button class="w-full" as="link" href="{{ route('register') }}" variant="plain" wire:navigate
+            wire:navigate-focusable>Register</x-button>
     </nav>
 
     {{-- Main --}}
     <div class="space-y-8 p-8" role="main">
         {{-- Form --}}
-        <form class="space-y-8" wire:submit="signIn">
+        <form class="space-y-8" wire:submit="login">
             @csrf
 
             {{-- Username --}}
@@ -38,9 +38,9 @@
 
             {{-- Submit --}}
             <div class="flex items-center gap-4">
-                <x-button class="w-full" type="submit" aria-label="Sign In">
-                    <span wire:target="signIn" wire:loading.remove>Sign In</span>
-                    <span wire:target="signIn" wire:loading>
+                <x-button class="w-full" type="submit" aria-label="Login">
+                    <span wire:target="login" wire:loading.remove>Login</span>
+                    <span wire:target="login" wire:loading>
                         <x-icon.lucide class="size-5 animate-spin">
                             <path d="M12 2v4" />
                             <path d="m16.2 7.8 2.9-2.9" />
@@ -54,9 +54,9 @@
                     </span>
                 </x-button>
 
-                <x-button as="link" href="{{ route('sign-up') }}" variant="plain" wire:navigate
+                <x-button as="link" href="{{ route('register') }}" variant="plain" wire:navigate
                     wire:navigate-focusable>
-                    Sign Up
+                    Register
                 </x-button>
             </div>
         </form>

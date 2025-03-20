@@ -7,7 +7,7 @@ namespace App\Livewire\Actions;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-final class SignOut
+final class Logout
 {
     public function __invoke()
     {

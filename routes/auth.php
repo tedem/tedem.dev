@@ -3,18 +3,18 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Auth\VerifyEmailController;
-use App\Livewire\Actions\SignOut;
+use App\Livewire\Actions\Logout;
 use App\Livewire\Auth\ConfirmPassword;
 use App\Livewire\Auth\ForgotPassword;
+use App\Livewire\Auth\Login;
+use App\Livewire\Auth\Register;
 use App\Livewire\Auth\ResetPassword;
-use App\Livewire\Auth\SignIn;
-use App\Livewire\Auth\SignUp;
 use App\Livewire\Auth\VerifyEmail;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
-    Route::get('sign-in', SignIn::class)->name('sign-in');
-    Route::get('sign-up', SignUp::class)->name('sign-up');
+    Route::get('login', Login::class)->name('login');
+    Route::get('register', Register::class)->name('register');
     Route::get('forgot-password', ForgotPassword::class)->name('password.request');
     Route::get('reset-password/{token}', ResetPassword::class)->name('password.reset');
 });
@@ -31,4 +31,4 @@ Route::middleware('auth')->group(function () {
         ->name('password.confirm');
 });
 
-Route::post('sign-out', SignOut::class)->name('sign-out');
+Route::post('logout', Logout::class)->name('logout');
