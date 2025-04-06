@@ -7,7 +7,7 @@
 | **Component**                                                 | **Version** |
 | ------------------------------------------------------------- | ----------- |
 | **[Laravel](https://github.com/laravel/laravel)**             | v12.0.4     |
-| **[Laravel Framework](https://github.com/laravel/framework)** | v12.6.0     |
+| **[Laravel Framework](https://github.com/laravel/framework)** | v12.7.2     |
 
 ## Contributing Guidelines
 
