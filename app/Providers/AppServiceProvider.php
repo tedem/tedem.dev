@@ -4,10 +4,14 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use Carbon\CarbonImmutable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 
 final class AppServiceProvider extends ServiceProvider
@@ -35,6 +39,36 @@ final class AppServiceProvider extends ServiceProvider
         $this->configureView();
         $this->configureURL();
         $this->configureCommands();
+        $this->configureModel();
+        $this->configureVite();
+        $this->configureDate();
+    }
+
+    /**
+     * Configure Vite for asset management.
+     */
+    private function configureVite(): void
+    {
+        // Use Vite for asset management in production.
+        Vite::useAggressivePrefetching();
+    }
+
+    /**
+     * Configure the date handling.
+     */
+    private function configureDate(): void
+    {
+        Date::use(CarbonImmutable::class);
+    }
+
+    /**
+     * Configure global settings for Eloquent models.
+     */
+    private function configureModel(): void
+    {
+        Model::unguard();
+        Model::shouldBeStrict();
+        Model::automaticallyEagerLoadRelationships();
     }
 
     /**
