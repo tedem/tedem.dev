@@ -20,7 +20,7 @@
             <div class="mt-4">
                 <p class="text-balance text-gray-950 dark:text-gray-50">
                     I am a full-stack developer with a passion for building applications. I have been working in the
-                    industry for over 10 years and have experience in a wide range of technologies.
+                    industry for over {{ now()->year - 2012 }} years and have experience in a wide range of technologies.
                 </p>
             </div>
 
@@ -33,7 +33,7 @@
 
                     <a class="text-gray-950 hover:text-teal-600 dark:text-gray-50 dark:hover:text-teal-400"
                         href="{{ $account->url }}" rel="noopener noreferrer nofollow" target="_blank"
-                        aria-label="{{ $account->name }}'s profile">
+                        aria-label="Visit {{ $account->name }}'s profile">
                         {{ $account->name }}
                     </a>
                 @endforeach
