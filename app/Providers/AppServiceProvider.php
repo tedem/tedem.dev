@@ -116,10 +116,10 @@ final class AppServiceProvider extends ServiceProvider
          */
         View::composer('*', function ($view): void {
             $view->with('socialAccounts', [
-                ['name' => 'X', 'url' => 'https://x.com/tedemedet'],
-                ['name' => 'Instagram', 'url' => 'https://www.instagram.com/tedem.dev/'],
                 ['name' => 'Bluesky', 'url' => 'https://bsky.app/profile/tedem.dev'],
                 ['name' => 'Github', 'url' => 'https://github.com/tedem'],
+                ['name' => 'Instagram', 'url' => 'https://www.instagram.com/tedem.dev/'],
+                ['name' => 'X', 'url' => 'https://x.com/tedemedet'],
             ]);
         });
     }
