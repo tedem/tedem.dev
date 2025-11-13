@@ -36,7 +36,7 @@ final class GitHubService
      */
     public function getRepos(string $username, string $personalAccessToken): array
     {
-        $cacheKey = "github.user.repos.{$username}";
+        $cacheKey = 'github.user.repos.'.$username;
         $cachedRepos = Cache::get($cacheKey);
 
         if ($cachedRepos) {
@@ -46,7 +46,7 @@ final class GitHubService
         try {
             $response = Http::withHeaders([
                 'Accept' => 'application/vnd.github.v3+json',
-                'Authorization' => "token {$personalAccessToken}",
+                'Authorization' => 'token '.$personalAccessToken,
             ])->get($this->baseUrl.$username.'/repos');
 
             if ($response->successful()) {
@@ -63,9 +63,9 @@ final class GitHubService
             ]);
 
             return [];
-        } catch (Exception $e) {
+        } catch (Exception $exception) {
             Log::error('[GitHubService] Failed to fetch GitHub repos', [
-                'message' => $e->getMessage(),
+                'message' => $exception->getMessage(),
             ]);
 
             return [];

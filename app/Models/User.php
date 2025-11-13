@@ -11,8 +11,8 @@ use Illuminate\Notifications\Notifiable;
 
 final class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -50,7 +50,7 @@ final class User extends Authenticatable
     {
         $emailHash = md5(mb_strtolower(mb_trim($this->email ?? 'hello@tedem.dev')));
 
-        return "https://www.gravatar.com/avatar/{$emailHash}?s={$size}";
+        return sprintf('https://www.gravatar.com/avatar/%s?s=%d', $emailHash, $size);
     }
 
     /**
