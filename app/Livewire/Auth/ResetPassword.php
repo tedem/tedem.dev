@@ -70,7 +70,7 @@ final class ResetPassword extends Component
         $this->redirectRoute('signIn', navigate: true);
     }
 
-    public function render()
+    public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
     {
         return view('livewire.auth.reset-password');
     }

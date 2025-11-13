@@ -24,7 +24,7 @@ final class ForgotPassword extends Component
         session()->flash('status', 'We have emailed your password reset link!');
     }
 
-    public function render()
+    public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
     {
         return view('livewire.auth.forgot-password');
     }

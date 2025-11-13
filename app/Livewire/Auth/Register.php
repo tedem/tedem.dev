@@ -52,7 +52,7 @@ final class Register extends Component
         ];
     }
 
-    public function render()
+    public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
     {
         return view('livewire.auth.register');
     }

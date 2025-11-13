@@ -33,7 +33,7 @@ final class VerifyEmail extends Component
         $this->redirect(route('home', absolute: false), navigate: true);
     }
 
-    public function render()
+    public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
     {
         return view('livewire.auth.verify-email');
     }

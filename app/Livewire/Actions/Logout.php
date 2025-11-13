@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Session;
 
 final class Logout
 {
-    public function __invoke()
+    public function __invoke(): \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
     {
         Auth::guard('web')->logout();
 
