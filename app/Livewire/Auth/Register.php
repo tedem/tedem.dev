@@ -35,6 +35,9 @@ final class Register extends Component
 
         $validated['password'] = Hash::make($validated['password']);
 
+        // Remove password_confirmation before creating the user
+        unset($validated['password_confirmation']);
+
         event(new Registered(($user = User::create($validated))));
 
         Auth::login($user);
