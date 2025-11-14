@@ -1,45 +1,24 @@
-# System files
+*.log
 .DS_Store
-
-# Environment files
 .env
 .env.backup
 .env.production
-
-# Log files
-npm-debug.log
-yarn-error.log
-
-# PHPUnit files
-/.phpunit.cache
-.phpunit.result.cache
-
-# PHP related files
 .phpactor.json
-Homestead.json
-Homestead.yaml
-
-# Node.js related files
-/node_modules
-
-# Public directories
-/public/build
-/public/hot
-/public/storage
-
-# Storage files
-/storage/*.key
-/storage/pail
-
-# Vendor directory
-/vendor
-
-# IDE and editor files
+.phpunit.result.cache
 /.fleet
 /.idea
 /.nova
+/.phpunit.cache
 /.vscode
 /.zed
-
-# Authentication files
 /auth.json
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+/vendor
+Homestead.json
+Homestead.yaml
+Thumbs.db
