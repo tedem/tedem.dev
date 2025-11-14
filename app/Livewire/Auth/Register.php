@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
@@ -41,6 +42,9 @@ final class Register extends Component
         event(new Registered(($user = User::create($validated))));
 
         Auth::login($user);
+
+        // Regenerate session
+        Session::regenerate();
 
         $this->redirect(route('home', absolute: false), navigate: true);
     }
