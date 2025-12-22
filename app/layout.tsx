@@ -3,6 +3,9 @@ import localFont from "next/font/local"
 
 import "./globals.css"
 
+import Footer from "@/components/layouts/footer"
+import Header from "@/components/layouts/header"
+
 const instrumentSans = localFont({
   variable: "--font-instrument-sans",
   src: [
@@ -48,10 +51,14 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      className={`${instrumentSans.variable} ${jetBrainsMono.variable}`}
+      className={`${instrumentSans.variable} ${jetBrainsMono.variable} scroll-smooth`}
       lang="en"
     >
-      <body className="antialiased">{children}</body>
+      <body className="min-h-svh bg-white font-sans text-neutral-900 antialiased dark:bg-neutral-900 dark:text-white">
+        <Header />
+        <main>{children}</main>
+        <Footer />
+      </body>
     </html>
   )
 }
