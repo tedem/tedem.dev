@@ -54,7 +54,7 @@ export default function RootLayout({
       className={`${instrumentSans.variable} ${jetBrainsMono.variable} scroll-smooth`}
       lang="en"
     >
-      <body className="min-h-svh bg-white font-sans text-neutral-900 antialiased dark:bg-neutral-900 dark:text-white">
+      <body className="min-h-svh bg-white font-sans text-neutral-950 antialiased dark:bg-neutral-950 dark:text-neutral-50">
         <Header />
         <main>{children}</main>
         <Footer />
