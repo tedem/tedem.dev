@@ -8,7 +8,8 @@
     "dev": "vp dev",
     "check": "vp check",
     "check:fix": "vp check --fix",
-    "types:check": "tsc --noEmit"
+    "types:check": "tsc --noEmit",
+    "prepare": "husky"
   },
   "dependencies": {
     "@inertiajs/react": "^3.0.0",
@@ -68,5 +69,14 @@
   },
   "overrides": {
     "vite": "npm:@voidzero-dev/vite-plus-core@1.4.0"
+  },
+  "lint-staged": {
+    "**/*": [
+      "vp check --fix"
+    ],
+    "**/*.php": [
+      "vendor/bin/rector process",
+      "vendor/bin/pint"
+    ]
   }
 }
