@@ -1,9 +1,12 @@
 root = true
 
+# 2 → frontend / generic config
+# 4 → Laravel / PHP ecosystem
+
 [*]
 charset = utf-8
 end_of_line = lf
-indent_size = 4
+indent_size = 2
 indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
@@ -11,8 +14,23 @@ trim_trailing_whitespace = true
 [*.md]
 trim_trailing_whitespace = false
 
-[*.{yml,yaml}]
-indent_size = 2
+[*.php]
+indent_size = 4
+
+[*.neon]
+indent_size = 4
+
+[artisan]
+indent_size = 4
+
+[composer.{json,lock}]
+indent_size = 4
+
+[phpunit.xml]
+indent_size = 4
+
+[pint.json]
+indent_size = 4
 
 [{compose,docker-compose}.{yml,yaml}]
 indent_size = 4
