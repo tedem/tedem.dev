@@ -1,9 +1,9 @@
 import { Link } from '@inertiajs/react';
 import { BookOpen, FolderGit2, LayoutGrid } from 'lucide-react';
-import AppLogo from '@/components/app-logo';
-import { NavFooter } from '@/components/nav-footer';
-import { NavMain } from '@/components/nav-main';
-import { NavUser } from '@/components/nav-user';
+import AppLogo from '@/components/admin/logo';
+import { NavFooter } from '@/components/admin/nav-footer';
+import { NavMain } from '@/components/admin/nav-main';
+import { NavUser } from '@/components/admin/nav-user';
 import {
   Sidebar,
   SidebarContent,
@@ -37,7 +37,7 @@ const footerNavItems: NavItem[] = [
   },
 ];
 
-export function AppSidebar() {
+export function AdminSidebar() {
   return (
     <Sidebar collapsible="icon" variant="inset">
       <SidebarHeader>
