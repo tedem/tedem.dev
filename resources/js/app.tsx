@@ -5,6 +5,7 @@ import { initializeTheme } from '@/hooks/use-appearance';
 import AdminLayout from '@/layouts/admin-layout';
 import AuthLayout from '@/layouts/auth-layout';
 import SettingsLayout from '@/layouts/settings/layout';
+import MainLayout from '@/layouts/main-layout';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -18,8 +19,10 @@ void createInertiaApp({
         return AuthLayout;
       case name.startsWith('settings/'):
         return [AdminLayout, SettingsLayout];
-      default:
+      case name === 'dashboard':
         return AdminLayout;
+      default:
+        return MainLayout;
     }
   },
   strictMode: true,
