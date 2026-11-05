@@ -1,11 +1,18 @@
 # tedem.dev
 
-[![PHP](https://img.shields.io/badge/PHP-8.5-777bb4)](https://www.php.net/)
-[![Laravel](https://img.shields.io/badge/Laravel-13.x-ff2d20)](https://github.com/laravel/framework)
-[![Inertia](https://img.shields.io/badge/Inertia.js-3.x-155dfc)](https://inertiajs.com/)
-[![React](https://img.shields.io/badge/React_Starter_Kit-360a762-61dafb)](https://github.com/laravel/react-starter-kit)
-[![Tailwind](https://img.shields.io/badge/Tailwind-4.x-38bdf8)](https://tailwindcss.com/)
+The personal website of [tedem](https://tedem.dev/), built with [Laravel](https://laravel.com/).
 
-tedem's homepage!
+[![PHP](https://img.shields.io/badge/PHP-8.5+-777bb4?logo=php)](https://www.php.net/)
+[![Laravel](https://img.shields.io/badge/Laravel-13.x-ff2d20?logo=laravel)](https://laravel.com/)
+[![Inertia.js](https://img.shields.io/badge/Inertia.js-3.x-155dfc?logo=inertia)](https://inertiajs.com/)
+[![React Starter Kit](https://img.shields.io/badge/React_Starter_Kit-360a762-61dafb?logo=react)](https://github.com/laravel/react-starter-kit)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.x-38bdf8?logo=tailwindcss)](https://tailwindcss.com/)
+[![shadcn/ui](https://img.shields.io/badge/shadcn/ui-4.x-000000?logo=shadcnui)](https://ui.shadcn.com/)
 
-[tedem.dev](https://tedem.dev/) gets its power from [Laravel](https://laravel.com/).
+## UI components
+
+This project uses [shadcn/ui](https://ui.shadcn.com/). To initialize the Laravel preset, run:
+
+```bash
+npx shadcn@latest init --preset b1VlItuK --base radix --template laravel
+```
