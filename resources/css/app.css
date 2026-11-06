@@ -2,7 +2,7 @@
 
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
-@import '@fontsource-variable/inter';
+@import '@fontsource-variable/google-sans-flex';
 @import '@fontsource-variable/jetbrains-mono';
 
 @source '../views';
@@ -97,7 +97,7 @@
 
 @theme inline {
   --font-heading: var(--font-sans);
-  --font-sans: 'Inter Variable', sans-serif;
+  --font-sans: 'Google Sans Flex Variable', sans-serif;
   --font-mono: 'JetBrains Mono Variable', monospace;
   --default-font-feature-settings: 'calt' 1, 'kern' 1, 'liga' 1, 'ss01' 1;
   --color-sidebar-ring: var(--sidebar-ring);
