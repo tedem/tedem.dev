@@ -45,7 +45,6 @@ export default function Hero() {
               </Button>
             </div>
 
-            {/*  */}
             <p className="text-muted-foreground mbs-7 font-mono text-[9px] tracking-widest uppercase">
               Designing for people, not pixels.
             </p>
