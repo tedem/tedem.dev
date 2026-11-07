@@ -16,9 +16,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
 
         <Header />
 
-        <main className="py-8" id="main-content">
-          {children}
-        </main>
+        <main id="main-content">{children}</main>
       </div>
     </>
   );
