@@ -14,5 +14,5 @@ The personal website of [tedem](https://tedem.dev/), built with [Laravel](https:
 This project uses [shadcn/ui](https://ui.shadcn.com/). To initialize the Laravel preset, run:
 
 ```bash
-npx shadcn@latest init --preset b1VlItuK --base radix --template laravel
+npx shadcn@latest init --preset bIkeynI --base radix --template laravel
 ```
