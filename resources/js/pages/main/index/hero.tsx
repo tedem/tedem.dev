@@ -2,7 +2,6 @@ import Container from '@/components/main/container';
 import { Button } from '@/components/ui/button';
 import { Link } from '@inertiajs/react';
 import { ArrowDown, ArrowRight } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
 
 export default function Hero() {
   return (
@@ -44,20 +43,6 @@ export default function Hero() {
               </Button>
             </div>
           </div>
-
-          <aside aria-label="A note about my approach">
-            <Card className="size-full">
-              <CardContent className="flex flex-1 justify-center">
-                <p className="text-[clamp(2.25rem,4.2vw,3.625rem)] leading-[0.98] font-medium tracking-[-0.075em]">
-                  Good things happen
-                  <br />
-                  when <em className="font-serif font-normal text-emerald-500 dark:text-emerald-300">care</em> meets
-                  <br />
-                  curiosity.
-                </p>
-              </CardContent>
-            </Card>
-          </aside>
         </div>
       </Container>
     </section>
