@@ -8,8 +8,8 @@ export default function About() {
     <section className="border-border border-t py-12 md:py-16" id="about" aria-labelledby="about-title">
       <Container className="grid gap-8 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-5">
-          <p className="text-primary mb-4 flex flex-wrap items-center gap-3 font-mono text-[10px]">
-            ~/about <span className="text-muted-foreground text-[10px] uppercase">The person behind the pixels</span>
+          <p className="text-primary mb-4 flex items-center gap-4 font-mono text-[10px]">
+            ~/about <span className="text-muted-foreground uppercase">The person behind the pixels</span>
           </p>
           <h2
             id="about-title"
