@@ -18,7 +18,7 @@ export default function Hero() {
 
             {/* Heading */}
             <h1 className="text-[clamp(5rem,10.6vw,9.375rem)] leading-none">
-              <span className="font-extralight">Hi, I'm</span>
+              <span className="font-extralight tracking-[-0.075em]">Hi, I'm</span>
               <br />
               <span className="text-muted-foreground font-extrabold">Medet.</span>
             </h1>
