@@ -10,9 +10,10 @@ export default function Hero() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             {/* Eyebrow */}
-            <p className="text-muted-foreground mbe-6 flex items-center gap-2 font-mono text-[13px]">
-              <span className="bg-primary size-1.5 rounded-full" aria-hidden="true" />
-              Thoughtful by design. Curious by default.
+            <p className="mbe-6 font-mono text-[13px]">
+              <span className="text-muted-foreground">/**</span>
+              <span className="mx-[1ch]">Thoughtful by design. Curious by default.</span>
+              <span className="text-muted-foreground">*/</span>
             </p>
 
             {/* Heading */}
