@@ -2,8 +2,7 @@ import Container from '@/components/main/container';
 import { Button } from '@/components/ui/button';
 import { Link } from '@inertiajs/react';
 import { ArrowDown, ArrowRight } from 'lucide-react';
-import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { Card, CardContent } from '@/components/ui/card';
 
 export default function Hero() {
   return (
@@ -12,8 +11,8 @@ export default function Hero() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             {/* Eyebrow */}
-            <p className="text-muted-foreground mbe-6 flex items-center gap-1 font-mono text-[13px]">
-              <span className="from-muted-foreground to-foreground h-px w-5 bg-linear-to-r" aria-hidden="true"></span>
+            <p className="text-muted-foreground mbe-6 flex items-center gap-2 font-mono text-[13px]">
+              <span className="bg-primary size-1.5 rounded-full" aria-hidden="true" />
               Thoughtful by design. Curious by default.
             </p>
 
@@ -44,24 +43,12 @@ export default function Hero() {
                 </Link>
               </Button>
             </div>
-
-            <p className="text-muted-foreground mbs-7 font-mono text-[9px] tracking-widest uppercase">
-              Designing for people, not pixels.
-            </p>
           </div>
 
           <aside aria-label="A note about my approach">
             <Card className="size-full">
-              <CardHeader className="flex flex-row items-center justify-between">
-                <CardDescription className="font-mono text-[9px] tracking-widest uppercase">
-                  Field notes
-                </CardDescription>
-                <CardAction>
-                  <Badge variant="outline">001</Badge>
-                </CardAction>
-              </CardHeader>
               <CardContent className="flex flex-1 justify-center">
-                <p className="text-2xl leading-tight font-medium xl:text-4xl">
+                <p className="text-[clamp(2.25rem,4.2vw,3.625rem)] leading-[0.98] font-medium tracking-[-0.075em]">
                   Good things happen
                   <br />
                   when <em className="font-serif font-normal text-emerald-500 dark:text-emerald-300">care</em> meets
@@ -69,11 +56,6 @@ export default function Hero() {
                   curiosity.
                 </p>
               </CardContent>
-              <CardFooter>
-                <CardDescription className="font-mono text-[9px] tracking-widest uppercase">
-                  Craftsmanship
-                </CardDescription>
-              </CardFooter>
             </Card>
           </aside>
         </div>
