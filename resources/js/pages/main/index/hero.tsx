@@ -5,9 +5,9 @@ import { ArrowDown, ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="py-12 lg:py-16" id="hero">
-      <Container>
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+    <section id="hero">
+      <Container border={true}>
+        <div className="grid grid-cols-1 gap-8 py-8 lg:grid-cols-2 lg:gap-16 lg:py-16">
           <div>
             {/* Eyebrow */}
             <p className="mbe-6 font-mono text-[13px]">
