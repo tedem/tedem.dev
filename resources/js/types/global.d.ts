@@ -12,6 +12,12 @@ declare module '@inertiajs/core' {
       name: string;
       auth: Auth;
       sidebarOpen: boolean;
+      locale: string;
+      time: {
+        timezone: string;
+        now: string;
+        utc_offset: string;
+      };
       [key: string]: unknown;
     };
   }

@@ -44,6 +44,12 @@ final class HandleInertiaRequests extends Middleware
                 'user' => $request->user(),
             ],
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
+            'locale' => config('app.locale'),
+            'time' => fn (): array => [
+                'timezone' => config('app.timezone'),
+                'now' => now()->toIso8601String(),
+                'utc_offset' => now()->format('P'),
+            ],
         ];
     }
 }
