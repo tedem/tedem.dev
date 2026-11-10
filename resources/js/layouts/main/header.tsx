@@ -44,7 +44,7 @@ export default function Header() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className="border-border bg-background/90 relative z-50 border-b backdrop-blur-xl">
+    <header className="border-border bg-background/90 sticky top-0 z-50 border-b backdrop-blur-xl">
       <Container>
         <div className="flex h-16 items-center justify-between gap-8">
           {/* Logo */}
