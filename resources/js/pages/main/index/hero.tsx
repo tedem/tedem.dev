@@ -1,5 +1,6 @@
 import Container from '@/components/main/container';
 import { Button } from '@/components/ui/button';
+import { TextAnimate } from '@/components/ui/text-animate';
 import { Link } from '@inertiajs/react';
 import { ArrowDown, ArrowRight } from 'lucide-react';
 
@@ -20,7 +21,14 @@ export default function Hero() {
             <h1 className="text-[clamp(5rem,10.6vw,9.375rem)] leading-none">
               <span className="font-extralight tracking-[-0.075em]">Hi, I'm</span>
               <br />
-              <span className="text-muted-foreground font-extrabold">Medet.</span>
+              <TextAnimate
+                className="text-muted-foreground font-extrabold"
+                animation="slideLeft"
+                by="character"
+                as="span"
+              >
+                Medet.
+              </TextAnimate>
             </h1>
 
             {/* Description */}

@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { usePage } from '@inertiajs/react';
-import { useScramble } from 'use-scramble';
-
 import Container from '@/components/main/container';
+import { TextAnimate } from '@/components/ui/text-animate';
 
 const details = [
   {
@@ -26,27 +25,6 @@ const details = [
     description: 'Istanbul',
   },
 ];
-
-function ScrambleValue({ value }: { value: string }) {
-  const { ref } = useScramble({
-    text: value,
-    speed: 1,
-    tick: 2,
-    step: 1,
-    scramble: 1,
-    ignore: [' '],
-    seed: 0,
-  });
-
-  return (
-    <dd className="text-[clamp(1.375rem,3vw,2.125rem)] leading-none font-medium tracking-[-0.075em]">
-      <span className="sr-only">{value}</span>
-      <span ref={ref} aria-hidden="true">
-        {value}
-      </span>
-    </dd>
-  );
-}
 
 export default function Glance() {
   const { locale, time } = usePage().props;
@@ -98,7 +76,11 @@ export default function Glance() {
                   {label}
                 </dt>
 
-                <ScrambleValue value={label === 'Presence' ? `UTC${time.utc_offset}` : value!} />
+                <dd className="text-[clamp(1.375rem,3vw,2.125rem)] leading-none font-medium tracking-[-0.075em]">
+                  <TextAnimate animation="fadeIn" by="word" as="span">
+                    {label === 'Presence' ? `UTC${time.utc_offset}` : value!}
+                  </TextAnimate>
+                </dd>
 
                 <dd className="text-muted-foreground">
                   {description}
