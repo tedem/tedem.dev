@@ -5,24 +5,24 @@ import { TextAnimate } from '@/components/ui/text-animate';
 
 const details = [
   {
-    label: 'Track record',
+    label: 'Experience',
     value: '14+ Years',
-    description: 'Full-stack developer',
+    description: 'Building digital products',
   },
   {
-    label: 'Expertise',
+    label: 'Specialization',
     value: 'Full-stack',
-    description: 'Frontend to backend',
+    description: 'Frontend & backend engineering',
   },
   {
-    label: 'Approach',
+    label: 'Workflow',
     value: 'End-to-end',
-    description: 'From concept to deployment',
+    description: 'From idea to production',
   },
   {
-    label: 'Presence',
-    value: null,
-    description: 'Istanbul',
+    label: 'Location',
+    value: 'Istanbul',
+    description: null,
   },
 ];
 
@@ -77,15 +77,15 @@ export default function Glance() {
                 </dt>
 
                 <dd className="text-[clamp(1.375rem,3vw,2.125rem)] leading-none font-medium tracking-[-0.075em]">
-                  <TextAnimate animation="fadeIn" by="word" as="span">
-                    {label === 'Presence' ? `UTC${time.utc_offset}` : value!}
+                  <TextAnimate animation="fadeIn" by="line" as="span">
+                    {value}
                   </TextAnimate>
                 </dd>
 
-                <dd className="text-muted-foreground">
-                  {description}
+                <dd className="text-muted-foreground text-pretty lg:text-[clamp(0.8125rem,1vw,1rem)]">
+                  {label === 'Location' ? `UTC${time.utc_offset}` : description!}
 
-                  {label === 'Presence' && currentTime && (
+                  {label === 'Location' && currentTime && (
                     <>
                       {' · '}
                       <time dateTime={currentTime.toISOString()} className="font-mono tabular-nums">
