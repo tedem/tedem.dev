@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { usePage } from '@inertiajs/react';
 import Container from '@/components/main/container';
 import { TextAnimate } from '@/components/ui/text-animate';
+import { Badge } from '@/components/ui/badge';
 
 const details = [
   {
@@ -82,16 +83,15 @@ export default function Glance() {
                   </TextAnimate>
                 </dd>
 
-                <dd className="text-muted-foreground text-pretty lg:text-[clamp(0.8125rem,1vw,1rem)]">
+                <dd className="text-muted-foreground flex flex-wrap items-center gap-2 text-pretty lg:text-[clamp(0.8125rem,1vw,1rem)]">
                   {label === 'Location' ? `UTC${time.utc_offset}` : description!}
 
                   {label === 'Location' && currentTime && (
-                    <>
-                      {' · '}
+                    <Badge variant="outline" className="shrink-0">
                       <time dateTime={currentTime.toISOString()} className="font-mono tabular-nums">
                         {formatter.format(currentTime)}
                       </time>
-                    </>
+                    </Badge>
                   )}
                 </dd>
               </div>
