@@ -81,7 +81,7 @@ export default function Header() {
 
             <Button asChild className="hidden lg:flex">
               <Link href="mailto:hello@tedem.dev">
-                Let's talk
+                Get in touch
                 <ArrowRight />
               </Link>
             </Button>
@@ -124,7 +124,7 @@ export default function Header() {
 
             <Button asChild>
               <Link href="mailto:hello@tedem.dev" onClick={closeMenu}>
-                Let's talk
+                Get in touch
               </Link>
             </Button>
           </div>
