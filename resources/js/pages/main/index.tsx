@@ -3,6 +3,7 @@ import Hero from '@/pages/main/index/hero';
 import About from '@/pages/main/index/about';
 import Glance from '@/pages/main/index/glance';
 import Posts from '@/pages/main/index/posts';
+import Approach from '@/pages/main/index/approach';
 
 export default function Index() {
   return (
@@ -13,6 +14,7 @@ export default function Index() {
       <Glance />
       <About />
       <Posts />
+      <Approach />
     </>
   );
 }
