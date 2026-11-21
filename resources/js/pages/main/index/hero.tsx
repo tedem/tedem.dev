@@ -33,7 +33,7 @@ export default function Hero() {
 
             {/* Description */}
             <p className="text-muted-foreground mbs-8 mbe-7 max-w-lg text-base leading-relaxed tracking-tight text-balance md:text-lg">
-              I turn curious ideas into considered digital experiences — from the first sketch to the final interaction.
+              I turn thoughtful ideas into meaningful digital experiences, crafted with care from concept to completion.
             </p>
 
             {/* CTA buttons */}
