@@ -1,6 +1,4 @@
-// Commit message rules. CONTRIBUTING.md explains each type and scope.
-
-const SCOPES = ['site', 'admin', 'auth', 'content', 'seo', 'security', 'ui', 'deps', 'tooling', 'config'];
+// Commit message rules. CONTRIBUTING.md explains each one.
 
 // Articles add length, not meaning: "fix: show toasts", not "fix: show the toasts".
 // Text in backticks is code and is not checked.
@@ -21,7 +19,8 @@ export default {
   ],
   rules: {
     'type-enum': [2, 'always', ['feat', 'fix', 'refactor', 'perf', 'docs', 'test', 'style', 'build', 'ci', 'chore']],
-    'scope-enum': [2, 'always', SCOPES],
+    // No scopes: the type and subject say enough for a project this size.
+    'scope-empty': [2, 'always'],
     'header-max-length': [2, 'always', 50],
     'subject-no-articles': [2, 'always'],
   },
