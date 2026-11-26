@@ -1,0 +1,5 @@
+# Checks that are too slow for every commit but must pass before code leaves this machine:
+# static analysis (PHP and TypeScript) and the test suite. Skip once with `git push --no-verify`.
+composer types:check
+npm run types:check
+php artisan test --compact
