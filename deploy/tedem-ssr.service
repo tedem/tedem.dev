@@ -1,0 +1,19 @@
+# Inertia server-side rendering for tedem.dev: /etc/systemd/system/tedem-ssr.service.
+# Without it, pages are sent with an empty <body> until JavaScript runs (bad for search
+# engines and link previews). deploy:update stops it after each build; systemd starts it
+# again with the new bundle.
+
+[Unit]
+Description=tedem.dev Inertia SSR server
+After=network.target
+
+[Service]
+User=deploy
+Group=www-data
+WorkingDirectory=/var/www/tedem.dev
+ExecStart=/usr/bin/php artisan inertia:start-ssr
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
