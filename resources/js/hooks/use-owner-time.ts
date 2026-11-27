@@ -1,16 +1,6 @@
 import { usePage } from '@inertiajs/react';
 import { useEffect, useMemo, useState } from 'react';
 
-// Shared by Laravel through HandleInertiaRequests::share().
-// `timezone` is an IANA name (APP_TIMEZONE), `offset` is minutes east of UTC.
-export type SharedTimeProps = {
-  locale: string;
-  time: {
-    timezone: string;
-    offset: number;
-  };
-};
-
 /** 180 -> "UTC+3", -210 -> "UTC-3:30". */
 export function formatUtcOffset(minutes: number) {
   const abs = Math.abs(minutes);
@@ -56,7 +46,8 @@ function useNow() {
  * Every time-based value is null until the component has mounted in the browser.
  */
 export function useOwnerTime() {
-  const { locale, time } = usePage<SharedTimeProps>().props;
+  // `locale` and `time` are shared by HandleInertiaRequests::share(); typed in types/global.d.ts.
+  const { locale, time } = usePage().props;
   const now = useNow();
 
   const formatters = useMemo(() => {

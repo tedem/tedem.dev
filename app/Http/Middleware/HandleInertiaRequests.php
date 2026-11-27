@@ -49,11 +49,11 @@ final class HandleInertiaRequests extends Middleware
             ],
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
             'locale' => config('app.locale'),
+            // The site owner's clock (see use-owner-time.ts): IANA timezone and its current
+            // offset from UTC in minutes. The client keeps time itself from there.
             'time' => fn (): array => [
                 'timezone' => config('app.timezone'),
-                'now' => now()->toIso8601String(),
                 'offset' => now()->utcOffset(),
-                'utc_offset' => now()->format('P'),
             ],
         ];
     }

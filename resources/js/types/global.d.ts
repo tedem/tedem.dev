@@ -14,10 +14,12 @@ declare module '@inertiajs/core' {
       auth: Auth;
       sidebarOpen: boolean;
       locale: string;
+      /** The site owner's clock, from HandleInertiaRequests::share(). */
       time: {
+        /** IANA timezone name, e.g. "Europe/Istanbul" (APP_TIMEZONE). */
         timezone: string;
-        now: string;
-        utc_offset: string;
+        /** Current offset from UTC in minutes, east positive: 180 for UTC+3. */
+        offset: number;
       };
       [key: string]: unknown;
     };
