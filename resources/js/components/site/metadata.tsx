@@ -1,5 +1,5 @@
 import { SOCIALS } from '@/content/profile';
-import { buildSchema, serializeSchema, type PageType } from '@/content/schema';
+import { buildSchema, serializeSchema, type ArticleDates, type PageType } from '@/content/schema';
 import { Head, usePage } from '@inertiajs/react';
 
 type MetadataProps = {
@@ -11,6 +11,8 @@ type MetadataProps = {
   type?: 'website' | 'profile' | 'article';
   /** schema.org type of the page in the JSON-LD graph (see content/schema.ts). */
   pageType?: PageType;
+  /** Publication dates of a post: adds article:* tags and fills the BlogPosting node. */
+  article?: ArticleDates;
 };
 
 /** "@tedemedet", taken from the X entry in content/profile.ts, if there is one. */
@@ -22,14 +24,30 @@ const X_HANDLE = SOCIALS.find((social) => social.label === 'X')?.handle;
  * Every tag has a `head-key`, so a page's tags replace the previous page's on client
  * navigation instead of piling up. Rendered on the server too when SSR is running.
  */
-export default function Metadata({ title, description, type = 'website', pageType = 'WebPage' }: MetadataProps) {
+export default function Metadata({
+  title,
+  description,
+  type = 'website',
+  pageType = 'WebPage',
+  article,
+}: MetadataProps) {
   const { url, props } = usePage();
   const { name, appUrl, locale } = props;
 
   // The `url` prop is the path (with any query string); canonical drops the query.
   const canonical = new URL(url.split(/[?#]/)[0], appUrl).toString();
   const fullTitle = title ? `${title} - ${name}` : name;
-  const schema = buildSchema({ appUrl, siteName: name, locale, canonical, title: fullTitle, description, pageType });
+  const schema = buildSchema({
+    appUrl,
+    siteName: name,
+    locale,
+    canonical,
+    // A post's headline is its own title, without the site name.
+    title: pageType === 'BlogPosting' && title ? title : fullTitle,
+    description,
+    pageType,
+    article,
+  });
 
   return (
     <Head title={title}>
@@ -41,6 +59,16 @@ export default function Metadata({ title, description, type = 'website', pageTyp
       <meta head-key="og:title" property="og:title" content={fullTitle} />
       <meta head-key="og:description" property="og:description" content={description} />
       <meta head-key="og:url" property="og:url" content={canonical} />
+      {article && (
+        <meta head-key="article:published_time" property="article:published_time" content={article.publishedAt} />
+      )}
+      {article && (
+        <meta
+          head-key="article:modified_time"
+          property="article:modified_time"
+          content={article.updatedAt ?? article.publishedAt}
+        />
+      )}
 
       {/* "summary" until there is a 1200x630 share image for "summary_large_image". */}
       <meta head-key="twitter:card" name="twitter:card" content="summary" />

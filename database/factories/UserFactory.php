@@ -39,6 +39,16 @@ final class UserFactory extends Factory
     }
 
     /**
+     * Indicate that the user may manage posts.
+     */
+    public function admin(): static
+    {
+        return $this->state(fn (array $attributes): array => [
+            'is_admin' => true,
+        ]);
+    }
+
+    /**
      * Indicate that the model's email address should be unverified.
      */
     public function unverified(): static

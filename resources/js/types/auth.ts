@@ -4,6 +4,8 @@ export type User = {
   email: string;
   avatar?: string;
   email_verified_at: string | null;
+  /** May manage posts (see the `manage-posts` gate). */
+  is_admin: boolean;
   two_factor_enabled?: boolean;
   created_at: string;
   updated_at: string;

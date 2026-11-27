@@ -11,4 +11,6 @@ export type NavItem = {
   href: NonNullable<InertiaLinkProps['href']>;
   icon?: LucideIcon | null;
   isActive?: boolean;
+  /** Also active on pages below `href` (e.g. /admin/posts/1/edit for /admin/posts). */
+  matchPrefix?: boolean;
 };

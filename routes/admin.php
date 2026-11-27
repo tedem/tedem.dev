@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\PostPreviewController;
 use App\Http\Controllers\Admin\Settings\ProfileController;
 use App\Http\Controllers\Admin\Settings\SecurityController;
 use Illuminate\Auth\Middleware\RequirePassword;
@@ -35,5 +37,10 @@ Route::prefix('admin')->name('admin.')->group(function (): void {
             ->name('user-password.update');
 
         Route::inertia('settings/appearance', 'admin/settings/appearance')->name('appearance.edit');
+
+        Route::middleware('can:manage-posts')->group(function (): void {
+            Route::post('posts/preview', PostPreviewController::class)->name('posts.preview');
+            Route::resource('posts', PostController::class)->except('show');
+        });
     });
 });

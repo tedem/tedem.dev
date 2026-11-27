@@ -145,3 +145,131 @@
     }
   }
 }
+
+/*
+ * A post's rendered Markdown (pages/site/post.tsx and the admin preview). The HTML comes
+ * from App\Markdown\MarkdownRenderer, so it is styled by element here.
+ */
+@layer components {
+  .post-body {
+    @apply text-base leading-8;
+  }
+
+  .post-body > * + * {
+    @apply mt-6;
+  }
+
+  .post-body h2 {
+    @apply mt-14 text-2xl leading-tight font-medium tracking-tight;
+  }
+
+  .post-body h3 {
+    @apply mt-10 text-xl leading-snug font-medium tracking-tight;
+  }
+
+  .post-body h4 {
+    @apply mt-8 text-lg font-medium;
+  }
+
+  /* The "#" link after each heading; the sticky site header must not cover the target. */
+  .post-body .heading-permalink {
+    @apply text-muted-foreground hover:text-foreground ml-2 scroll-mt-24 no-underline opacity-0 transition-opacity;
+  }
+
+  .post-body :is(h2, h3, h4):hover .heading-permalink,
+  .post-body .heading-permalink:focus-visible {
+    @apply opacity-100;
+  }
+
+  .post-body a {
+    @apply text-foreground decoration-muted-foreground hover:decoration-foreground underline underline-offset-4 transition-colors;
+  }
+
+  .post-body strong {
+    @apply font-semibold;
+  }
+
+  .post-body ul {
+    @apply list-disc pl-6;
+  }
+
+  .post-body ol {
+    @apply list-decimal pl-6;
+  }
+
+  .post-body li + li {
+    @apply mt-2;
+  }
+
+  .post-body li::marker {
+    @apply text-muted-foreground;
+  }
+
+  /* Task lists: GFM renders "- [x]" as a disabled checkbox. */
+  .post-body li:has(> input[type='checkbox']) {
+    @apply list-none;
+  }
+
+  .post-body li > input[type='checkbox'] {
+    @apply mr-2 -ml-6 align-middle;
+  }
+
+  .post-body blockquote {
+    @apply border-border text-muted-foreground border-l-2 pl-6;
+  }
+
+  .post-body :not(pre) > code {
+    @apply bg-muted rounded-sm px-1.5 py-0.5 font-mono text-[0.875em];
+  }
+
+  .post-body pre {
+    @apply border-border overflow-x-auto border p-4 font-mono text-sm leading-6;
+  }
+
+  .post-body hr {
+    @apply border-border my-12;
+  }
+
+  .post-body img {
+    @apply border-border max-w-full border;
+  }
+
+  .post-body table {
+    @apply block w-full overflow-x-auto text-sm;
+  }
+
+  .post-body th,
+  .post-body td {
+    @apply border-border border-b py-2 pr-6 text-left align-top;
+  }
+
+  .post-body th {
+    @apply font-medium;
+  }
+
+  .post-body details {
+    @apply border-border border p-4;
+  }
+
+  .post-body summary {
+    @apply cursor-pointer font-medium;
+  }
+
+  .post-body .footnotes {
+    @apply text-muted-foreground mt-12 text-sm;
+  }
+
+  .post-body .footnotes hr {
+    @apply mb-6;
+  }
+}
+
+/* Code highlighting: Phiki writes the light theme inline and the dark one as variables. */
+.dark .post-body .phiki {
+  background-color: var(--phiki-dark-background-color) !important;
+  color: var(--phiki-dark-color) !important;
+}
+
+.dark .post-body .phiki span {
+  color: var(--phiki-dark-color) !important;
+}

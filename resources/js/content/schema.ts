@@ -6,7 +6,13 @@ import { EMAIL, LOCATION, NAME, ROLE, SOCIALS, STACK } from '@/content/profile';
  * so search engines read them as one connected entity.
  */
 
-export type PageType = 'WebPage' | 'ProfilePage' | 'CollectionPage' | 'ContactPage';
+export type PageType = 'WebPage' | 'ProfilePage' | 'CollectionPage' | 'ContactPage' | 'BlogPosting';
+
+/** Dates of a post, as "YYYY-MM-DD". */
+export type ArticleDates = {
+  publishedAt: string;
+  updatedAt: string | null;
+};
 
 type SchemaInput = {
   /** Site root from Laravel's APP_URL, e.g. "https://tedem.dev". */
@@ -18,9 +24,20 @@ type SchemaInput = {
   title: string;
   description: string;
   pageType: PageType;
+  /** Required for a BlogPosting. */
+  article?: ArticleDates;
 };
 
-export function buildSchema({ appUrl, siteName, locale, canonical, title, description, pageType }: SchemaInput) {
+export function buildSchema({
+  appUrl,
+  siteName,
+  locale,
+  canonical,
+  title,
+  description,
+  pageType,
+  article,
+}: SchemaInput) {
   const root = new URL('/', appUrl).toString();
   const personId = `${root}#person`;
   const websiteId = `${root}#website`;
@@ -58,6 +75,16 @@ export function buildSchema({ appUrl, siteName, locale, canonical, title, descri
     isPartOf: { '@id': websiteId },
     // A profile page is about the person; every other page is still authored by them.
     ...(pageType === 'ProfilePage' ? { mainEntity: { '@id': personId } } : { about: { '@id': personId } }),
+    // A post is an article in its own right: headline, dates and author.
+    ...(pageType === 'BlogPosting' && article
+      ? {
+          headline: title,
+          author: { '@id': personId },
+          datePublished: article.publishedAt,
+          dateModified: article.updatedAt ?? article.publishedAt,
+          mainEntityOfPage: canonical,
+        }
+      : {}),
   };
 
   return { '@context': 'https://schema.org', '@graph': [website, person, page] };
