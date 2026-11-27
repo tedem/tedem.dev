@@ -1,6 +1,6 @@
 import { SOCIALS } from '@/content/profile';
 import { buildSchema, serializeSchema, type ArticleDates, type PageType } from '@/content/schema';
-import { useMessages } from '@/i18n';
+import { DEFAULT_LOCALE, type Locale, LOCALES, useMessages } from '@/i18n';
 import { Head, usePage } from '@inertiajs/react';
 
 type MetadataProps = {
@@ -21,7 +21,8 @@ const X_HANDLE = SOCIALS.find((social) => social.label === 'X')?.handle;
 
 /**
  * A public page's metadata, rendered into <head> through Inertia's <Head>: title,
- * description, canonical URL, Open Graph, Twitter card and JSON-LD structured data.
+ * description, canonical URL, language alternates (hreflang), Open Graph, Twitter card
+ * and JSON-LD structured data.
  * Every tag has a `head-key`, so a page's tags replace the previous page's on client
  * navigation instead of piling up. Rendered on the server too when SSR is running.
  */
@@ -33,8 +34,14 @@ export default function Metadata({
   article,
 }: MetadataProps) {
   const { url, props } = usePage();
-  const { name, appUrl, locale } = props;
+  const { name, appUrl, locale, alternates } = props;
   const t = useMessages();
+
+  // The fixed pages exist in every language, so they list their translations. A post is
+  // written in one language: its `alternates` are the post lists (for the language
+  // switch), which are not translations of it, so it gets no hreflang set.
+  const translations = pageType === 'BlogPosting' ? null : alternates;
+  const otherLocales = (Object.keys(LOCALES) as Locale[]).filter((other) => other !== locale);
 
   // The `url` prop is the path (with any query string); canonical drops the query.
   const canonical = new URL(url.split(/[?#]/)[0], appUrl).toString();
@@ -57,12 +64,35 @@ export default function Metadata({
     <Head title={title}>
       <meta head-key="description" name="description" content={description} />
       <link head-key="canonical" rel="canonical" href={canonical} />
+      {translations &&
+        (Object.keys(translations) as Locale[]).map((language) => (
+          <link
+            key={language}
+            head-key={`hreflang-${language}`}
+            rel="alternate"
+            hrefLang={language}
+            href={translations[language]}
+          />
+        ))}
+      {translations && (
+        <link head-key="hreflang-x-default" rel="alternate" hrefLang="x-default" href={translations[DEFAULT_LOCALE]} />
+      )}
 
       <meta head-key="og:type" property="og:type" content={type} />
       <meta head-key="og:site_name" property="og:site_name" content={name} />
       <meta head-key="og:title" property="og:title" content={fullTitle} />
       <meta head-key="og:description" property="og:description" content={description} />
       <meta head-key="og:url" property="og:url" content={canonical} />
+      <meta head-key="og:locale" property="og:locale" content={LOCALES[locale].og} />
+      {translations &&
+        otherLocales.map((other) => (
+          <meta
+            key={other}
+            head-key={`og:locale:alternate-${other}`}
+            property="og:locale:alternate"
+            content={LOCALES[other].og}
+          />
+        ))}
       {article && (
         <meta head-key="article:published_time" property="article:published_time" content={article.publishedAt} />
       )}

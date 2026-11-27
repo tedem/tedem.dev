@@ -14,7 +14,7 @@ use App\Enums\Locale;
 final class IndexablePages
 {
     /**
-     * Fixed pages in every language ("about", "en.about", ...); the sitemap lists each once.
+     * Fixed pages in every language: "about", "en.about", ...
      *
      * @return list<string>
      */

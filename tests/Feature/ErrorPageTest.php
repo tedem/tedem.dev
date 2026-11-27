@@ -46,3 +46,24 @@ test('json requests keep a json error body', function (): void {
         ->assertNotFound()
         ->assertJsonStructure(['message']);
 });
+
+test('an unknown url gets the error page in the language of its path', function (string $url, string $locale): void {
+    $this->get($url)
+        ->assertNotFound()
+        ->assertSee("<html lang=\"{$locale}\"", false)
+        ->assertInertia(fn (Assert $page): Assert => $page->component('site/error')->where('locale', $locale));
+})->with([
+    'Turkish' => ['/olmayan-sayfa', 'tr'],
+    'English' => ['/en/missing-page', 'en'],
+    'admin area' => ['/admin/missing-page', 'en'],
+]);
+
+test('a missing post keeps the language of its route', function (): void {
+    $this->get('/en/posts/any/zzzzzz')
+        ->assertNotFound()
+        ->assertInertia(fn (Assert $page): Assert => $page->where('locale', 'en'));
+
+    $this->get('/posts/any/zzzzzz')
+        ->assertNotFound()
+        ->assertInertia(fn (Assert $page): Assert => $page->where('locale', 'tr'));
+});

@@ -52,6 +52,21 @@ enum Locale: string
     }
 
     /**
+     * The language a URL path belongs to, for requests no route matched (an unknown
+     * URL's error page): "en" and "en/..." are English, the admin area is English too
+     * (it is not localized), everything else is the default language.
+     */
+    public static function fromPath(string $path): self
+    {
+        $first = explode('/', mb_trim($path, '/'))[0];
+
+        return match ($first) {
+            self::English->value, 'admin' => self::English,
+            default => self::default(),
+        };
+    }
+
+    /**
      * URL prefix: none for the default language.
      */
     public function prefix(): string

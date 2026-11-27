@@ -17,9 +17,13 @@ export type Locale = 'tr' | 'en';
 
 export type { Messages };
 
-export const LOCALES: Record<Locale, { label: string; intl: string }> = {
-  tr: { label: 'Türkçe', intl: 'tr-TR' },
-  en: { label: 'English', intl: 'en-GB' },
+/** The default language: no URL prefix, and the x-default of every hreflang set. */
+export const DEFAULT_LOCALE: Locale = 'tr';
+
+/** `label` in the language itself; `intl` is the BCP 47 tag for Intl and schema.org; `og` is Open Graph's form. */
+export const LOCALES: Record<Locale, { label: string; intl: string; og: string }> = {
+  tr: { label: 'Türkçe', intl: 'tr-TR', og: 'tr_TR' },
+  en: { label: 'English', intl: 'en-GB', og: 'en_GB' },
 };
 
 const MESSAGES: Record<Locale, Messages> = { tr, en };

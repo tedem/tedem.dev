@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Exceptions;
 
+use App\Enums\Locale;
 use App\Http\Middleware\HandleInertiaRequests;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -29,8 +30,13 @@ final class RenderErrorPage
             return $response;
         }
 
-        // Unknown URLs fail before any route middleware runs, so the shared props
+        // Unknown URLs fail before any route middleware runs: SetLocale never set the
+        // language, so it comes from the path (/en/... is English), and the shared props
         // (site name, app URL, time) that the layout and page need are added here.
+        if ($request->route() === null) {
+            app()->setLocale(Locale::fromPath($request->path())->value);
+        }
+
         Inertia::share(resolve(HandleInertiaRequests::class)->share($request));
 
         return Inertia::render('site/error', ['status' => $status])
