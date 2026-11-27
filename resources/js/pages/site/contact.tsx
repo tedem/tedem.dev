@@ -16,7 +16,7 @@ import {
 import { useCopyToClipboard, type CopyStatus } from '@/hooks/use-copy-to-clipboard';
 import { describeDifference, useOwnerTime } from '@/hooks/use-owner-time';
 import { cn } from '@/lib/utils';
-import Seo from '@/components/site/seo';
+import Metadata from '@/components/site/metadata';
 import { ArrowUpRight, Check, Copy, Mail } from 'lucide-react';
 import type { ReactNode } from 'react';
 
@@ -246,7 +246,7 @@ function Elsewhere() {
 export default function ContactPage() {
   return (
     <>
-      <Seo title="Contact" description={CONTACT_DESCRIPTION} pageType="ContactPage" />
+      <Metadata title="Contact" description={CONTACT_DESCRIPTION} pageType="ContactPage" />
 
       <Intro />
 

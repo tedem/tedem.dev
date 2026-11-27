@@ -2,7 +2,7 @@ import { SOCIALS } from '@/content/profile';
 import { buildSchema, serializeSchema, type PageType } from '@/content/schema';
 import { Head, usePage } from '@inertiajs/react';
 
-type SeoProps = {
+type MetadataProps = {
   /** Page title without the site name; the title callback in app.tsx appends it. Omit on the home page. */
   title?: string;
   /** One or two sentences for search results and link previews. */
@@ -17,11 +17,12 @@ type SeoProps = {
 const X_HANDLE = SOCIALS.find((social) => social.label === 'X')?.handle;
 
 /**
- * Title, description, canonical URL, Open Graph, Twitter card and JSON-LD tags for a public page.
+ * A public page's metadata, rendered into <head> through Inertia's <Head>: title,
+ * description, canonical URL, Open Graph, Twitter card and JSON-LD structured data.
  * Every tag has a `head-key`, so a page's tags replace the previous page's on client
  * navigation instead of piling up. Rendered on the server too when SSR is running.
  */
-export default function Seo({ title, description, type = 'website', pageType = 'WebPage' }: SeoProps) {
+export default function Metadata({ title, description, type = 'website', pageType = 'WebPage' }: MetadataProps) {
   const { url, props } = usePage();
   const { name, appUrl, locale } = props;
 

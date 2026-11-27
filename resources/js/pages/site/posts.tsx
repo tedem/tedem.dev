@@ -2,7 +2,7 @@ import Container from '@/components/site/container';
 import { Button } from '@/components/ui/button';
 import { EMPTY_DETAIL, EMPTY_TITLE, POSTS_DESCRIPTION, POSTS_TITLE } from '@/content/posts';
 import { about, home } from '@/routes';
-import Seo from '@/components/site/seo';
+import Metadata from '@/components/site/metadata';
 import { Link } from '@inertiajs/react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
@@ -96,7 +96,7 @@ function EmptyList() {
 export default function PostsPage() {
   return (
     <>
-      <Seo title="Posts" description={POSTS_DESCRIPTION} pageType="CollectionPage" />
+      <Metadata title="Posts" description={POSTS_DESCRIPTION} pageType="CollectionPage" />
 
       <Intro />
 

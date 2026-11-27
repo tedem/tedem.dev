@@ -18,7 +18,7 @@ import {
   yearsSince,
 } from '@/content/profile';
 import { describeDifference, useOwnerTime } from '@/hooks/use-owner-time';
-import Seo from '@/components/site/seo';
+import Metadata from '@/components/site/metadata';
 import { ArrowUpRight, Mail } from 'lucide-react';
 import type { ReactNode } from 'react';
 
@@ -287,7 +287,7 @@ function Elsewhere() {
 export default function AboutPage() {
   return (
     <>
-      <Seo title="About" description={ABOUT_DESCRIPTION} type="profile" pageType="ProfilePage" />
+      <Metadata title="About" description={ABOUT_DESCRIPTION} type="profile" pageType="ProfilePage" />
 
       <Intro />
 

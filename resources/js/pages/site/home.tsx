@@ -1,4 +1,4 @@
-import Seo from '@/components/site/seo';
+import Metadata from '@/components/site/metadata';
 import { LEAD } from '@/content/profile';
 import Hero from '@/components/site/home/hero';
 import About from '@/components/site/home/about';
@@ -9,7 +9,7 @@ import Contact from '@/components/site/home/contact';
 export default function HomePage() {
   return (
     <>
-      <Seo description={LEAD} />
+      <Metadata description={LEAD} />
 
       <Hero />
       <About />
