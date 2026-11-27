@@ -24,9 +24,9 @@ function LatestPosts({ latest }: { latest: readonly PostSummary[] }) {
     <>
       <ol role="list" className="mt-8 grid gap-2 md:mt-16 md:grid-cols-3">
         {latest.map((post) => (
-          <li key={post.slug}>
+          <li key={post.publicId}>
             <Link
-              href={show(post.slug).url}
+              href={show({ slug: post.slug, publicId: post.publicId }).url}
               className="group border-border bg-muted/30 hover:border-primary focus-visible:ring-ring flex h-full flex-col gap-4 border p-6 transition-colors outline-none focus-visible:ring-2"
             >
               <span className="text-muted-foreground flex justify-between gap-4 font-mono text-xs tabular-nums">

@@ -32,7 +32,7 @@ function PostHeader({ post }: { post: Post }) {
               ~/posts
             </Link>
             <span className="text-muted-foreground" aria-hidden="true">
-              /{post.slug}
+              /{post.slug}/{post.publicId}
             </span>
           </nav>
 
@@ -67,7 +67,7 @@ function NeighbourLink({ post, direction }: { post: PostSummary; direction: 'new
 
   return (
     <Link
-      href={show(post.slug).url}
+      href={show({ slug: post.slug, publicId: post.publicId }).url}
       className={`group border-border hover:border-primary flex flex-col gap-2 border p-5 transition-colors ${newer ? 'sm:items-end sm:text-right' : ''} ${focusRing}`}
     >
       <span className="text-muted-foreground flex items-center gap-2 font-mono text-xs">

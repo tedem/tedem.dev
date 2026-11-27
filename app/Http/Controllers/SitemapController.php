@@ -22,7 +22,7 @@ final class SitemapController extends Controller
             ->latest('published_at')
             ->get()
             ->map(fn (Post $post): string => $this->entry(
-                route('posts.show', $post->slug),
+                $post->url(),
                 ($post->updated_at ?? $post->published_at)?->toDateString(),
             ))
             ->all();

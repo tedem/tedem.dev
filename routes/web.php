@@ -11,8 +11,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomeController::class)->name('home');
 Route::inertia('about', 'site/about')->name('about');
 Route::get('posts', [PostController::class, 'index'])->name('posts');
-Route::get('posts/{slug}', [PostController::class, 'show'])
-    ->where('slug', '[a-z0-9]+(?:-[a-z0-9]+)*')
+// The public id finds the post; the slug is for people and is corrected if it is out of date.
+Route::get('posts/{slug}/{publicId}', [PostController::class, 'show'])
+    ->where(['slug' => '[a-z0-9]+(?:-[a-z0-9]+)*', 'publicId' => '[A-Za-z0-9]+'])
     ->name('posts.show');
 Route::inertia('contact', 'site/contact')->name('contact');
 

@@ -53,6 +53,22 @@ test('admins can create a post, with the slug taken from the title', function ()
     $response->assertRedirect(route('admin.posts.edit', $post));
 });
 
+test('the public id cannot be set from the form', function (): void {
+    $post = Post::factory()->create();
+    $code = $post->public_id;
+    $this->actingAs(User::factory()->admin()->create());
+
+    $this->put(route('admin.posts.update', $post), [
+        'title' => $post->title,
+        'slug' => $post->slug,
+        'description' => $post->description,
+        'body' => $post->body,
+        'public_id' => 'hacked',
+    ]);
+
+    expect($post->refresh()->public_id)->toBe($code);
+});
+
 test('slugs must be unique', function (): void {
     Post::factory()->create(['slug' => 'taken']);
     $this->actingAs(User::factory()->admin()->create());

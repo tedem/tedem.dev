@@ -22,6 +22,7 @@ final class PostController extends Controller
                 'id' => $post->id,
                 'title' => $post->title,
                 'slug' => $post->slug,
+                'publicId' => $post->public_id,
                 'status' => $this->status($post),
                 'publishedAt' => $post->published_at?->toIso8601String(),
                 'updatedAt' => $post->updated_at?->toIso8601String(),
@@ -56,7 +57,7 @@ final class PostController extends Controller
                 // The value a datetime-local input expects, in the app's timezone.
                 'publishedAt' => $post->published_at?->setTimezone(config('app.timezone'))->format('Y-m-d\TH:i'),
                 'status' => $this->status($post),
-                'url' => $post->isPublished() ? route('posts.show', $post->slug) : null,
+                'url' => $post->isPublished() ? $post->url() : null,
             ],
         ]);
     }

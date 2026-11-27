@@ -53,7 +53,9 @@ export default function PostsIndex({ posts }: { posts: AdminPostRow[] }) {
                       <Link href={edit(post.id)} className="font-medium hover:underline">
                         {post.title}
                       </Link>
-                      <div className="text-muted-foreground font-mono text-xs">/posts/{post.slug}</div>
+                      <div className="text-muted-foreground font-mono text-xs">
+                        /posts/{post.slug}/{post.publicId}
+                      </div>
                     </td>
                     <td className="px-4 py-3">
                       <PostStatusBadge status={post.status} />

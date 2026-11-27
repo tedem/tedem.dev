@@ -76,9 +76,9 @@ function PostList({ posts }: { posts: readonly PostSummary[] }) {
   return (
     <ol role="list" className="divide-border divide-y">
       {posts.map((post) => (
-        <li key={post.slug}>
+        <li key={post.publicId}>
           <Link
-            href={show(post.slug).url}
+            href={show({ slug: post.slug, publicId: post.publicId }).url}
             className={`group hover:bg-muted/30 focus-visible:ring-ring block px-6 py-6 transition-colors outline-none focus-visible:ring-2 focus-visible:ring-inset ${ROW_GRID}`}
           >
             <time

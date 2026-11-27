@@ -14,11 +14,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Str;
 
 /**
  * A blog post, written in Markdown in the admin area.
  *
  * @property int $id
+ * @property string $public_id
  * @property string $title
  * @property string $slug
  * @property string $description
@@ -34,6 +36,29 @@ final class Post extends Model
     use HasFactory;
 
     private const int WORDS_PER_MINUTE = 200;
+
+    private const int PUBLIC_ID_LENGTH = 6;
+
+    /**
+     * A new, unused code for a post's URL: six random letters and digits. Assigned once when
+     * the post is created and never changed, so a post's links outlive any rename.
+     */
+    public static function newPublicId(): string
+    {
+        do {
+            $code = Str::random(self::PUBLIC_ID_LENGTH);
+        } while (self::query()->where('public_id', $code)->exists());
+
+        return $code;
+    }
+
+    /**
+     * The public address: /posts/{slug}/{publicId}.
+     */
+    public function url(): string
+    {
+        return route('posts.show', ['slug' => $this->slug, 'publicId' => $this->public_id]);
+    }
 
     public function isPublished(): bool
     {
@@ -62,18 +87,26 @@ final class Post extends Model
     /**
      * What a post list needs: everything but the body.
      *
-     * @return array{slug: string, title: string, description: string, publishedAt: string|null, updatedAt: string|null, readingMinutes: int}
+     * @return array{slug: string, publicId: string, title: string, description: string, publishedAt: string|null, updatedAt: string|null, readingMinutes: int}
      */
     public function toSummary(): array
     {
         return [
             'slug' => $this->slug,
+            'publicId' => $this->public_id,
             'title' => $this->title,
             'description' => $this->description,
             'publishedAt' => $this->published_at?->toDateString(),
             'updatedAt' => $this->updated_at?->toDateString(),
             'readingMinutes' => $this->readingMinutes(),
         ];
+    }
+
+    protected static function booted(): void
+    {
+        self::creating(function (self $post): void {
+            $post->public_id ??= self::newPublicId();
+        });
     }
 
     /**

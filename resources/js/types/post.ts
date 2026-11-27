@@ -1,6 +1,8 @@
 /** A published post in a list, as App\Models\Post::toSummary() sends it. Dates are "YYYY-MM-DD". */
 export type PostSummary = {
   slug: string;
+  /** Random code assigned when the post was created; the URL is /posts/{slug}/{publicId}. */
+  publicId: string;
   title: string;
   description: string;
   publishedAt: string;
@@ -20,6 +22,7 @@ export type AdminPostRow = {
   id: number;
   title: string;
   slug: string;
+  publicId: string;
   status: PostStatus;
   publishedAt: string | null;
   updatedAt: string | null;
