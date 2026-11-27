@@ -40,7 +40,7 @@ function PostHeader({ post }: { post: Post }) {
 
           <h1
             id="post-title"
-            className="mt-6 text-[clamp(2.25rem,5vw,3.75rem)] leading-[1.05] font-medium tracking-[-0.05em] text-balance"
+            className="mt-6 text-[clamp(2.25rem,5vw,3.75rem)] leading-[1.05] font-medium tracking-tighter text-balance"
           >
             {post.title}
           </h1>

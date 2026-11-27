@@ -173,11 +173,11 @@ function BodyEditor({
         lang={lang}
         aria-invalid={error ? true : undefined}
         placeholder={'## A heading\n\nWrite in Markdown: tables, task lists, footnotes and fenced code all work.'}
-        className={`${textareaClass} min-h-[28rem] resize-y font-mono leading-6 ${tab === 'preview' ? 'hidden' : ''}`}
+        className={`${textareaClass} min-h-112 resize-y font-mono leading-6 ${tab === 'preview' ? 'hidden' : ''}`}
       />
 
       {tab === 'preview' && (
-        <div className="border-input min-h-[28rem] rounded-md border px-6 py-4" aria-live="polite" aria-busy={loading}>
+        <div className="border-input min-h-112 rounded-md border px-6 py-4" aria-live="polite" aria-busy={loading}>
           {loading && (
             <p className="text-muted-foreground flex items-center gap-2 text-sm">
               <Spinner /> Rendering…
