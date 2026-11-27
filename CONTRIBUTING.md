@@ -17,18 +17,18 @@ type: subject
 
 ### Types
 
-| Type       | Use for                                                                |
-| ---------- | ---------------------------------------------------------------------- |
-| `feat`     | New or changed behaviour people can see, including changed URLs        |
-| `fix`      | Bug fixes                                                              |
-| `refactor` | Code changes that keep behaviour the same (moves, renames, cleanups)   |
-| `perf`     | Faster or lighter, same behaviour                                      |
-| `style`    | Formatting only                                                        |
-| `test`     | Tests only                                                             |
-| `docs`     | Documentation only                                                     |
-| `build`    | Dependencies, the bundler and the build                                |
-| `ci`       | CI and deploy workflows                                                |
-| `chore`    | Tooling and app configuration (linters, formatters, git hooks, `.env`) |
+| Type       | Use for                                                                   |
+| ---------- | ------------------------------------------------------------------------- |
+| `feat`     | New functionality                                                         |
+| `fix`      | Bug fixes                                                                 |
+| `refactor` | Code restructuring without behaviour changes                              |
+| `perf`     | Performance improvements                                                  |
+| `docs`     | Documentation                                                             |
+| `test`     | Tests                                                                     |
+| `style`    | Formatting and style without logic changes                                |
+| `build`    | Build system, compiler, bundler, asset pipeline and external dependencies |
+| `ci`       | CI/CD configuration and scripts (deploy commands, server configs)         |
+| `chore`    | General project maintenance, tooling and configuration                    |
 
 ### Examples
 
@@ -40,5 +40,6 @@ feat: add XML sitemap
 feat: add security headers
 build: update npm dependencies
 chore: enable more Rector rules
+ci: add server deploy commands
 refactor: group admin and auth files by area
 ```
