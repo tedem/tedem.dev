@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { BookOpen, FolderGit2, LayoutGrid } from 'lucide-react';
+import { Globe, LayoutGrid } from 'lucide-react';
 import AppLogo from '@/components/admin/logo';
 import { NavFooter } from '@/components/admin/nav-footer';
 import { NavMain } from '@/components/admin/nav-main';
@@ -13,6 +13,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
+import { home } from '@/routes';
 import { dashboard } from '@/routes/admin';
 import type { NavItem } from '@/types';
 
@@ -24,16 +25,12 @@ const mainNavItems: NavItem[] = [
   },
 ];
 
+// Opens in a new tab (see NavFooter), so the admin area stays open.
 const footerNavItems: NavItem[] = [
   {
-    title: 'Repository',
-    href: 'https://github.com/laravel/react-starter-kit',
-    icon: FolderGit2,
-  },
-  {
-    title: 'Documentation',
-    href: 'https://laravel.com/docs/starter-kits#react',
-    icon: BookOpen,
+    title: 'View site',
+    href: home(),
+    icon: Globe,
   },
 ];
 
