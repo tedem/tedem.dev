@@ -4,7 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { useOwnerTime } from '@/hooks/use-owner-time';
 import { useMessages } from '@/i18n';
-import { cn } from 'cn';
+import { cn } from '@/lib/utils';
 import { ChevronDown, Pause, Play } from 'lucide-react';
 import { useId, useState, type ReactNode } from 'react';
 import { CAREER_START, STACK, yearsSince } from '@/content/profile';
