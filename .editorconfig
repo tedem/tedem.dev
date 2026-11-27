@@ -32,5 +32,6 @@ indent_size = 4
 [pint.json]
 indent_size = 4
 
-[{compose,docker-compose}.{yml,yaml}]
+# Server configs in deploy/: nginx and systemd are conventionally indented with 4 spaces.
+[deploy/*.{conf,service}]
 indent_size = 4

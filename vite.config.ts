@@ -29,7 +29,6 @@ export default defineConfig({
       'node_modules/**',
       'public/**',
       'bootstrap/ssr/**',
-      'tailwind.config.js',
       'resources/js/actions/**',
       'resources/js/components/ui/*',
       'resources/js/routes/**',
@@ -52,7 +51,7 @@ export default defineConfig({
     printWidth: 120,
     tabWidth: 2,
     endOfLine: 'lf',
-    ignorePatterns: ['.github/**', 'composer.json', 'resources/js/components/ui/*', 'resources/views/mail/*'],
+    ignorePatterns: ['composer.json', 'resources/js/components/ui/*'],
     sortTailwindcss: {
       functions: ['clsx', 'cn', 'cva'],
       entryPoint: 'resources/css/app.css',
@@ -65,13 +64,8 @@ export default defineConfig({
         },
       },
       {
-        files: ['**/composer.json', '**/pint.json'],
-        options: {
-          tabWidth: 4,
-        },
-      },
-      {
-        files: ['**/phpunit.xml', '**/phpunit.xml.dist'],
+        // PHP tooling files use 4 spaces, like the PHP code (see .editorconfig).
+        files: ['**/pint.json'],
         options: {
           tabWidth: 4,
         },
