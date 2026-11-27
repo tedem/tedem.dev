@@ -23,6 +23,9 @@ final class PostController extends Controller
                 'title' => $post->title,
                 'slug' => $post->slug,
                 'publicId' => $post->public_id,
+                'locale' => $post->locale->value,
+                // Where the post lives (or will live) on the site: "/en/posts/{slug}/{publicId}".
+                'path' => (string) parse_url($post->url(), PHP_URL_PATH),
                 'status' => $this->status($post),
                 'publishedAt' => $post->published_at?->toIso8601String(),
                 'updatedAt' => $post->updated_at?->toIso8601String(),
@@ -50,6 +53,7 @@ final class PostController extends Controller
         return Inertia::render('admin/posts/edit', [
             'post' => [
                 'id' => $post->id,
+                'locale' => $post->locale->value,
                 'title' => $post->title,
                 'slug' => $post->slug,
                 'description' => $post->description,

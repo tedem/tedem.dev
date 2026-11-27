@@ -12,8 +12,9 @@ use Inertia\Response;
 
 /**
  * The public side of the blog. Drafts and scheduled posts are not found here;
- * they are written and previewed in the admin area. A post's URL is /posts/{slug}/{publicId}
- * (/en/posts/... in English): the public id finds it, so renaming the slug never breaks a link.
+ * they are written and previewed in the admin area. Each post is written in one language and
+ * listed only on that language's pages. Its URL is /posts/{slug}/{publicId} (/en/posts/... for
+ * English): the public id finds it, so renaming the slug never breaks a link.
  */
 final class PostController extends Controller
 {
@@ -22,6 +23,7 @@ final class PostController extends Controller
         return Inertia::render('site/posts', [
             'posts' => Post::query()
                 ->published()
+                ->inLocale(Locale::current())
                 ->latest('published_at')
                 ->get()
                 ->map(fn (Post $post): array => $post->toSummary()),
@@ -32,18 +34,19 @@ final class PostController extends Controller
     {
         $post = Post::query()->published()->where('public_id', $publicId)->firstOrFail();
 
-        // An old or mistyped slug: send it on, permanently, to the post's current address.
-        if ($slug !== $post->slug) {
-            // SetLocale has set the app locale from the route, so the redirect stays in this language.
-            return redirect()->to($post->url(Locale::from(app()->getLocale())), 301);
+        // An old or mistyped slug, or the other language's prefix: send it on, permanently,
+        // to the post's current address.
+        if ($slug !== $post->slug || $post->locale !== Locale::current()) {
+            return redirect()->to($post->url(), 301);
         }
 
-        $newer = Post::query()->published()
+        // Neighbours in the same language, so "older post" never switches language.
+        $newer = Post::query()->published()->inLocale($post->locale)
             ->where('published_at', '>', $post->published_at)
             ->oldest('published_at')
             ->first();
 
-        $older = Post::query()->published()
+        $older = Post::query()->published()->inLocale($post->locale)
             ->where('published_at', '<', $post->published_at)
             ->latest('published_at')
             ->first();

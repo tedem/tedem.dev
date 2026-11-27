@@ -1,7 +1,9 @@
+import type { Locale } from '@/i18n';
+
 /** A published post in a list, as App\Models\Post::toSummary() sends it. Dates are "YYYY-MM-DD". */
 export type PostSummary = {
   slug: string;
-  /** Random code assigned when the post was created; the URL is /posts/{slug}/{publicId}. */
+  /** Random code assigned when the post was created; the URL is /posts/{slug}/{publicId} (/en/posts/... in English). */
   publicId: string;
   title: string;
   description: string;
@@ -23,6 +25,9 @@ export type AdminPostRow = {
   title: string;
   slug: string;
   publicId: string;
+  locale: Locale;
+  /** Address on the site, e.g. "/en/posts/{slug}/{publicId}". */
+  path: string;
   status: PostStatus;
   publishedAt: string | null;
   updatedAt: string | null;
@@ -31,6 +36,7 @@ export type AdminPostRow = {
 /** A post as the admin editor loads it. `publishedAt` is a datetime-local value. */
 export type EditablePost = {
   id: number;
+  locale: Locale;
   title: string;
   slug: string;
   description: string;

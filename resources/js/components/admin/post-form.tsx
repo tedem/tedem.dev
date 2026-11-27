@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
 import { preview as previewRoute } from '@/routes/admin/posts';
+import { type Locale, LOCALES } from '@/i18n';
 import type { EditablePost } from '@/types';
 import { Form, usePage } from '@inertiajs/react';
 import { ExternalLink } from 'lucide-react';
@@ -53,7 +54,58 @@ function xsrfToken() {
   return match ? decodeURIComponent(match[1]) : '';
 }
 
-function BodyEditor({ body, onChange, error }: { body: string; onChange: (value: string) => void; error?: string }) {
+/**
+ * The post's language, as a pair of radio buttons styled as a segmented control. The post
+ * is listed only on that language's pages, and its URL gets the language's prefix.
+ */
+function LanguagePicker({
+  value,
+  onChange,
+  error,
+}: {
+  value: Locale;
+  onChange: (value: Locale) => void;
+  error?: string;
+}) {
+  return (
+    <fieldset className="grid gap-2">
+      <legend className="mb-2 text-sm leading-none font-medium">Language</legend>
+      <div className="border-input grid grid-cols-2 gap-1 rounded-md border p-1">
+        {(Object.keys(LOCALES) as Locale[]).map((locale) => (
+          <label
+            key={locale}
+            className="has-checked:bg-muted has-focus-visible:ring-ring/50 text-muted-foreground has-checked:text-foreground flex cursor-pointer items-center justify-center rounded-sm px-3 py-1.5 text-sm transition-colors has-checked:font-medium has-focus-visible:ring-[3px]"
+          >
+            <input
+              type="radio"
+              name="locale"
+              value={locale}
+              checked={value === locale}
+              onChange={() => onChange(locale)}
+              className="sr-only"
+            />
+            {LOCALES[locale].label}
+          </label>
+        ))}
+      </div>
+      <p className="text-muted-foreground text-xs">Listed on this language's pages only.</p>
+      <InputError message={error} />
+    </fieldset>
+  );
+}
+
+function BodyEditor({
+  body,
+  lang,
+  onChange,
+  error,
+}: {
+  body: string;
+  /** The post's language, so the browser spell-checks the right one. */
+  lang: Locale;
+  onChange: (value: string) => void;
+  error?: string;
+}) {
   const [tab, setTab] = useState<Tab>('write');
   const [html, setHtml] = useState('');
   const [loading, setLoading] = useState(false);
@@ -118,6 +170,7 @@ function BodyEditor({ body, onChange, error }: { body: string; onChange: (value:
         onChange={(event) => onChange(event.target.value)}
         required
         spellCheck
+        lang={lang}
         aria-invalid={error ? true : undefined}
         placeholder={'## A heading\n\nWrite in Markdown: tables, task lists, footnotes and fenced code all work.'}
         className={`${textareaClass} min-h-[28rem] resize-y font-mono leading-6 ${tab === 'preview' ? 'hidden' : ''}`}
@@ -150,6 +203,7 @@ export default function PostForm({ post }: { post?: EditablePost }) {
   const [title, setTitle] = useState(post?.title ?? '');
   const [body, setBody] = useState(post?.body ?? '');
   const [publishedAt, setPublishedAt] = useState(post?.publishedAt ?? '');
+  const [locale, setLocale] = useState<Locale>(post?.locale ?? 'tr');
 
   const action = post ? PostController.update.form(post.id) : PostController.store.form();
 
@@ -167,12 +221,13 @@ export default function PostForm({ post }: { post?: EditablePost }) {
                 onChange={(event) => setTitle(event.target.value)}
                 required
                 maxLength={200}
+                lang={locale}
                 className="text-base"
               />
               <InputError message={errors.title} />
             </div>
 
-            <BodyEditor body={body} onChange={setBody} error={errors.body} />
+            <BodyEditor body={body} lang={locale} onChange={setBody} error={errors.body} />
           </div>
 
           <aside className="grid content-start gap-6">
@@ -234,6 +289,8 @@ export default function PostForm({ post }: { post?: EditablePost }) {
               )}
             </div>
 
+            <LanguagePicker value={locale} onChange={setLocale} error={errors.locale} />
+
             <div className="grid gap-2">
               <Label htmlFor="slug">Slug</Label>
               <Input
@@ -258,6 +315,7 @@ export default function PostForm({ post }: { post?: EditablePost }) {
                 required
                 maxLength={300}
                 rows={4}
+                lang={locale}
                 className={textareaClass}
               />
               <p className="text-muted-foreground text-xs">Shown in post lists, search results and link previews.</p>

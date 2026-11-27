@@ -2,6 +2,7 @@ import Heading from '@/components/admin/heading';
 import PostStatusBadge from '@/components/admin/post-status-badge';
 import { Button } from '@/components/ui/button';
 import { create, edit, index } from '@/routes/admin/posts';
+import { LOCALES } from '@/i18n';
 import type { AdminPostRow } from '@/types';
 import { Head, Link } from '@inertiajs/react';
 import { Plus } from 'lucide-react';
@@ -38,6 +39,7 @@ export default function PostsIndex({ posts }: { posts: AdminPostRow[] }) {
               <thead className="text-muted-foreground text-left text-xs">
                 <tr className="border-sidebar-border/70 dark:border-sidebar-border border-b">
                   <th className="px-4 py-3 font-medium">Title</th>
+                  <th className="px-4 py-3 font-medium">Language</th>
                   <th className="px-4 py-3 font-medium">Status</th>
                   <th className="px-4 py-3 font-medium">Publish date</th>
                   <th className="px-4 py-3 font-medium">Updated</th>
@@ -53,10 +55,9 @@ export default function PostsIndex({ posts }: { posts: AdminPostRow[] }) {
                       <Link href={edit(post.id)} className="font-medium hover:underline">
                         {post.title}
                       </Link>
-                      <div className="text-muted-foreground font-mono text-xs">
-                        /posts/{post.slug}/{post.publicId}
-                      </div>
+                      <div className="text-muted-foreground font-mono text-xs">{post.path}</div>
                     </td>
+                    <td className="text-muted-foreground px-4 py-3">{LOCALES[post.locale].label}</td>
                     <td className="px-4 py-3">
                       <PostStatusBadge status={post.status} />
                     </td>

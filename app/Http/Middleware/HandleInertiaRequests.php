@@ -51,8 +51,7 @@ final class HandleInertiaRequests extends Middleware
             ],
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
             // Lazy: the site routes set the language in SetLocale, which runs after this middleware.
-            // Pages outside the localized routes (admin, auth, unknown URLs) fall back to English.
-            'locale' => fn (): string => (Locale::tryFrom(app()->getLocale()) ?? Locale::English)->value,
+            'locale' => fn (): string => Locale::current()->value,
             // The current page in each language, for the language switcher; null outside the site.
             'alternates' => fn (): ?array => $this->alternates($request),
             // The site owner's clock (see use-owner-time.ts): IANA timezone and its current

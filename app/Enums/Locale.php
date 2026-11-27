@@ -28,6 +28,16 @@ enum Locale: string
     }
 
     /**
+     * The language of the current request. SetLocale sets it on the public routes; pages
+     * outside them (admin, auth, unknown URLs) run in config('app.locale') and fall back
+     * to English if that is not one of the site's languages.
+     */
+    public static function current(): self
+    {
+        return self::tryFrom(app()->getLocale()) ?? self::English;
+    }
+
+    /**
      * The language a route belongs to, from its name ("en.about" is English).
      */
     public static function fromRouteName(?string $name): self

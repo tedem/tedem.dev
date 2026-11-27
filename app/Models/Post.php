@@ -16,12 +16,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Str;
+use Override;
 
 /**
  * A blog post, written in Markdown in the admin area.
  *
  * @property int $id
  * @property string $public_id
+ * @property Locale $locale
  * @property string $title
  * @property string $slug
  * @property string $description
@@ -30,7 +32,7 @@ use Illuminate\Support\Str;
  * @property CarbonImmutable|null $created_at
  * @property CarbonImmutable|null $updated_at
  */
-#[Fillable(['title', 'slug', 'description', 'body', 'published_at'])]
+#[Fillable(['locale', 'title', 'slug', 'description', 'body', 'published_at'])]
 final class Post extends Model
 {
     /** @use HasFactory<PostFactory> */
@@ -39,6 +41,16 @@ final class Post extends Model
     private const int WORDS_PER_MINUTE = 200;
 
     private const int PUBLIC_ID_LENGTH = 6;
+
+    /**
+     * A new post is in the site's default language until told otherwise.
+     *
+     * @var array<string, mixed>
+     */
+    #[Override]
+    protected $attributes = [
+        'locale' => Locale::Turkish->value,
+    ];
 
     /**
      * A new, unused code for a post's URL: six random letters and digits. Assigned once when
@@ -54,13 +66,12 @@ final class Post extends Model
     }
 
     /**
-     * The public address in a language: /posts/{slug}/{publicId} or /en/posts/{slug}/{publicId}.
+     * The public address, under the post's own language: /posts/{slug}/{publicId} for
+     * Turkish, /en/posts/{slug}/{publicId} for English.
      */
-    public function url(?Locale $locale = null): string
+    public function url(): string
     {
-        $locale ??= Locale::default();
-
-        return route($locale->route('posts.show'), ['slug' => $this->slug, 'publicId' => $this->public_id]);
+        return route($this->locale->route('posts.show'), ['slug' => $this->slug, 'publicId' => $this->public_id]);
     }
 
     public function isPublished(): bool
@@ -124,6 +135,17 @@ final class Post extends Model
     }
 
     /**
+     * Posts written in the given language.
+     *
+     * @param  Builder<self>  $query
+     */
+    #[Scope]
+    protected function inLocale(Builder $query, Locale $locale): void
+    {
+        $query->where('locale', $locale->value);
+    }
+
+    /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>
@@ -131,6 +153,7 @@ final class Post extends Model
     protected function casts(): array
     {
         return [
+            'locale' => Locale::class,
             'published_at' => 'immutable_datetime',
         ];
     }

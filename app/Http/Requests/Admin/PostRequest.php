@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Requests\Admin;
 
+use App\Enums\Locale;
 use App\Models\Post;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -20,6 +21,7 @@ final class PostRequest extends FormRequest
         $post = $this->route('post');
 
         return [
+            'locale' => ['required', Rule::enum(Locale::class)],
             'title' => ['required', 'string', 'max:200'],
             'slug' => [
                 'required', 'string', 'max:200', 'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/',
