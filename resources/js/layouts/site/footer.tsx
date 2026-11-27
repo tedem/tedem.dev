@@ -1,5 +1,5 @@
 import Container from '@/components/site/container';
-import { EMAIL, MAILTO, SOCIALS } from '@/content/profile';
+import { EMAIL, MAILTO, SOCIALS, WORDMARK } from '@/content/profile';
 import { type Appearance, useAppearance } from '@/hooks/use-appearance';
 import { ArrowUp, ArrowUpRight, Monitor, Moon, Sun, type LucideIcon } from 'lucide-react';
 
@@ -12,8 +12,6 @@ type ThemeOption = {
   label: string;
   icon: LucideIcon;
 };
-
-const WORDMARK = 'tedem';
 
 const THEMES: readonly ThemeOption[] = [
   { value: 'light', label: 'Light', icon: Sun },

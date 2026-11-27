@@ -1,6 +1,7 @@
 import Container from '@/components/site/container';
+import BrandMark from '@/components/shared/brand-mark';
 import { Button } from '@/components/ui/button';
-import { MAILTO } from '@/content/profile';
+import { MAILTO, WORDMARK } from '@/content/profile';
 import { about, contact, home, login, posts } from '@/routes';
 import { Link, usePage } from '@inertiajs/react';
 import { ArrowRight, Menu, X } from 'lucide-react';
@@ -84,15 +85,10 @@ function useMobileMenu() {
 function Logo() {
   return (
     <Link href={home().url} className={`flex items-center gap-4 ${focusRing}`}>
-      <span
-        className="bg-accent-foreground text-accent flex size-9 items-center justify-center text-sm select-none"
-        aria-hidden="true"
-      >
-        //.
-      </span>
+      <BrandMark className="size-9" />
 
       {/* Always in the DOM so the link keeps its name; only visually hidden between md and lg. */}
-      <span className="text-foreground text-xl font-semibold tracking-wide md:max-lg:sr-only">tedem</span>
+      <span className="text-foreground text-xl font-semibold tracking-wide md:max-lg:sr-only">{WORDMARK}</span>
     </Link>
   );
 }

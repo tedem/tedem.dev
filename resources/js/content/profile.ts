@@ -34,6 +34,9 @@ export const LEAD = 'I build web products end to end, from the database and API 
 export const BODY =
   'I care about accessibility, performance and maintainable code, and I like owning a feature from the first idea to production.';
 
+/** The name next to the logo mark: site header, footer, admin sidebar. */
+export const WORDMARK = 'tedem';
+
 /** First name, as the hero greets visitors ("Hi, I'm Medet.") and as search engines see the site's author. */
 export const NAME = 'Medet';
 
