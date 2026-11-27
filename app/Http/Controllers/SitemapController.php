@@ -14,7 +14,7 @@ final class SitemapController extends Controller
     {
         $pages = array_map(
             fn (string $name): string => $this->entry(route($name)),
-            IndexablePages::PAGES,
+            IndexablePages::pages(),
         );
 
         $posts = Post::query()

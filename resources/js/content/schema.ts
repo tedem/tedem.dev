@@ -1,4 +1,5 @@
-import { EMAIL, LOCATION, NAME, ROLE, SOCIALS, STACK } from '@/content/profile';
+import { EMAIL, NAME, SOCIALS, STACK } from '@/content/profile';
+import { LOCALES, type Locale } from '@/i18n';
 
 /*
  * schema.org structured data (JSON-LD) for the public pages. Every page gets one @graph
@@ -18,8 +19,10 @@ type SchemaInput = {
   /** Site root from Laravel's APP_URL, e.g. "https://tedem.dev". */
   appUrl: string;
   siteName: string;
-  /** Laravel locale ("en", "pt_BR"); schema.org wants a BCP 47 tag ("pt-BR"). */
-  locale: string;
+  locale: Locale;
+  /** The author's job title and home, in the page's language. */
+  role: string;
+  location: string;
   canonical: string;
   title: string;
   description: string;
@@ -32,6 +35,8 @@ export function buildSchema({
   appUrl,
   siteName,
   locale,
+  role,
+  location,
   canonical,
   title,
   description,
@@ -41,17 +46,17 @@ export function buildSchema({
   const root = new URL('/', appUrl).toString();
   const personId = `${root}#person`;
   const websiteId = `${root}#website`;
-  const language = locale.replace('_', '-');
+  const language = LOCALES[locale].intl;
 
   const person = {
     '@type': 'Person',
     '@id': personId,
     name: NAME,
     alternateName: siteName,
-    jobTitle: ROLE,
+    jobTitle: role,
     url: root,
     email: `mailto:${EMAIL}`,
-    homeLocation: { '@type': 'Place', name: LOCATION },
+    homeLocation: { '@type': 'Place', name: location },
     knowsAbout: STACK,
     sameAs: SOCIALS.map((social) => social.href),
   };

@@ -2,7 +2,8 @@ import Container from '@/components/site/container';
 import BrandMark from '@/components/shared/brand-mark';
 import { Button } from '@/components/ui/button';
 import { MAILTO, WORDMARK } from '@/content/profile';
-import { about, contact, home, login, posts } from '@/routes';
+import { type Locale, LOCALES, useLocale, useMessages, useRoutes, useSitePages } from '@/i18n';
+import { login } from '@/routes';
 import { Link, usePage } from '@inertiajs/react';
 import { ArrowRight, Menu, X } from 'lucide-react';
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
@@ -10,19 +11,6 @@ import { useCallback, useEffect, useId, useRef, useState } from 'react';
 /* -------------------------------------------------------------------------- */
 /* Content                                                                    */
 /* -------------------------------------------------------------------------- */
-
-type NavigationItem = {
-  label: string;
-  code: string;
-  href: string;
-};
-
-const navigation: readonly NavigationItem[] = [
-  { label: 'Home', code: '~/', href: home().url },
-  { label: 'About', code: '~/about', href: about().url },
-  { label: 'Posts', code: '~/posts', href: posts().url },
-  { label: 'Contact', code: '~/contact', href: contact().url },
-];
 
 /** Tailwind `md` (768px): the mobile menu is not rendered at or above this width. */
 const DESKTOP_QUERY = '(min-width: 48rem)';
@@ -34,10 +22,15 @@ const focusRing =
 /* Helpers                                                                    */
 /* -------------------------------------------------------------------------- */
 
-/** "/" only matches itself; other items also match their sub-pages ("/posts/my-post"). */
-function isActive(href: string, path: string) {
-  if (href === '/') return path === '/';
-  return path === href || path.startsWith(`${href}/`);
+/**
+ * A home page ("/", "/en") only matches itself; other items also match their
+ * sub-pages ("/posts/my-post"). Route helpers may return absolute URLs, so only
+ * the path is compared.
+ */
+function isActive(href: string, path: string, isHome: boolean) {
+  const target = new URL(href, 'http://localhost').pathname;
+  if (isHome) return path === target;
+  return path === target || path.startsWith(`${target}/`);
 }
 
 /**
@@ -83,8 +76,10 @@ function useMobileMenu() {
 /* -------------------------------------------------------------------------- */
 
 function Logo() {
+  const routes = useRoutes();
+
   return (
-    <Link href={home().url} className={`flex items-center gap-4 ${focusRing}`}>
+    <Link href={routes.home().url} className={`flex items-center gap-4 ${focusRing}`}>
       <BrandMark className="size-9" />
 
       {/* Always in the DOM so the link keeps its name; only visually hidden between md and lg. */}
@@ -102,10 +97,12 @@ function NavigationLinks({
   className?: string;
   onNavigate?: () => void;
 }) {
+  const navigation = useSitePages();
+
   return (
     <>
-      {navigation.map(({ label, code, href }) => {
-        const active = isActive(href, currentPath);
+      {navigation.map(({ label, code, href }, index) => {
+        const active = isActive(href, currentPath, index === 0);
 
         return (
           <Link
@@ -128,19 +125,56 @@ function NavigationLinks({
   );
 }
 
-function Actions({ contactClassName, onNavigate }: { contactClassName?: string; onNavigate?: () => void }) {
+/**
+ * Link to the same page in the other language (falls back to its home page), e.g. "EN".
+ * Named in the language it leads to, with `lang` and `hrefLang` so screen readers pronounce it right.
+ */
+function LanguageSwitch({ expanded = false, onNavigate }: { expanded?: boolean; onNavigate?: () => void }) {
+  const locale = useLocale();
+  const t = useMessages();
+  const { alternates } = usePage().props;
+
+  const target: Locale = locale === 'tr' ? 'en' : 'tr';
+  const href = alternates?.[target] ?? (target === 'tr' ? '/' : '/en');
+
+  return (
+    <Button variant={expanded ? 'outline' : 'ghost'} asChild>
+      <Link href={href} hrefLang={target} lang={target} aria-label={t.nav.switchLabel} onClick={onNavigate}>
+        <span aria-hidden="true" className="font-mono uppercase">
+          {target}
+        </span>
+        {/* The mobile menu has room for the language's own name. */}
+        {expanded && <span aria-hidden="true">{LOCALES[target].label}</span>}
+      </Link>
+    </Button>
+  );
+}
+
+function Actions({
+  contactClassName,
+  expanded = false,
+  onNavigate,
+}: {
+  contactClassName?: string;
+  expanded?: boolean;
+  onNavigate?: () => void;
+}) {
+  const t = useMessages();
+
   return (
     <>
+      <LanguageSwitch expanded={expanded} onNavigate={onNavigate} />
+
       <Button variant="outline" asChild>
         <Link href={login().url} onClick={onNavigate}>
-          Login
+          {t.nav.login}
         </Link>
       </Button>
 
       {/* Plain anchor: Inertia's Link would try to fetch a mailto: URL as a page visit. */}
       <Button asChild className={contactClassName}>
         <a href={MAILTO} onClick={onNavigate}>
-          Get in touch
+          {t.nav.getInTouch}
           <ArrowRight aria-hidden="true" />
         </a>
       </Button>
@@ -155,6 +189,7 @@ function Actions({ contactClassName, onNavigate }: { contactClassName?: string; 
 export default function Header() {
   const { open, toggle, close, toggleRef } = useMobileMenu();
   const mobileMenuId = useId();
+  const t = useMessages();
 
   const { url } = usePage();
   const currentPath = url.split(/[?#]/)[0];
@@ -166,7 +201,7 @@ export default function Header() {
           <Logo />
 
           {/* Desktop navigation */}
-          <nav aria-label="Main" className="hidden items-center gap-8 md:flex">
+          <nav aria-label={t.nav.main} className="hidden items-center gap-8 md:flex">
             <NavigationLinks currentPath={currentPath} />
           </nav>
 
@@ -182,7 +217,7 @@ export default function Header() {
             variant="outline"
             size="icon"
             className="md:hidden"
-            aria-label="Navigation menu"
+            aria-label={t.nav.menu}
             aria-controls={mobileMenuId}
             aria-expanded={open}
             onClick={toggle}
@@ -195,7 +230,7 @@ export default function Header() {
       {/* Mobile navigation: only one of the two navs is exposed at a time, so they share a name. */}
       <nav
         id={mobileMenuId}
-        aria-label="Main"
+        aria-label={t.nav.main}
         hidden={!open}
         className="border-border bg-background border-t py-6 md:hidden"
       >
@@ -204,8 +239,8 @@ export default function Header() {
             <NavigationLinks currentPath={currentPath} className="py-2" onNavigate={close} />
           </div>
 
-          <div className="mt-6 grid grid-cols-1 gap-2 sm:grid-cols-2">
-            <Actions onNavigate={close} />
+          <div className="mt-6 grid grid-cols-1 gap-2 sm:grid-cols-3">
+            <Actions expanded onNavigate={close} />
           </div>
         </Container>
       </nav>

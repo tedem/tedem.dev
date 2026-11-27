@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http\Middleware;
 
+use App\Enums\Locale;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Inertia\Middleware;
 use Override;
 
@@ -48,7 +50,11 @@ final class HandleInertiaRequests extends Middleware
                 'user' => $request->user(),
             ],
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
-            'locale' => config('app.locale'),
+            // Lazy: the site routes set the language in SetLocale, which runs after this middleware.
+            // Pages outside the localized routes (admin, auth, unknown URLs) fall back to English.
+            'locale' => fn (): string => (Locale::tryFrom(app()->getLocale()) ?? Locale::English)->value,
+            // The current page in each language, for the language switcher; null outside the site.
+            'alternates' => fn (): ?array => $this->alternates($request),
             // The site owner's clock (see use-owner-time.ts): IANA timezone and its current
             // offset from UTC in minutes. The client keeps time itself from there.
             'time' => fn (): array => [
@@ -56,5 +62,36 @@ final class HandleInertiaRequests extends Middleware
                 'offset' => now()->utcOffset(),
             ],
         ];
+    }
+
+    /**
+     * Where the language switcher leads from this page: the same page in every language.
+     * A post exists in one language only, so from a post it leads to the other language's
+     * post list.
+     *
+     * @return array<string, string>|null
+     */
+    private function alternates(Request $request): ?array
+    {
+        $name = (string) $request->route()?->getName();
+        $page = Str::after($name, Locale::fromRouteName($name)->routePrefix());
+
+        $target = match (true) {
+            in_array($page, Locale::PAGES, true) => $page,
+            $page === 'posts.show' => 'posts',
+            default => null,
+        };
+
+        if ($target === null) {
+            return null;
+        }
+
+        $alternates = [];
+
+        foreach (Locale::cases() as $locale) {
+            $alternates[$locale->value] = route($locale->route($target));
+        }
+
+        return $alternates;
     }
 }

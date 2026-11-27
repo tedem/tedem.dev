@@ -5,39 +5,25 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { ArrowUpRight, Check, ChevronDown, Copy, Mail } from 'lucide-react';
 import { useId, useState } from 'react';
-import {
-  AVAILABILITY,
-  CONTACT_DESCRIPTION,
-  CONTACT_TITLE,
-  EMAIL,
-  MAILTO,
-  MAILTO_WITH_SUBJECT,
-  REPLY_TIME,
-  SOCIALS,
-  type SocialLink,
-} from '@/content/profile';
-
-import { useCopyToClipboard, type CopyStatus } from '@/hooks/use-copy-to-clipboard';
+import { EMAIL, MAILTO, mailtoWithSubject, SOCIALS, type SocialLink } from '@/content/profile';
+import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard';
+import { useMessages } from '@/i18n';
 
 const VISIBLE_COUNT = 2;
-
-const COPY_MESSAGES: Record<CopyStatus, string> = {
-  idle: '',
-  copied: 'Email address copied to clipboard',
-  error: 'Could not copy the email address. Use the email link instead.',
-};
 
 const focusRing =
   'rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background';
 
 function AvailabilityStatus() {
+  const t = useMessages();
+
   return (
     <p className="text-muted-foreground flex items-center gap-2 font-mono text-xs">
       <span className="relative flex size-2" aria-hidden="true">
         <span className="absolute inline-flex size-full rounded-full bg-emerald-500/60 motion-safe:animate-ping" />
         <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
       </span>
-      {AVAILABILITY}
+      {t.contact.availability}
     </p>
   );
 }
@@ -45,6 +31,8 @@ function AvailabilityStatus() {
 function EmailCard() {
   const { status, copy } = useCopyToClipboard();
   const copied = status === 'copied';
+  const t = useMessages();
+  const copyMessages = { idle: '', copied: t.contact.copiedMessage, error: t.contact.copyError };
 
   return (
     <div className="border-border flex flex-col justify-between gap-8 p-8 max-md:border-b md:border-r">
@@ -60,24 +48,24 @@ function EmailCard() {
         >
           {EMAIL}
         </a>
-        <p className="text-muted-foreground mt-2 text-sm">{REPLY_TIME}</p>
+        <p className="text-muted-foreground mt-2 text-sm">{t.contact.replyTime}</p>
       </div>
 
       <div className="flex flex-wrap gap-3">
         <Button size="lg" asChild>
-          <a href={MAILTO_WITH_SUBJECT}>
+          <a href={mailtoWithSubject(t.contact.emailSubject)}>
             <Mail aria-hidden="true" />
-            Get in touch
+            {t.contact.getInTouch}
           </a>
         </Button>
         <Button size="lg" variant="outline" type="button" onClick={() => copy(EMAIL)}>
           {copied ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}
-          {copied ? 'Copied' : 'Copy email'}
+          {copied ? t.contact.copied : t.contact.copyEmail}
         </Button>
 
         {/* Announces success or failure; the button label alone is not announced. */}
         <span className="sr-only" role="status" aria-live="polite" aria-atomic="true">
-          {COPY_MESSAGES[status]}
+          {copyMessages[status]}
         </span>
       </div>
     </div>
@@ -85,6 +73,8 @@ function EmailCard() {
 }
 
 function SocialItem({ href, label, handle, icon: Icon }: SocialLink) {
+  const t = useMessages();
+
   return (
     <li className="border-border border-b first:border-t">
       <a
@@ -96,7 +86,7 @@ function SocialItem({ href, label, handle, icon: Icon }: SocialLink) {
         <Icon className="size-5 shrink-0" aria-hidden="true" />
         <span className="font-medium">{label}</span>
         <span className="text-muted-foreground ml-auto text-sm">{handle}</span>
-        <span className="sr-only">(opens in a new tab)</span>
+        <span className="sr-only">{t.common.opensInNewTab}</span>
         <ArrowUpRight
           className="text-muted-foreground group-hover:text-primary size-4 shrink-0 transition-transform motion-safe:group-hover:translate-x-0.5 motion-safe:group-hover:-translate-y-0.5"
           aria-hidden="true"
@@ -110,6 +100,7 @@ function SocialList() {
   const [expanded, setExpanded] = useState(false);
   const listId = useId();
   const headingId = useId();
+  const t = useMessages();
 
   const visible = expanded ? SOCIALS : SOCIALS.slice(0, VISIBLE_COUNT);
   const hiddenCount = SOCIALS.length - VISIBLE_COUNT;
@@ -117,7 +108,7 @@ function SocialList() {
   return (
     <div className="p-8">
       <h3 id={headingId} className="text-muted-foreground font-mono text-xs font-normal">
-        Elsewhere
+        {t.common.elsewhere}
       </h3>
 
       <ul className="mt-4" id={listId} aria-labelledby={headingId}>
@@ -137,15 +128,13 @@ function SocialList() {
             focusRing,
           )}
         >
-          <span className="font-medium">{expanded ? 'Show less' : 'Show more'}</span>
+          <span className="font-medium">{expanded ? t.common.showLess : t.common.showMore}</span>
           {!expanded && (
             <>
               <Badge variant="outline" aria-hidden="true">
                 +{hiddenCount}
               </Badge>
-              <span className="sr-only">
-                ({hiddenCount} more {hiddenCount === 1 ? 'link' : 'links'})
-              </span>
+              <span className="sr-only">{t.contact.moreLinks(hiddenCount)}</span>
             </>
           )}
           <ChevronDown
@@ -162,16 +151,18 @@ function SocialList() {
 }
 
 export default function Contact() {
+  const t = useMessages();
+
   return (
     <section className="border-border border-t" id="contact" aria-labelledby="contact-title">
       <Container border={true}>
         <div className="py-8 lg:py-16">
           <SectionHeader
             id="contact-title"
-            path="contact"
-            tagline="Good things start a conversation"
-            title={CONTACT_TITLE}
-            description={CONTACT_DESCRIPTION}
+            path={t.paths.contact}
+            tagline={t.contact.tagline}
+            title={t.contact.title}
+            description={t.contact.description}
           />
 
           <div className="border-border bg-muted/30 mt-8 grid border md:mt-16 md:grid-cols-2">

@@ -1,3 +1,4 @@
+import { LOCALES, type Messages, useMessages } from '@/i18n';
 import { usePage } from '@inertiajs/react';
 import { useEffect, useMemo, useState } from 'react';
 
@@ -8,14 +9,11 @@ export function formatUtcOffset(minutes: number) {
   return `UTC${minutes < 0 ? '-' : '+'}${Math.floor(abs / 60)}${rest ? `:${String(rest).padStart(2, '0')}` : ''}`;
 }
 
-/** "3h ahead of you", "2h 30m behind you", "Same time as you". */
-export function describeDifference(minutes: number) {
-  if (minutes === 0) return 'Same time as you';
+/** "3h ahead of you", "2h 30m behind you", "Same time as you" (in the page's language). */
+function describeDifference(minutes: number, t: Messages) {
+  if (minutes === 0) return t.time.sameTime;
   const abs = Math.abs(minutes);
-  const amount = [Math.floor(abs / 60) && `${Math.floor(abs / 60)}h`, abs % 60 && `${abs % 60}m`]
-    .filter(Boolean)
-    .join(' ');
-  return `${amount} ${minutes > 0 ? 'ahead of' : 'behind'} you`;
+  return t.time.difference(Math.floor(abs / 60), abs % 60, minutes > 0);
 }
 
 /**
@@ -48,13 +46,13 @@ function useNow() {
 export function useOwnerTime() {
   // `locale` and `time` are shared by HandleInertiaRequests::share(); typed in types/global.d.ts.
   const { locale, time } = usePage().props;
+  const t = useMessages();
   const now = useNow();
 
   const formatters = useMemo(() => {
     const timeZone = time.timezone;
     return {
-      // Laravel locales can be "pt_BR"; Intl expects "pt-BR".
-      clock: new Intl.DateTimeFormat(locale.replace('_', '-'), {
+      clock: new Intl.DateTimeFormat(LOCALES[locale].intl, {
         hour: '2-digit',
         minute: '2-digit',
         hourCycle: 'h23',
@@ -70,8 +68,8 @@ export function useOwnerTime() {
 
   return {
     now,
-    /** "Europe/Istanbul" -> "Istanbul". */
-    city: time.timezone.split('/').pop()?.replaceAll('_', ' ') ?? time.timezone,
+    /** The owner's city, spelled for the page's language ("İstanbul" in Turkish). */
+    city: t.profile.city,
     offsetLabel: formatUtcOffset(time.offset),
     clock: parts ? { hours: part('hour'), minutes: part('minute') } : null,
     /** 0-23 in the owner's timezone. */
@@ -79,5 +77,7 @@ export function useOwnerTime() {
     isWeekend: now ? ['Sat', 'Sun'].includes(formatters.weekday.format(now)) : null,
     /** Minutes the owner is ahead of the visitor (negative = behind). getTimezoneOffset() is minutes *behind* UTC. */
     difference: now ? time.offset + now.getTimezoneOffset() : null,
+    /** The difference in words: "3h ahead of you". */
+    differenceLabel: now ? describeDifference(time.offset + now.getTimezoneOffset(), t) : null,
   };
 }

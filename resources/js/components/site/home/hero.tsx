@@ -1,7 +1,8 @@
 import Container from '@/components/site/container';
 import { Button } from '@/components/ui/button';
 import { TextAnimate } from '@/components/ui/text-animate';
-import { describeDifference, useOwnerTime } from '@/hooks/use-owner-time';
+import { useOwnerTime } from '@/hooks/use-owner-time';
+import { useMessages } from '@/i18n';
 import { cn } from '@/lib/utils';
 import { formatHour, isAtDesk, NAME, WORKING_HOURS } from '@/content/profile';
 import { ArrowDown, ArrowRight } from 'lucide-react';
@@ -10,8 +11,6 @@ import { useSyncExternalStore } from 'react';
 /* -------------------------------------------------------------------------- */
 /* Content                                                                    */
 /* -------------------------------------------------------------------------- */
-
-const GREETING = "Hi, I'm";
 
 const HOURS = Array.from({ length: 24 }, (_, hour) => hour);
 const SCALE_LABELS = ['00:00', '06:00', '12:00', '18:00'];
@@ -42,13 +41,15 @@ function usePrefersReducedMotion() {
 /* -------------------------------------------------------------------------- */
 
 function Eyebrow() {
+  const t = useMessages();
+
   return (
     <p className="mbe-6 font-mono text-[13px]">
       {/* The comment markers are decoration; screen readers would read them as symbols. */}
       <span className="text-muted-foreground" aria-hidden="true">
         /**
       </span>
-      <span className="mx-[1ch]">Thoughtful by design. Curious by default.</span>
+      <span className="mx-[1ch]">{t.hero.eyebrow}</span>
       <span className="text-muted-foreground" aria-hidden="true">
         */
       </span>
@@ -58,16 +59,17 @@ function Eyebrow() {
 
 function Title() {
   const reducedMotion = usePrefersReducedMotion();
+  const greeting = useMessages().hero.greeting;
   const nameClass = 'text-muted-foreground block font-extrabold';
 
   return (
     <h1 id="hero-title" className="text-[clamp(5rem,10.6vw,9.375rem)] leading-none">
       {/* Read once as plain text. The per-character animation below is visual only,
           otherwise assistive tech may announce the name letter by letter. */}
-      <span className="sr-only">{`${GREETING} ${NAME}.`}</span>
+      <span className="sr-only">{`${greeting} ${NAME}.`}</span>
 
       <span aria-hidden="true">
-        <span className="block font-extralight tracking-[-0.075em]">{GREETING}</span>
+        <span className="block font-extralight tracking-[-0.075em]">{greeting}</span>
         {reducedMotion ? (
           <span className={nameClass}>{NAME}.</span>
         ) : (
@@ -81,18 +83,20 @@ function Title() {
 }
 
 function Actions() {
+  const t = useMessages();
+
   // Plain anchors: in-page hash links need no Inertia visit.
   return (
     <div className="flex flex-col gap-4 sm:flex-row">
       <Button asChild size="lg">
         <a href="#work">
-          Explore my work
+          {t.hero.exploreWork}
           <ArrowDown aria-hidden="true" />
         </a>
       </Button>
       <Button asChild size="lg" variant="outline">
         <a href="#about">
-          A little about me
+          {t.hero.aboutMe}
           <ArrowRight aria-hidden="true" />
         </a>
       </Button>
@@ -157,7 +161,8 @@ function DayStrip({ currentHour }: { currentHour: number | null }) {
  * hint and the offset from the visitor's own timezone.
  */
 function TimeCard({ className }: { className?: string }) {
-  const { city, offsetLabel, clock, hour, isWeekend, difference } = useOwnerTime();
+  const { city, offsetLabel, clock, hour, isWeekend, differenceLabel } = useOwnerTime();
+  const t = useMessages();
 
   const ready = clock !== null && hour !== null;
   const atDesk = ready && isAtDesk(hour, isWeekend ?? false);
@@ -166,7 +171,7 @@ function TimeCard({ className }: { className?: string }) {
   return (
     <section aria-labelledby="hero-time-title" className={cn('border-border bg-muted/30 border', className)}>
       <div className="border-border text-muted-foreground flex items-center justify-between gap-4 border-b px-6 py-3 font-mono text-xs">
-        <p id="hero-time-title">{`Time in ${city}`}</p>
+        <p id="hero-time-title">{t.time.timeIn(city)}</p>
         <p>{offsetLabel}</p>
       </div>
 
@@ -193,19 +198,17 @@ function TimeCard({ className }: { className?: string }) {
             {ready && (
               <>
                 <StatusDot active={atDesk} />
-                {atDesk ? 'Probably at my desk' : 'Probably away from my desk'}
+                {atDesk ? t.time.atDesk : t.time.awayFromDesk}
               </>
             )}
           </p>
-          <p className="text-muted-foreground min-h-6 text-sm">
-            {difference !== null && describeDifference(difference)}
-          </p>
+          <p className="text-muted-foreground min-h-6 text-sm">{differenceLabel}</p>
         </div>
 
         <div>
           <DayStrip currentHour={hour} />
           <p className="text-muted-foreground mt-4 text-sm leading-6">
-            I usually work {formatHour(WORKING_HOURS.start)}–{formatHour(WORKING_HOURS.end)} {city} time, on weekdays.
+            {t.time.workingHours(formatHour(WORKING_HOURS.start), formatHour(WORKING_HOURS.end), city)}
           </p>
         </div>
       </div>
@@ -218,6 +221,8 @@ function TimeCard({ className }: { className?: string }) {
 /* -------------------------------------------------------------------------- */
 
 export default function Hero() {
+  const t = useMessages();
+
   return (
     <section id="hero" aria-labelledby="hero-title">
       <Container border={true}>
@@ -227,7 +232,7 @@ export default function Hero() {
             <Title />
 
             <p className="text-muted-foreground mbs-8 mbe-7 max-w-lg text-base leading-relaxed tracking-tight text-balance md:text-lg">
-              I turn thoughtful ideas into meaningful digital experiences, crafted with care from concept to completion.
+              {t.hero.intro}
             </p>
 
             <Actions />

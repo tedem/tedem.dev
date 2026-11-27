@@ -1,20 +1,9 @@
 import Container from '@/components/site/container';
 import { Button } from '@/components/ui/button';
-import {
-  AVAILABILITY,
-  CONTACT_DESCRIPTION,
-  CONTACT_TITLE,
-  EMAIL,
-  MAILTO,
-  MAILTO_WITH_SUBJECT,
-  REPLY_TIME,
-  SOCIALS,
-  WORKING_HOURS,
-  formatHour,
-  isAtDesk,
-} from '@/content/profile';
-import { useCopyToClipboard, type CopyStatus } from '@/hooks/use-copy-to-clipboard';
-import { describeDifference, useOwnerTime } from '@/hooks/use-owner-time';
+import { EMAIL, MAILTO, mailtoWithSubject, SOCIALS, WORKING_HOURS, formatHour, isAtDesk } from '@/content/profile';
+import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard';
+import { useOwnerTime } from '@/hooks/use-owner-time';
+import { useMessages } from '@/i18n';
 import { cn } from '@/lib/utils';
 import Metadata from '@/components/site/metadata';
 import { ArrowUpRight, Check, Copy, Mail } from 'lucide-react';
@@ -23,14 +12,8 @@ import type { ReactNode } from 'react';
 /*
  * /contact is built around one action: writing an email. The address is the biggest
  * thing on the page; below it, a strip answers "when will I hear back?" and the
- * other channels sit in a row of tiles. All copy comes from content/profile.ts.
+ * other channels sit in a row of tiles. All copy comes from i18n/messages.
  */
-
-const COPY_MESSAGES: Record<CopyStatus, string> = {
-  idle: '',
-  copied: 'Email address copied to clipboard',
-  error: 'Could not copy the email address. Use the email link instead.',
-};
 
 const focusRing =
   'outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background';
@@ -55,6 +38,8 @@ function PulseDot({ active = true }: { active?: boolean }) {
 /* -------------------------------------------------------------------------- */
 
 function Intro() {
+  const t = useMessages();
+
   return (
     <header className="border-border border-b">
       <Container border={true}>
@@ -62,19 +47,19 @@ function Intro() {
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-xs">
             {/* Decoration: the heading below names the page. */}
             <span className="text-primary" aria-hidden="true">
-              ~/contact
+              ~/{t.paths.contact}
             </span>
             <span className="border-border text-muted-foreground flex items-center gap-2 border px-3 py-1">
               <PulseDot />
-              {AVAILABILITY}
+              {t.contact.availability}
             </span>
           </div>
 
           <h1 className="mt-6 text-[clamp(2.75rem,8vw,7rem)] leading-[0.95] font-medium tracking-[-0.075em] text-balance">
-            {CONTACT_TITLE}
+            {t.contact.title}
           </h1>
 
-          <p className="text-muted-foreground mt-8 max-w-xl text-base leading-8 text-pretty">{CONTACT_DESCRIPTION}</p>
+          <p className="text-muted-foreground mt-8 max-w-xl text-base leading-8 text-pretty">{t.contact.description}</p>
         </div>
       </Container>
     </header>
@@ -88,12 +73,14 @@ function Intro() {
 function WriteToMe() {
   const { status, copy } = useCopyToClipboard();
   const copied = status === 'copied';
+  const t = useMessages();
+  const copyMessages = { idle: '', copied: t.contact.copiedMessage, error: t.contact.copyError };
 
   return (
     <section aria-labelledby="email-title" className="border-border bg-muted/30 border">
       <div className="border-border flex items-center justify-between gap-4 border-b px-6 py-3">
         <h2 id="email-title" className={label}>
-          Write to me
+          {t.contact.writeToMe}
         </h2>
         <p className={label}>mailto</p>
       </div>
@@ -111,19 +98,19 @@ function WriteToMe() {
 
         <div className="flex shrink-0 flex-wrap gap-3">
           <Button size="lg" asChild>
-            <a href={MAILTO_WITH_SUBJECT}>
+            <a href={mailtoWithSubject(t.contact.emailSubject)}>
               <Mail aria-hidden="true" />
-              Start an email
+              {t.contact.startEmail}
             </a>
           </Button>
           <Button size="lg" variant="outline" type="button" onClick={() => copy(EMAIL)}>
             {copied ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}
-            {copied ? 'Copied' : 'Copy address'}
+            {copied ? t.contact.copied : t.contact.copyAddress}
           </Button>
 
           {/* Announces success or failure; the button label alone is not announced. */}
           <span className="sr-only" role="status" aria-live="polite" aria-atomic="true">
-            {COPY_MESSAGES[status]}
+            {copyMessages[status]}
           </span>
         </div>
       </div>
@@ -149,7 +136,8 @@ function TimingItem({ term, children }: { term: string; children: ReactNode }) {
 
 function Timing() {
   // Timezone, locale and offset come from Laravel; see use-owner-time.ts.
-  const { city, offsetLabel, clock, hour, isWeekend, difference } = useOwnerTime();
+  const { city, offsetLabel, clock, hour, isWeekend, differenceLabel } = useOwnerTime();
+  const t = useMessages();
   const ready = clock !== null && hour !== null;
   const atDesk = ready && isAtDesk(hour, isWeekend ?? false);
   const time = clock && `${clock.hours}:${clock.minutes}`;
@@ -157,15 +145,15 @@ function Timing() {
   return (
     <section aria-labelledby="timing-title">
       <h2 id="timing-title" className={cn(label, 'mb-4')}>
-        When to expect a reply
+        {t.contact.whenToExpect}
       </h2>
 
       <dl className="border-border grid border md:grid-cols-3">
-        <TimingItem term="Reply time">
-          <p className="text-lg font-medium">{REPLY_TIME}</p>
+        <TimingItem term={t.contact.replyTimeLabel}>
+          <p className="text-lg font-medium">{t.contact.replyTime}</p>
         </TimingItem>
 
-        <TimingItem term={`Local time in ${city}`}>
+        <TimingItem term={t.time.localTimeIn(city)}>
           <p className="flex items-baseline gap-3 text-lg font-medium">
             {/* Placeholder until the browser knows the time; keeps the strip from jumping. */}
             <span className="tabular-nums">{time ? <time dateTime={time}>{time}</time> : '--:--'}</span>
@@ -176,20 +164,18 @@ function Timing() {
             {ready && (
               <>
                 <PulseDot active={atDesk} />
-                {atDesk ? 'Probably at my desk' : 'Probably away from my desk'}
+                {atDesk ? t.time.atDesk : t.time.awayFromDesk}
               </>
             )}
           </p>
-          <p className="text-muted-foreground min-h-5 text-sm">
-            {difference !== null && describeDifference(difference)}
-          </p>
+          <p className="text-muted-foreground min-h-5 text-sm">{differenceLabel}</p>
         </TimingItem>
 
-        <TimingItem term="Working hours">
+        <TimingItem term={t.contact.workingHoursLabel}>
           <p className="text-lg font-medium tabular-nums">
             {formatHour(WORKING_HOURS.start)}–{formatHour(WORKING_HOURS.end)}
           </p>
-          <p className="text-muted-foreground mt-2 text-sm">Weekdays, {city} time</p>
+          <p className="text-muted-foreground mt-2 text-sm">{t.time.weekdays(city)}</p>
         </TimingItem>
       </dl>
     </section>
@@ -201,10 +187,12 @@ function Timing() {
 /* -------------------------------------------------------------------------- */
 
 function Elsewhere() {
+  const t = useMessages();
+
   return (
     <section aria-labelledby="elsewhere-title">
       <h2 id="elsewhere-title" className={cn(label, 'mb-4')}>
-        Elsewhere
+        {t.common.elsewhere}
       </h2>
 
       <ul className="grid grid-cols-2 gap-2 lg:grid-cols-4">
@@ -229,7 +217,7 @@ function Elsewhere() {
               <span>
                 <span className="block font-medium">{name}</span>
                 <span className="text-muted-foreground block truncate text-sm">{handle}</span>
-                <span className="sr-only">(opens in a new tab)</span>
+                <span className="sr-only">{t.common.opensInNewTab}</span>
               </span>
             </a>
           </li>
@@ -244,9 +232,11 @@ function Elsewhere() {
 /* -------------------------------------------------------------------------- */
 
 export default function ContactPage() {
+  const t = useMessages();
+
   return (
     <>
-      <Metadata title="Contact" description={CONTACT_DESCRIPTION} pageType="ContactPage" />
+      <Metadata title={t.nav.contact} description={t.contact.description} pageType="ContactPage" />
 
       <Intro />
 

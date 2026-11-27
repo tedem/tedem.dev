@@ -1,9 +1,7 @@
 import Container from '@/components/site/container';
 import Metadata from '@/components/site/metadata';
 import { Button } from '@/components/ui/button';
-import { EMPTY_DETAIL, EMPTY_TITLE, POSTS_DESCRIPTION, POSTS_TITLE, formatPostDate } from '@/content/posts';
-import { about, home } from '@/routes';
-import { show } from '@/routes/posts';
+import { formatPostDate, useLocale, useMessages, useRoutes } from '@/i18n';
 import type { PostSummary } from '@/types';
 import { Link } from '@inertiajs/react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
@@ -15,12 +13,12 @@ import type { ReactNode } from 'react';
  * the frame shows its empty state.
  */
 
-const COLUMNS = ['Date', 'Title', 'Read'] as const;
-
 /** Shared by the column header and every row, so the columns line up. */
 const ROW_GRID = 'sm:grid sm:grid-cols-[7rem_1fr_4rem] sm:gap-6';
 
 function Intro() {
+  const t = useMessages();
+
   return (
     <header className="border-border border-b">
       <Container border={true}>
@@ -28,15 +26,15 @@ function Intro() {
           <div>
             <p className="text-primary font-mono text-xs">
               {/* Decoration: the heading below names the page. */}
-              <span aria-hidden="true">~/posts</span>
+              <span aria-hidden="true">~/{t.paths.posts}</span>
             </p>
 
             <h1 className="mt-6 max-w-3xl text-[clamp(2.625rem,6vw,4.375rem)] leading-none font-medium tracking-[-0.075em] text-balance">
-              {POSTS_TITLE}
+              {t.posts.title}
             </h1>
           </div>
 
-          <p className="text-muted-foreground max-w-xs text-sm leading-7 text-pretty">{POSTS_DESCRIPTION}</p>
+          <p className="text-muted-foreground max-w-xs text-sm leading-7 text-pretty">{t.posts.description}</p>
         </div>
       </Container>
     </header>
@@ -45,21 +43,24 @@ function Intro() {
 
 /** The listing frame: prompt line and column header (decoration), then the list or the empty state. */
 function Listing({ count, children }: { count: number; children: ReactNode }) {
+  const t = useMessages();
+  const { date, title, read } = t.posts.columns;
+
   return (
     <section aria-labelledby="posts-list-title" className="border-border border">
       <h2 id="posts-list-title" className="sr-only">
-        All posts
+        {t.posts.listTitle}
       </h2>
 
       {/* A prompt line and the column header. Hidden from assistive tech: the list itself carries the facts. */}
       <div aria-hidden="true" className="text-muted-foreground font-mono text-xs">
         <p className="border-border flex items-center gap-2 border-b px-6 py-3">
-          <span className="text-primary">~/posts</span>
+          <span className="text-primary">~/{t.paths.posts}</span>
           <span>$ ls --sort=date</span>
           <span className="ml-auto tabular-nums">total {count}</span>
         </p>
         <div className={`border-border border-b px-6 py-3 max-sm:hidden ${ROW_GRID}`}>
-          {COLUMNS.map((column) => (
+          {[date, title, read].map((column) => (
             <span key={column} className="last:text-right">
               {column}
             </span>
@@ -73,19 +74,23 @@ function Listing({ count, children }: { count: number; children: ReactNode }) {
 }
 
 function PostList({ posts }: { posts: readonly PostSummary[] }) {
+  const locale = useLocale();
+  const t = useMessages();
+  const routes = useRoutes();
+
   return (
     <ol role="list" className="divide-border divide-y">
       {posts.map((post) => (
         <li key={post.publicId}>
           <Link
-            href={show({ slug: post.slug, publicId: post.publicId }).url}
+            href={routes.post({ slug: post.slug, publicId: post.publicId }).url}
             className={`group hover:bg-muted/30 focus-visible:ring-ring block px-6 py-6 transition-colors outline-none focus-visible:ring-2 focus-visible:ring-inset ${ROW_GRID}`}
           >
             <time
               dateTime={post.publishedAt}
               className="text-muted-foreground font-mono text-xs tabular-nums sm:pt-1.5"
             >
-              {formatPostDate(post.publishedAt)}
+              {formatPostDate(post.publishedAt, locale)}
             </time>
             <span className="mt-2 block sm:mt-0">
               <span className="group-hover:text-primary block text-lg font-medium tracking-tight text-balance">
@@ -94,8 +99,8 @@ function PostList({ posts }: { posts: readonly PostSummary[] }) {
               <span className="text-muted-foreground mt-1 block text-sm leading-6 text-pretty">{post.description}</span>
             </span>
             <span className="text-muted-foreground mt-2 block font-mono text-xs tabular-nums sm:mt-0 sm:pt-1.5 sm:text-right">
-              {post.readingMinutes} min
-              <span className="sr-only"> read</span>
+              {t.common.minutes(post.readingMinutes)}
+              <span className="sr-only"> {t.common.read}</span>
             </span>
           </Link>
         </li>
@@ -105,6 +110,9 @@ function PostList({ posts }: { posts: readonly PostSummary[] }) {
 }
 
 function EmptyState() {
+  const t = useMessages();
+  const routes = useRoutes();
+
   return (
     <div className="bg-muted/30 flex flex-col items-center px-6 py-20 text-center sm:py-28">
       {/* Three faded rows: the shape of the posts that are not here yet. */}
@@ -117,19 +125,19 @@ function EmptyState() {
         ))}
       </div>
 
-      <p className="mt-12 text-xl font-medium tracking-tight">{EMPTY_TITLE}</p>
-      <p className="text-muted-foreground mt-2 max-w-sm text-sm leading-7 text-pretty">{EMPTY_DETAIL}</p>
+      <p className="mt-12 text-xl font-medium tracking-tight">{t.posts.emptyTitle}</p>
+      <p className="text-muted-foreground mt-2 max-w-sm text-sm leading-7 text-pretty">{t.posts.emptyDetail}</p>
 
       <div className="mt-8 flex flex-wrap justify-center gap-3">
         <Button variant="outline" asChild>
-          <Link href={home().url}>
+          <Link href={routes.home().url}>
             <ArrowLeft aria-hidden="true" />
-            Back home
+            {t.common.backHome}
           </Link>
         </Button>
         <Button variant="outline" asChild>
-          <Link href={about().url}>
-            Read about me
+          <Link href={routes.about().url}>
+            {t.common.readAboutMe}
             <ArrowRight aria-hidden="true" />
           </Link>
         </Button>
@@ -139,9 +147,11 @@ function EmptyState() {
 }
 
 export default function PostsPage({ posts }: { posts: PostSummary[] }) {
+  const t = useMessages();
+
   return (
     <>
-      <Metadata title="Posts" description={POSTS_DESCRIPTION} pageType="CollectionPage" />
+      <Metadata title={t.nav.posts} description={t.posts.description} pageType="CollectionPage" />
 
       <Intro />
 

@@ -1,6 +1,7 @@
 import Container from '@/components/site/container';
 import { EMAIL, MAILTO, SOCIALS, WORDMARK } from '@/content/profile';
 import { type Appearance, useAppearance } from '@/hooks/use-appearance';
+import { useMessages } from '@/i18n';
 import { ArrowUp, ArrowUpRight, Monitor, Moon, Sun, type LucideIcon } from 'lucide-react';
 
 /* -------------------------------------------------------------------------- */
@@ -9,14 +10,13 @@ import { ArrowUp, ArrowUpRight, Monitor, Moon, Sun, type LucideIcon } from 'luci
 
 type ThemeOption = {
   value: Appearance;
-  label: string;
   icon: LucideIcon;
 };
 
 const THEMES: readonly ThemeOption[] = [
-  { value: 'light', label: 'Light', icon: Sun },
-  { value: 'dark', label: 'Dark', icon: Moon },
-  { value: 'system', label: 'System', icon: Monitor },
+  { value: 'light', icon: Sun },
+  { value: 'dark', icon: Moon },
+  { value: 'system', icon: Monitor },
 ];
 
 const subheading = 'text-muted-foreground font-mono text-xs font-normal';
@@ -29,15 +29,16 @@ const focusRing =
 /* -------------------------------------------------------------------------- */
 
 function Contact() {
+  const t = useMessages();
+
   return (
     <section aria-labelledby="footer-contact-title">
       <h2 id="footer-contact-title" className={subheading}>
-        <span aria-hidden="true">~/</span>say-hello
+        <span aria-hidden="true">~/</span>
+        {t.footer.sayHello}
       </h2>
 
-      <p className="text-muted-foreground mt-4 max-w-sm text-sm leading-7 text-pretty">
-        Open to new projects, questions and good ideas.
-      </p>
+      <p className="text-muted-foreground mt-4 max-w-sm text-sm leading-7 text-pretty">{t.footer.sayHelloText}</p>
 
       <a
         href={MAILTO}
@@ -50,10 +51,13 @@ function Contact() {
 }
 
 function Socials() {
+  const t = useMessages();
+
   return (
     <section aria-labelledby="footer-social-title">
       <h2 id="footer-social-title" className={subheading}>
-        <span aria-hidden="true">~/</span>elsewhere
+        <span aria-hidden="true">~/</span>
+        {t.footer.elsewhere}
       </h2>
 
       <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-3">
@@ -67,7 +71,7 @@ function Socials() {
             >
               <Icon className="size-5 shrink-0" aria-hidden="true" />
               <span className="font-medium">{label}</span>
-              <span className="sr-only">(opens in a new tab)</span>
+              <span className="sr-only">{t.common.opensInNewTab}</span>
               <ArrowUpRight
                 className="text-muted-foreground group-hover:text-primary size-4 shrink-0 transition-transform motion-safe:group-hover:translate-x-0.5 motion-safe:group-hover:-translate-y-0.5"
                 aria-hidden="true"
@@ -88,11 +92,13 @@ function Socials() {
  */
 function ThemeSwitch() {
   const { appearance, updateAppearance } = useAppearance();
+  const t = useMessages();
 
   return (
-    <div role="group" aria-label="Theme" className="border-border inline-flex border">
-      {THEMES.map(({ value, label, icon: Icon }) => {
+    <div role="group" aria-label={t.footer.theme.label} className="border-border inline-flex border">
+      {THEMES.map(({ value, icon: Icon }) => {
         const selected = appearance === value;
+        const label = t.footer.theme[value];
 
         return (
           <button
@@ -137,6 +143,8 @@ function Wordmark() {
 /* -------------------------------------------------------------------------- */
 
 export default function Footer() {
+  const t = useMessages();
+
   return (
     <footer className="border-border border-t">
       <Container border={true}>
@@ -148,14 +156,14 @@ export default function Footer() {
         <div className="border-border text-muted-foreground flex flex-wrap items-center justify-between gap-4 border-t py-6 text-sm">
           {/* The year is computed in the browser, so a prerendered page never shows a stale one. */}
           <p>
-            © <span suppressHydrationWarning>{new Date().getFullYear()}</span> tedem. All rights reserved.
+            © <span suppressHydrationWarning>{new Date().getFullYear()}</span> {WORDMARK}. {t.footer.rights}
           </p>
 
           <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
             <ThemeSwitch />
 
             <a href="#" className={`hover:text-primary flex items-center gap-2 py-1 transition-colors ${focusRing}`}>
-              Back to top
+              {t.footer.backToTop}
               <ArrowUp className="size-4" aria-hidden="true" />
             </a>
           </div>

@@ -1,6 +1,7 @@
 import Container from '@/components/site/container';
 import SectionHeader from '@/components/site/section-header';
-import { PRINCIPLES, type Principle } from '@/content/profile';
+import { type Principle } from '@/content/profile';
+import { useMessages } from '@/i18n';
 import { CornerDownRight } from 'lucide-react';
 
 const pad = (value: number) => String(value).padStart(2, '0');
@@ -26,26 +27,29 @@ function PrincipleItem({ index, total, title, detail }: Principle & { index: num
 }
 
 export default function Approach() {
+  const t = useMessages();
+  const principles = t.profile.principles;
+
   return (
     <section className="border-border border-t" id="approach" aria-labelledby="approach-title">
       <Container border={true}>
         <div className="py-8 lg:py-16">
           <SectionHeader
             id="approach-title"
-            path="approach"
-            tagline="Small steps, thoughtful outcomes"
+            path={t.paths.approach}
+            tagline={t.approach.tagline}
             title={
               <>
-                Thought first. <span className="text-muted-foreground">Craft always.</span>
+                {t.approach.titleStart} <span className="text-muted-foreground">{t.approach.titleEnd}</span>
               </>
             }
-            description="A clear process makes room for good surprises. Here's how I like to get there."
+            description={t.approach.description}
           />
 
           {/* An ordered list: the steps really are a sequence. role="list" keeps the semantics in Safari. */}
           <ol role="list" className="divide-accent border-accent mt-8 divide-y border-y md:mt-16">
-            {PRINCIPLES.map((principle, index) => (
-              <PrincipleItem key={principle.title} index={index} total={PRINCIPLES.length} {...principle} />
+            {principles.map((principle, index) => (
+              <PrincipleItem key={principle.title} index={index} total={principles.length} {...principle} />
             ))}
           </ol>
         </div>

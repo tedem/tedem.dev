@@ -2,22 +2,12 @@ import Container from '@/components/site/container';
 import SectionHeader from '@/components/site/section-header';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { describeDifference, useOwnerTime } from '@/hooks/use-owner-time';
+import { useOwnerTime } from '@/hooks/use-owner-time';
+import { useMessages } from '@/i18n';
 import { cn } from 'cn';
 import { ChevronDown, Pause, Play } from 'lucide-react';
 import { useId, useState, type ReactNode } from 'react';
-import {
-  ABOUT_DESCRIPTION,
-  BODY,
-  CAREER_START,
-  FOCUS,
-  FOCUS_AREAS,
-  LEAD,
-  LOCATION,
-  ROLE,
-  STACK,
-  yearsSince,
-} from '@/content/profile';
+import { CAREER_START, STACK, yearsSince } from '@/content/profile';
 
 type Fact = {
   label: string;
@@ -97,7 +87,7 @@ function LocalTime({
 }: {
   offsetLabel: string;
   time: string | null;
-  difference: number | null;
+  difference: string | null;
 }) {
   return (
     <>
@@ -110,29 +100,31 @@ function LocalTime({
         )}
       </span>
       {/* min-h reserves the line so the layout does not jump when the clock mounts. */}
-      <span className="text-muted-foreground block min-h-6 text-sm font-normal">
-        {difference !== null && describeDifference(difference)}
-      </span>
+      <span className="text-muted-foreground block min-h-6 text-sm font-normal">{difference}</span>
     </>
   );
 }
 
 function DetailsCell() {
   // Timezone, locale and offset come from Laravel; see use-owner-time.ts.
-  const { now, offsetLabel, clock, difference } = useOwnerTime();
+  const { now, offsetLabel, clock, differenceLabel } = useOwnerTime();
+  const t = useMessages();
   const years = yearsSince(CAREER_START, now ?? new Date());
   const time = clock && `${clock.hours}:${clock.minutes}`;
 
   const facts: readonly Fact[] = [
-    { label: 'Role', value: ROLE },
-    { label: 'Location', value: LOCATION },
-    { label: 'Experience', value: `${years}+ years` },
-    { label: 'Focus', value: FOCUS },
-    { label: 'Timezone', value: <LocalTime offsetLabel={offsetLabel} time={time} difference={difference} /> },
+    { label: t.aboutSection.role, value: t.profile.role },
+    { label: t.aboutSection.location, value: t.profile.location },
+    { label: t.aboutSection.experience, value: t.aboutSection.years(years) },
+    { label: t.aboutSection.focus, value: t.profile.focus },
+    {
+      label: t.aboutSection.timezone,
+      value: <LocalTime offsetLabel={offsetLabel} time={time} difference={differenceLabel} />,
+    },
   ];
 
   return (
-    <Cell id="about-details-title" title="Details" className="border-b">
+    <Cell id="about-details-title" title={t.aboutSection.details} className="border-b">
       <DefinitionList items={facts} strongValues />
     </Cell>
   );
@@ -210,11 +202,12 @@ function MarqueeRow({
 
 function StackSection() {
   const [paused, setPaused] = useState(false);
+  const t = useMessages();
 
   return (
     <Cell
       id="about-stack-title"
-      title="Stack"
+      title={t.aboutSection.stack}
       className="border-b"
       action={
         // WCAG 2.2.2: moving content needs a pause control. Hover also pauses.
@@ -224,21 +217,20 @@ function StackSection() {
           variant="outline"
           size="sm"
           onClick={() => setPaused((prev) => !prev)}
+          // The name repeats the visible word, so voice control users can say what they see (WCAG 2.5.3).
+          aria-label={paused ? t.aboutSection.playScrolling : t.aboutSection.pauseScrolling}
           className="text-muted-foreground -my-1 -mr-2 h-6 gap-1.5 px-2 font-mono text-xs motion-reduce:hidden"
         >
           {paused ? <Play className="size-3" aria-hidden="true" /> : <Pause className="size-3" aria-hidden="true" />}
-          {paused ? 'Play' : 'Pause'}
-          <span className="sr-only">scrolling</span>
+          {paused ? t.aboutSection.play : t.aboutSection.pause}
         </Button>
       }
     >
-      <p className="text-muted-foreground mt-4 text-sm leading-7 text-pretty">
-        Languages, frameworks and tools I use day to day, from web apps to native iOS.
-      </p>
+      <p className="text-muted-foreground mt-4 text-sm leading-7 text-pretty">{t.aboutSection.stackIntro}</p>
 
       <div className="mt-6 flex flex-col gap-2">
         <MarqueeRow items={STACK_ROW_ONE} paused={paused} labelledBy="about-stack-title" />
-        <MarqueeRow items={STACK_ROW_TWO} paused={paused} reverse label="Stack, continued" />
+        <MarqueeRow items={STACK_ROW_TWO} paused={paused} reverse label={t.aboutSection.stackContinued} />
       </div>
     </Cell>
   );
@@ -251,6 +243,7 @@ function StackSection() {
 export default function About() {
   const [expanded, setExpanded] = useState(false);
   const panelId = useId();
+  const t = useMessages();
 
   return (
     <section className="border-border border-t" id="about" aria-labelledby="about-title">
@@ -258,10 +251,10 @@ export default function About() {
         <div className="py-8 lg:py-16">
           <SectionHeader
             id="about-title"
-            path="about"
-            tagline="A bit about me"
-            title="Building the web, end to end."
-            description={ABOUT_DESCRIPTION}
+            path={t.paths.about}
+            tagline={t.aboutSection.tagline}
+            title={t.aboutSection.title}
+            description={t.profile.aboutDescription}
           />
 
           {/*
@@ -270,12 +263,12 @@ export default function About() {
             Row 2 (toggle):         What I do | Stack
           */}
           <div className="border-border bg-muted/30 mt-8 grid grid-cols-1 border md:mt-16 md:grid-cols-2">
-            <Cell id="about-bio-title" title="Bio" className="max-md:border-b md:border-r md:border-b">
+            <Cell id="about-bio-title" title={t.aboutSection.bio} className="max-md:border-b md:border-r md:border-b">
               <div className="mt-4 flex flex-col gap-6">
                 <p className="max-w-md text-xl leading-snug font-medium tracking-tight text-balance sm:text-2xl">
-                  {LEAD}
+                  {t.profile.lead}
                 </p>
-                <p className="text-muted-foreground max-w-md text-sm leading-7 text-pretty">{BODY}</p>
+                <p className="text-muted-foreground max-w-md text-sm leading-7 text-pretty">{t.profile.body}</p>
               </div>
             </Cell>
 
@@ -286,8 +279,8 @@ export default function About() {
               id={panelId}
               className={cn('min-w-0 grid-cols-1 md:col-span-2 md:grid-cols-2', expanded ? 'grid' : 'hidden')}
             >
-              <Cell id="about-focus-title" title="What I do" className="border-b md:border-r">
-                <DefinitionList items={FOCUS_AREAS} />
+              <Cell id="about-focus-title" title={t.aboutSection.whatIDo} className="border-b md:border-r">
+                <DefinitionList items={t.profile.focusAreas} />
               </Cell>
 
               <StackSection />
@@ -301,13 +294,13 @@ export default function About() {
               aria-controls={panelId}
               className="text-muted-foreground hover:text-primary h-auto w-full justify-start gap-3 rounded-none px-8 py-4 text-sm md:col-span-2"
             >
-              <span className="font-medium">{expanded ? 'Show less' : 'Show more'}</span>
+              <span className="font-medium">{expanded ? t.common.showLess : t.common.showMore}</span>
               {!expanded && (
                 <>
                   <Badge variant="outline" aria-hidden="true">
                     +2
                   </Badge>
-                  <span className="sr-only">(2 more sections: What I do and Stack)</span>
+                  <span className="sr-only">{t.aboutSection.moreSections}</span>
                 </>
               )}
               <ChevronDown

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\Locale;
 use App\Markdown\MarkdownRenderer;
 use Carbon\CarbonImmutable;
 use Database\Factories\PostFactory;
@@ -53,11 +54,13 @@ final class Post extends Model
     }
 
     /**
-     * The public address: /posts/{slug}/{publicId}.
+     * The public address in a language: /posts/{slug}/{publicId} or /en/posts/{slug}/{publicId}.
      */
-    public function url(): string
+    public function url(?Locale $locale = null): string
     {
-        return route('posts.show', ['slug' => $this->slug, 'publicId' => $this->public_id]);
+        $locale ??= Locale::default();
+
+        return route($locale->route('posts.show'), ['slug' => $this->slug, 'publicId' => $this->public_id]);
     }
 
     public function isPublished(): bool

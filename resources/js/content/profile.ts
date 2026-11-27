@@ -17,7 +17,7 @@ export type Principle = {
 };
 
 export type StackGroup = {
-  label: string;
+  key: 'languages' | 'frameworks' | 'platform' | 'tooling';
   items: readonly string[];
 };
 
@@ -28,11 +28,7 @@ export type SocialLink = {
   icon: ComponentType<SVGProps<SVGSVGElement>>;
 };
 
-// TODO: replace the placeholder content below with your own.
-export const LEAD = 'I build web products end to end, from the database and API to the interface people actually use.';
-
-export const BODY =
-  'I care about accessibility, performance and maintainable code, and I like owning a feature from the first idea to production.';
+// Copy (bio, role, focus areas, principles, contact lines) lives in i18n/messages, per language.
 
 /** The name next to the logo mark: site header, footer, admin sidebar. */
 export const WORDMARK = 'tedem';
@@ -40,42 +36,15 @@ export const WORDMARK = 'tedem';
 /** First name, as the hero greets visitors ("Hi, I'm Medet.") and as search engines see the site's author. */
 export const NAME = 'Medet';
 
-/** Short summary of the about section and the /about page. */
-export const ABOUT_DESCRIPTION = 'Who I am, what I do and the tools I reach for.';
-
-export const ROLE = 'Full stack developer';
-export const LOCATION = 'İstanbul, Turkey';
-export const FOCUS = 'End-to-end products';
-
 // Experience grows by itself: enter the year you started (month is 0-based, so 0 = January).
 export const CAREER_START = new Date(2012, 0, 1);
 
-export const FOCUS_AREAS: readonly Fact[] = [
-  { label: 'Frontend', value: 'Accessible, fast interfaces with React and Next.js.' },
-  { label: 'Backend', value: 'APIs and data models with Node.js, PHP and Laravel.' },
-  { label: 'Mobile', value: 'Native iOS apps with Swift and SwiftUI.' },
-];
-
-export const PRINCIPLES: readonly Principle[] = [
-  {
-    title: 'Find the real question.',
-    detail: 'Listen closely, make sense of the moving parts, and agree on what matters before making anything.',
-  },
-  {
-    title: 'Make it feel inevitable.',
-    detail: 'Give the idea a clear shape through considered design, useful technology, and a little restraint.',
-  },
-  {
-    title: 'Refine until it feels right.',
-    detail: 'Fine-tune interactions, remove friction, and give the final details the attention they deserve.',
-  },
-];
-
+/** Group labels are translated: see `profile.stackGroups` in i18n/messages. */
 export const STACK_GROUPS: readonly StackGroup[] = [
-  { label: 'Languages', items: ['TypeScript', 'JavaScript', 'PHP', 'Swift'] },
-  { label: 'Frameworks', items: ['React', 'Next.js', 'Laravel', 'SwiftUI', 'Tailwind CSS'] },
-  { label: 'Platform & data', items: ['Node.js', 'PostgreSQL', 'MySQL', 'Redis'] },
-  { label: 'Tooling', items: ['Docker', 'Git'] },
+  { key: 'languages', items: ['TypeScript', 'JavaScript', 'PHP', 'Swift'] },
+  { key: 'frameworks', items: ['React', 'Next.js', 'Laravel', 'SwiftUI', 'Tailwind CSS'] },
+  { key: 'platform', items: ['Node.js', 'PostgreSQL', 'MySQL', 'Redis'] },
+  { key: 'tooling', items: ['Docker', 'Git'] },
 ];
 
 /** Every stack item as one flat list (the home page marquee). */
@@ -83,12 +52,9 @@ export const STACK: readonly string[] = STACK_GROUPS.flatMap((group) => group.it
 
 export const EMAIL = 'hello@tedem.dev';
 export const MAILTO = `mailto:${EMAIL}`;
-export const MAILTO_WITH_SUBJECT = `${MAILTO}?subject=${encodeURIComponent('Project inquiry')}`;
 
-export const CONTACT_TITLE = 'Have a good one in mind?';
-export const CONTACT_DESCRIPTION = "Let's talk about your project and see if we're a good fit for each other.";
-export const AVAILABILITY = 'Available for new projects';
-export const REPLY_TIME = 'I usually reply within 24 hours.';
+/** A mailto: link with the subject line filled in ("Project inquiry", in the page's language). */
+export const mailtoWithSubject = (subject: string) => `${MAILTO}?subject=${encodeURIComponent(subject)}`;
 
 // TODO: set your usual working hours (24h clock, owner's timezone, end is exclusive).
 export const WORKING_HOURS = { start: 9, end: 18 } as const;

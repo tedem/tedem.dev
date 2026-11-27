@@ -1,8 +1,6 @@
 import Container from '@/components/site/container';
 import Metadata from '@/components/site/metadata';
-import { formatPostDate } from '@/content/posts';
-import { posts } from '@/routes';
-import { show } from '@/routes/posts';
+import { formatPostDate, useLocale, useMessages, useRoutes } from '@/i18n';
 import type { Post, PostSummary } from '@/types';
 import { Link } from '@inertiajs/react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
@@ -23,13 +21,17 @@ const focusRing =
   'rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background';
 
 function PostHeader({ post }: { post: Post }) {
+  const locale = useLocale();
+  const t = useMessages();
+  const routes = useRoutes();
+
   return (
     <header className="border-border border-b">
       <Container border={true}>
         <div className="mx-auto max-w-3xl py-16 lg:py-24">
-          <nav aria-label="Breadcrumb" className="font-mono text-xs">
-            <Link href={posts().url} className={`text-primary hover:underline ${focusRing}`}>
-              ~/posts
+          <nav aria-label={t.posts.breadcrumb} className="font-mono text-xs">
+            <Link href={routes.posts().url} className={`text-primary hover:underline ${focusRing}`}>
+              ~/{t.paths.posts}
             </Link>
             <span className="text-muted-foreground" aria-hidden="true">
               /{post.slug}/{post.publicId}
@@ -47,14 +49,14 @@ function PostHeader({ post }: { post: Post }) {
 
           <p className="text-muted-foreground mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs tabular-nums">
             <span>
-              Published <time dateTime={post.publishedAt}>{formatPostDate(post.publishedAt)}</time>
+              {t.posts.published} <time dateTime={post.publishedAt}>{formatPostDate(post.publishedAt, locale)}</time>
             </span>
             {post.updatedAt && post.updatedAt !== post.publishedAt && (
               <span>
-                Updated <time dateTime={post.updatedAt}>{formatPostDate(post.updatedAt)}</time>
+                {t.posts.updated} <time dateTime={post.updatedAt}>{formatPostDate(post.updatedAt, locale)}</time>
               </span>
             )}
-            <span>{post.readingMinutes} min read</span>
+            <span>{t.common.minutesRead(post.readingMinutes)}</span>
           </p>
         </div>
       </Container>
@@ -64,15 +66,17 @@ function PostHeader({ post }: { post: Post }) {
 
 function NeighbourLink({ post, direction }: { post: PostSummary; direction: 'newer' | 'older' }) {
   const newer = direction === 'newer';
+  const t = useMessages();
+  const routes = useRoutes();
 
   return (
     <Link
-      href={show({ slug: post.slug, publicId: post.publicId }).url}
+      href={routes.post({ slug: post.slug, publicId: post.publicId }).url}
       className={`group border-border hover:border-primary flex flex-col gap-2 border p-5 transition-colors ${newer ? 'sm:items-end sm:text-right' : ''} ${focusRing}`}
     >
       <span className="text-muted-foreground flex items-center gap-2 font-mono text-xs">
         {!newer && <ArrowLeft className="size-3.5" aria-hidden="true" />}
-        {newer ? 'Newer post' : 'Older post'}
+        {newer ? t.posts.newer : t.posts.older}
         {newer && <ArrowRight className="size-3.5" aria-hidden="true" />}
       </span>
       <span className="group-hover:text-primary font-medium tracking-tight text-balance">{post.title}</span>
@@ -81,6 +85,9 @@ function NeighbourLink({ post, direction }: { post: PostSummary; direction: 'new
 }
 
 export default function PostPage({ post, newer, older }: PostPageProps) {
+  const t = useMessages();
+  const routes = useRoutes();
+
   return (
     <>
       <Metadata
@@ -103,7 +110,7 @@ export default function PostPage({ post, newer, older }: PostPageProps) {
         </Container>
       </article>
 
-      <nav aria-label="More posts" className="border-border border-t">
+      <nav aria-label={t.posts.morePosts} className="border-border border-t">
         <Container border={true}>
           <div className="mx-auto flex max-w-3xl flex-col gap-6 py-12 lg:py-16">
             {(older || newer) && (
@@ -113,8 +120,12 @@ export default function PostPage({ post, newer, older }: PostPageProps) {
               </div>
             )}
 
-            <Link href={posts().url} className={`hover:text-primary font-mono text-sm transition-colors ${focusRing}`}>
-              <span aria-hidden="true">← </span>All posts
+            <Link
+              href={routes.posts().url}
+              className={`hover:text-primary font-mono text-sm transition-colors ${focusRing}`}
+            >
+              <span aria-hidden="true">← </span>
+              {t.common.allPosts}
             </Link>
           </div>
         </Container>

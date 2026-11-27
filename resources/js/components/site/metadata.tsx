@@ -1,5 +1,6 @@
 import { SOCIALS } from '@/content/profile';
 import { buildSchema, serializeSchema, type ArticleDates, type PageType } from '@/content/schema';
+import { useMessages } from '@/i18n';
 import { Head, usePage } from '@inertiajs/react';
 
 type MetadataProps = {
@@ -33,6 +34,7 @@ export default function Metadata({
 }: MetadataProps) {
   const { url, props } = usePage();
   const { name, appUrl, locale } = props;
+  const t = useMessages();
 
   // The `url` prop is the path (with any query string); canonical drops the query.
   const canonical = new URL(url.split(/[?#]/)[0], appUrl).toString();
@@ -41,6 +43,8 @@ export default function Metadata({
     appUrl,
     siteName: name,
     locale,
+    role: t.profile.role,
+    location: t.profile.location,
     canonical,
     // A post's headline is its own title, without the site name.
     title: pageType === 'BlogPosting' && title ? title : fullTitle,

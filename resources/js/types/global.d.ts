@@ -1,3 +1,4 @@
+import type { Locale } from '@/i18n';
 import type { Auth } from '@/types/auth';
 
 declare module 'react' {
@@ -13,7 +14,10 @@ declare module '@inertiajs/core' {
       appUrl: string;
       auth: Auth;
       sidebarOpen: boolean;
-      locale: string;
+      /** Language of the current page; admin and auth pages are always "en". */
+      locale: Locale;
+      /** The current page in each language, or null when it has no translated twin (admin, auth). */
+      alternates: Record<Locale, string> | null;
       /** The site owner's clock, from HandleInertiaRequests::share(). */
       time: {
         /** IANA timezone name, e.g. "Europe/Istanbul" (APP_TIMEZONE). */

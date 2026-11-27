@@ -27,7 +27,7 @@ final class AddRobotsTag
     {
         $response = $next($request);
 
-        if (! $request->routeIs(...IndexablePages::ROUTES)) {
+        if (! $request->routeIs(...IndexablePages::routes())) {
             $response->headers->set('X-Robots-Tag', 'noindex, nofollow');
         }
 
