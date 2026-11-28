@@ -17,6 +17,34 @@ export type Post = PostSummary & {
   html: string;
 };
 
+/** An approved comment as the public post page gets it (App\Models\Comment::toPublic()). */
+export type PostComment = {
+  id: number;
+  name: string;
+  body: string;
+  /** ISO 8601, in the site's timezone. */
+  createdAt: string;
+  /** Written by the site owner. */
+  isOwner: boolean;
+  /** Approved replies, oldest first; always empty on a reply. */
+  replies: PostComment[];
+};
+
+/** A comment in the admin moderation list. Dates are ISO 8601. */
+export type AdminComment = {
+  id: number;
+  name: string;
+  email: string;
+  body: string;
+  isOwner: boolean;
+  createdAt: string;
+  approvedAt: string | null;
+  post: { title: string; url: string };
+  parent: { name: string; excerpt: string } | null;
+};
+
+export type CommentFilter = 'pending' | 'approved' | 'all';
+
 export type PostStatus = 'draft' | 'scheduled' | 'published';
 
 /** A row in the admin post list. Dates are ISO 8601. */

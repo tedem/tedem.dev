@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Enums\Locale;
+use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
@@ -51,8 +52,18 @@ final class PostController extends Controller
             ->latest('published_at')
             ->first();
 
+        // Approved comments, oldest first, each with its approved replies.
+        $comments = $post->comments()
+            ->approved()
+            ->whereNull('parent_id')
+            ->with(['replies' => fn ($query) => $query->approved()->oldest()])
+            ->oldest()
+            ->get()
+            ->map(fn (Comment $comment): array => $comment->toPublic());
+
         return Inertia::render('site/post', [
             'post' => [...$post->toSummary(), 'html' => $post->html()],
+            'comments' => $comments,
             'newer' => $newer?->toSummary(),
             'older' => $older?->toSummary(),
         ]);

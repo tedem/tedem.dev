@@ -59,6 +59,12 @@ const tr: LegalDocuments = {
                   'Yazışma bitene kadar, en fazla 2 yıl',
                 ],
                 [
+                  'Yorumlar: adın, e-posta adresin ve yorumun',
+                  'Yorumu incelendikten sonra adınla yayımlamak; e-posta adresi hiçbir zaman gösterilmez, yalnızca sana özelden yanıt vermek ya da kötüye kullanımla ilgilenmek için kullanılır',
+                  'Yayımlanma talebin (KVKK md. 5/2-c, GDPR md. 6(1)(b)); moderasyon için meşru menfaat',
+                  'Yazı yayında kaldıkça ya da kaldırılmasını isteyene kadar',
+                ],
+                [
                   'Hesap verileri, yalnızca kayıt olursan: ad, e-posta, parola (özetlenmiş olarak), iki adımlı doğrulama ve passkey verileri',
                   'Yönetim paneline giriş',
                   'Sözleşmenin kurulması ve ifası (KVKK md. 5/2-c, GDPR md. 6(1)(b))',
@@ -68,6 +74,7 @@ const tr: LegalDocuments = {
             },
           },
           'Kişisel veriler otomatik karar verme ya da profilleme için kullanılmaz.',
+          'Onaylanan bir yorum ve verdiğin ad, yazının sayfasında herkese açık olur; onaylanmayan yorumlar silinir.',
         ],
       },
       {
@@ -218,6 +225,21 @@ const tr: LegalDocuments = {
         title: 'Hesaplar',
         blocks: [
           'Yönetim paneli siteyi yönetmek için vardır; hesap oluşturmak içerik yayımlama hakkı vermez. Giriş bilgilerini güvende tutmak senin sorumluluğundadır. Bu koşullara uymayan ya da kullanılmayan hesaplar bildirim yapılmadan askıya alınabilir veya silinebilir.',
+        ],
+      },
+      {
+        id: 'comments',
+        title: 'Yorumlar',
+        blocks: [
+          'Yorumlar yayımlanmadan önce incelenir; gerekçe gösterilmeden reddedilebilir ya da istendiği zaman kaldırılabilir. Yorum yazarken:',
+          {
+            list: [
+              'saygılı ol ve yazının konusundan uzaklaşma;',
+              'reklam, spam, hukuka aykırı içerik ya da başkalarının kişisel verilerini paylaşma;',
+              'kendini başkası gibi gösterme.',
+            ],
+          },
+          'Yazdıkların üzerindeki haklar sende kalır ve içeriğinden sen sorumlusun. Yorum göndererek, yorumunun verdiğin adla sitede gösterilmesine izin vermiş olursun. Yorumlarından birinin kaldırılmasını istersen {email} adresine yaz.',
         ],
       },
       {

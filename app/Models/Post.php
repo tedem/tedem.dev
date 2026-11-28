@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Str;
@@ -31,6 +32,7 @@ use Override;
  * @property CarbonImmutable|null $published_at
  * @property CarbonImmutable|null $created_at
  * @property CarbonImmutable|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Comment> $comments
  */
 #[Fillable(['locale', 'title', 'slug', 'description', 'body', 'published_at'])]
 final class Post extends Model
@@ -72,6 +74,12 @@ final class Post extends Model
     public function url(): string
     {
         return route($this->locale->route('posts.show'), ['slug' => $this->slug, 'publicId' => $this->public_id]);
+    }
+
+    /** @return HasMany<Comment, $this> */
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
     }
 
     public function isPublished(): bool

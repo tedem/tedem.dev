@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Admin\ApproveCommentController;
+use App\Http\Controllers\Admin\CommentController;
+use App\Http\Controllers\Admin\CommentReplyController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\PostPreviewController;
 use App\Http\Controllers\Admin\Settings\ProfileController;
@@ -41,6 +44,11 @@ Route::prefix('admin')->name('admin.')->group(function (): void {
         Route::middleware('can:manage-posts')->group(function (): void {
             Route::post('posts/preview', PostPreviewController::class)->name('posts.preview');
             Route::resource('posts', PostController::class)->except('show');
+
+            Route::get('comments', [CommentController::class, 'index'])->name('comments.index');
+            Route::patch('comments/{comment}/approve', ApproveCommentController::class)->name('comments.approve');
+            Route::post('comments/{comment}/replies', CommentReplyController::class)->name('comments.reply');
+            Route::delete('comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
         });
     });
 });

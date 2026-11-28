@@ -190,6 +190,46 @@ const tr: Messages = {
     updated: 'Güncelleme',
   },
 
+  comments: {
+    path: 'yorumlar',
+    title: 'Yorumlar',
+    count: (count: number) => `${count} yorum`,
+    emptyTitle: 'Henüz yorum yok.',
+    emptyText: 'Sorular, düzeltmeler ve farklı görüşler her zaman memnuniyetle karşılanır.',
+    author: 'Yazar',
+    reply: 'Yanıtla',
+    replyTo: (name: string) => `${name} adlı kişiye yanıt ver`,
+    cancel: 'Vazgeç',
+    form: {
+      title: 'Yorum yaz',
+      replyTitle: (name: string) => `${name} adlı kişiye yanıt`,
+      name: 'Ad',
+      email: 'E-posta',
+      emailHint: 'Hiçbir zaman gösterilmez. Yalnızca sana özelden yanıt vermem gerekirse kullanılır.',
+      body: 'Yorum',
+      bodyPlaceholder: 'Bir düşünce, soru ya da düzeltme…',
+      submit: 'Yorumu gönder',
+      submitReply: 'Yanıtı gönder',
+      sending: 'Gönderiliyor…',
+      characters: (count: number, max: number) => `${count} / ${max}`,
+      notice:
+        'Yorumlar incelendikten sonra yayımlanır. Yorum göndererek {terms}’nı kabul etmiş olursun; verilerinin nasıl işlendiği {privacy}’nda anlatılır.',
+    },
+    errors: {
+      name: 'Adını yaz (en fazla 80 karakter).',
+      email: 'Geçerli bir e-posta adresi yaz.',
+      body: (max: number) => `2 ile ${max} karakter arasında bir yorum yaz.`,
+      parent: 'Bu yoruma artık yanıt verilemiyor.',
+      throttled: 'Kısa sürede çok fazla yorum gönderildi. Lütfen biraz sonra tekrar dene.',
+    },
+    sent: {
+      title: 'Teşekkürler, yorumun alındı.',
+      text: 'İncelendikten sonra burada görünecek.',
+      again: 'Bir yorum daha yaz',
+      close: 'Kapat',
+    },
+  },
+
   approach: {
     tagline: 'Küçük adımlar, özenli sonuçlar',
     titleStart: 'Önce düşünce.',

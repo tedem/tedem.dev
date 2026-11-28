@@ -199,6 +199,47 @@ const en = {
     updated: 'Updated',
   },
 
+  /** Comments under a post (components/site/comments.tsx). */
+  comments: {
+    path: 'comments',
+    title: 'Comments',
+    count: (count: number) => (count === 1 ? '1 comment' : `${count} comments`),
+    emptyTitle: 'No comments yet.',
+    emptyText: 'Questions, corrections and second opinions are all welcome.',
+    author: 'Author',
+    reply: 'Reply',
+    replyTo: (name: string) => `Reply to ${name}`,
+    cancel: 'Cancel',
+    form: {
+      title: 'Leave a comment',
+      replyTitle: (name: string) => `Replying to ${name}`,
+      name: 'Name',
+      email: 'Email',
+      emailHint: 'Never shown. Only used if I need to answer in private.',
+      body: 'Comment',
+      bodyPlaceholder: 'A thought, a question or a correction…',
+      submit: 'Send comment',
+      submitReply: 'Send reply',
+      sending: 'Sending…',
+      characters: (count: number, max: number) => `${count} / ${max}`,
+      notice:
+        'Comments appear after review. Sending one means you agree to the {terms}; the {privacy} explains how your data is handled.',
+    },
+    errors: {
+      name: 'Enter your name (up to 80 characters).',
+      email: 'Enter a valid email address.',
+      body: (max: number) => `Write a comment of 2 to ${max} characters.`,
+      parent: 'That comment can no longer be replied to.',
+      throttled: 'That is a lot of comments in a short time. Please try again a little later.',
+    },
+    sent: {
+      title: 'Thanks, your comment is in.',
+      text: 'It will appear here once it has been reviewed.',
+      again: 'Write another',
+      close: 'Close',
+    },
+  },
+
   approach: {
     tagline: 'Small steps, thoughtful outcomes',
     titleStart: 'Thought first.',

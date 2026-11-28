@@ -3,7 +3,9 @@ import tr from '@/i18n/messages/tr';
 import * as routesTr from '@/routes';
 import * as routesEn from '@/routes/en';
 import { show as showEn } from '@/routes/en/posts';
+import { store as storeCommentEn } from '@/routes/en/posts/comments';
 import { show as showTr } from '@/routes/posts';
+import { store as storeCommentTr } from '@/routes/posts/comments';
 import { usePage } from '@inertiajs/react';
 
 /*
@@ -36,6 +38,7 @@ type SiteRoutes = {
   terms: () => { url: string };
   privacy: () => { url: string };
   post: (args: { slug: string; publicId: string }) => { url: string };
+  comment: (args: { slug: string; publicId: string }) => { url: string };
 };
 
 const ROUTES: Record<Locale, SiteRoutes> = {
@@ -47,6 +50,7 @@ const ROUTES: Record<Locale, SiteRoutes> = {
     terms: routesTr.terms,
     privacy: routesTr.privacy,
     post: showTr,
+    comment: storeCommentTr,
   },
   en: {
     home: routesEn.home,
@@ -56,6 +60,7 @@ const ROUTES: Record<Locale, SiteRoutes> = {
     terms: routesEn.terms,
     privacy: routesEn.privacy,
     post: showEn,
+    comment: storeCommentEn,
   },
 };
 

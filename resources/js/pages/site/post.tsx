@@ -1,7 +1,8 @@
+import Comments from '@/components/site/comments';
 import Container from '@/components/site/container';
 import Metadata from '@/components/site/metadata';
 import { formatPostDate, useLocale, useMessages, useRoutes } from '@/i18n';
-import type { Post, PostSummary } from '@/types';
+import type { Post, PostComment, PostSummary } from '@/types';
 import { Link } from '@inertiajs/react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
@@ -13,6 +14,7 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 type PostPageProps = {
   post: Post;
+  comments: PostComment[];
   newer: PostSummary | null;
   older: PostSummary | null;
 };
@@ -84,7 +86,7 @@ function NeighbourLink({ post, direction }: { post: PostSummary; direction: 'new
   );
 }
 
-export default function PostPage({ post, newer, older }: PostPageProps) {
+export default function PostPage({ post, comments, newer, older }: PostPageProps) {
   const t = useMessages();
   const routes = useRoutes();
 
@@ -109,6 +111,14 @@ export default function PostPage({ post, newer, older }: PostPageProps) {
           />
         </Container>
       </article>
+
+      <div className="border-border border-t">
+        <Container border={true}>
+          <div className="mx-auto max-w-3xl py-12 lg:py-16">
+            <Comments comments={comments} post={post} />
+          </div>
+        </Container>
+      </div>
 
       <nav aria-label={t.posts.morePosts} className="border-border border-t">
         <Container border={true}>

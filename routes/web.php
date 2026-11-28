@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Enums\Locale;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RobotsController;
@@ -26,6 +27,9 @@ foreach (Locale::cases() as $locale) {
             Route::get('posts/{slug}/{publicId}', [PostController::class, 'show'])
                 ->where(['slug' => '[a-z0-9]+(?:-[a-z0-9]+)*', 'publicId' => '[A-Za-z0-9]+'])
                 ->name('posts.show');
+            Route::post('posts/{slug}/{publicId}/comments', [CommentController::class, 'store'])
+                ->where(['slug' => '[a-z0-9]+(?:-[a-z0-9]+)*', 'publicId' => '[A-Za-z0-9]+'])
+                ->name('posts.comments.store');
             Route::inertia('contact', 'site/contact')->name('contact');
             // Both legal pages share one component; the copy lives in resources/js/i18n/legal.
             Route::inertia('terms-of-service', 'site/legal', ['document' => 'terms'])->name('terms');

@@ -60,6 +60,12 @@ const en = {
                   'Until the conversation is over, at most 2 years',
                 ],
                 [
+                  'Comments: your name, email address and comment',
+                  'Publishing the comment under your name after review; the email address is never shown and is used only to answer you in private or to deal with abuse',
+                  'Your request to publish it (KVKK art. 5/2-c, GDPR art. 6(1)(b)); legitimate interest for moderation',
+                  'While the post is online, or until you ask for removal',
+                ],
+                [
                   'Account data, only if you register: name, email, password (stored hashed), two-factor and passkey data',
                   'Signing in to the admin area',
                   'Performance of a contract (KVKK art. 5/2-c, GDPR art. 6(1)(b))',
@@ -69,6 +75,7 @@ const en = {
             },
           },
           'Personal data is not used for automated decisions or profiling.',
+          'Once approved, a comment and the name you gave are public on the post’s page; comments that are not approved are deleted.',
         ],
       },
       {
@@ -229,6 +236,21 @@ const en = {
         title: 'Accounts',
         blocks: [
           'The admin area exists to run the site. Creating an account gives no right to publish content. You are responsible for keeping your sign-in details safe. Accounts that break these terms, or that are not used, may be suspended or deleted without notice.',
+        ],
+      },
+      {
+        id: 'comments',
+        title: 'Comments',
+        blocks: [
+          'Comments are reviewed before they appear, and may be declined or removed at any time without a reason. When you comment:',
+          {
+            list: [
+              'be respectful, and stay on the topic of the post;',
+              'do not post advertising, spam, illegal content, or other people’s personal data;',
+              'do not pretend to be someone else.',
+            ],
+          },
+          'You keep the rights to what you write and are responsible for it. By sending a comment, you allow it to be shown, with the name you gave, on the site. To have one of your comments removed, write to {email}.',
         ],
       },
       {
