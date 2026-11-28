@@ -25,9 +25,10 @@ final class PostController extends Controller
             'posts' => Post::query()
                 ->published()
                 ->inLocale(Locale::current())
+                ->withCount(['comments' => fn ($query) => $query->approved()])
                 ->latest('published_at')
                 ->get()
-                ->map(fn (Post $post): array => $post->toSummary()),
+                ->map(fn (Post $post): array => [...$post->toSummary(), 'commentCount' => (int) $post->comments_count]),
         ]);
     }
 
@@ -62,7 +63,7 @@ final class PostController extends Controller
             ->map(fn (Comment $comment): array => $comment->toPublic());
 
         return Inertia::render('site/post', [
-            'post' => [...$post->toSummary(), 'html' => $post->html()],
+            'post' => [...$post->toSummary(), 'html' => $post->html(), 'outline' => $post->outline(), 'stats' => $post->stats()],
             'comments' => $comments,
             'newer' => $newer?->toSummary(),
             'older' => $older?->toSummary(),

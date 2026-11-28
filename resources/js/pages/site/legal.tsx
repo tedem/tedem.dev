@@ -1,6 +1,7 @@
 import Container from '@/components/site/container';
 import Metadata from '@/components/site/metadata';
 import { EMAIL, LEGAL_NAME, MAILTO } from '@/content/profile';
+import { useActiveSection } from '@/hooks/use-active-section';
 import { formatPostDate, useLocale, useMessages, useRoutes } from '@/i18n';
 import {
   type LegalBlock,
@@ -260,40 +261,6 @@ function Summary({ points }: { points: readonly string[] }) {
       <p className="text-muted-foreground border-border mt-6 border-t pt-4 text-xs leading-5">{t.legal.summaryNote}</p>
     </section>
   );
-}
-
-/**
- * The id of the section being read: the last one whose heading has passed the line
- * under the sticky site header.
- */
-function useActiveSection(ids: readonly string[]) {
-  const [active, setActive] = useState(ids[0]);
-
-  useEffect(() => {
-    const update = () => {
-      let current = ids[0];
-      for (const id of ids) {
-        const element = document.getElementById(id);
-        if (element && element.getBoundingClientRect().top <= 160) current = id;
-      }
-      // At the very bottom the last sections can never reach the line; mark the last one.
-      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
-        current = ids[ids.length - 1];
-      }
-      setActive(current);
-    };
-
-    update();
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
-
-    return () => {
-      window.removeEventListener('scroll', update);
-      window.removeEventListener('resize', update);
-    };
-  }, [ids]);
-
-  return active;
 }
 
 function Contents({ sections }: { sections: readonly LegalSection[] }) {

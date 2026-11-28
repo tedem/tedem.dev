@@ -12,9 +12,34 @@ export type PostSummary = {
   readingMinutes: number;
 };
 
+/** A post on the /posts list: its summary and how many approved comments it has. */
+export type PostListItem = PostSummary & {
+  commentCount: number;
+};
+
+/** A heading in a post, for its table of contents; `id` is the heading permalink's anchor. */
+export type PostHeading = {
+  level: 2 | 3;
+  id: string;
+  text: string;
+};
+
+/** Counts for the post page's side panel (App\Models\Post::stats()). */
+export type PostStats = {
+  words: number;
+  characters: number;
+  charactersWithoutSpaces: number;
+  headings: number;
+  codeBlocks: number;
+  links: number;
+  images: number;
+};
+
 /** A published post with its rendered Markdown. */
 export type Post = PostSummary & {
   html: string;
+  outline: PostHeading[];
+  stats: PostStats;
 };
 
 /** An approved comment as the public post page gets it (App\Models\Comment::toPublic()). */

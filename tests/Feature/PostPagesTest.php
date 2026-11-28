@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Models\Comment;
 use App\Models\Post;
 use Inertia\Testing\AssertableInertia as Assert;
 
@@ -105,4 +106,39 @@ test('the sitemap lists published posts with their last change', function (): vo
     $this->get(route('sitemap'))
         ->assertSee('<loc>'.$post->url().'</loc><lastmod>'.$post->updated_at?->toDateString().'</lastmod>', false)
         ->assertDontSee('not-in-sitemap');
+});
+
+test('the posts page counts approved comments per post', function (): void {
+    $post = Post::factory()->create();
+    Comment::factory()->for($post)->count(2)->create();
+    Comment::factory()->for($post)->pending()->create();
+
+    $this->get(route('posts'))
+        ->assertInertia(fn (Assert $page): Assert => $page->where('posts.0.commentCount', 2));
+});
+
+test('a post page lists its h2 and h3 headings for the table of contents', function (): void {
+    $post = Post::factory()->create(['body' => "## First **part**\n\nText.\n\n### A detail\n\n#### Too deep\n\n## Second"]);
+
+    $this->get($post->url())
+        ->assertInertia(fn (Assert $page): Assert => $page->where('post.outline', [
+            ['level' => 2, 'id' => 'first-part', 'text' => 'First part'],
+            ['level' => 3, 'id' => 'a-detail', 'text' => 'A detail'],
+            ['level' => 2, 'id' => 'second', 'text' => 'Second'],
+        ]));
+});
+
+test('a post page counts words, characters and parts of the post', function (): void {
+    $post = Post::factory()->create(['body' => "## Başlık\n\nTürkiye’de çalışıyorum, end-to-end. [link](https://example.com)\n\n```php\necho 1;\n```\n\n![alt](/a.png)"]);
+
+    $this->get($post->url())
+        ->assertInertia(fn (Assert $page): Assert => $page->where('post.stats', [
+            'words' => 7,
+            'characters' => 55,
+            'charactersWithoutSpaces' => 49,
+            'headings' => 1,
+            'codeBlocks' => 1,
+            'links' => 1,
+            'images' => 1,
+        ]));
 });

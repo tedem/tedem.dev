@@ -8,6 +8,7 @@ use App\Enums\Locale;
 use App\Markdown\MarkdownRenderer;
 use Carbon\CarbonImmutable;
 use Database\Factories\PostFactory;
+use Dom\HTMLDocument;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Builder;
@@ -33,6 +34,7 @@ use Override;
  * @property CarbonImmutable|null $created_at
  * @property CarbonImmutable|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Comment> $comments
+ * @property-read int|null $comments_count
  */
 #[Fillable(['locale', 'title', 'slug', 'description', 'body', 'published_at'])]
 final class Post extends Model
@@ -101,9 +103,67 @@ final class Post extends Model
         );
     }
 
+    /**
+     * The post's h2 and h3 headings, for its table of contents. The ids are the ones the
+     * Markdown renderer gives the headings' permalinks, so the entries link straight to them.
+     *
+     * @return list<array{level: int, id: string, text: string}>
+     */
+    public function outline(): array
+    {
+        $document = $this->document();
+        $outline = [];
+
+        foreach ($document->querySelectorAll('h2, h3') as $heading) {
+            $permalink = $heading->querySelector('a.heading-permalink');
+            $id = $permalink?->getAttribute('id');
+
+            if ($id === null || $id === '') {
+                continue;
+            }
+
+            $permalink->remove();
+
+            $outline[] = [
+                'level' => $heading->tagName === 'H2' ? 2 : 3,
+                'id' => $id,
+                'text' => mb_trim((string) $heading->textContent),
+            ];
+        }
+
+        return $outline;
+    }
+
+    /**
+     * Counts for the post page's side panel, from what a reader sees: the rendered body
+     * without the "#" heading permalinks. Code counts as text too.
+     *
+     * @return array{words: int, characters: int, charactersWithoutSpaces: int, headings: int, codeBlocks: int, links: int, images: int}
+     */
+    public function stats(): array
+    {
+        $document = $this->document();
+
+        foreach ($document->querySelectorAll('a.heading-permalink') as $permalink) {
+            $permalink->remove();
+        }
+
+        $text = mb_trim((string) preg_replace('/\s+/u', ' ', (string) $document->body?->textContent));
+
+        return [
+            'words' => $this->countWords($text),
+            'characters' => mb_strlen($text),
+            'charactersWithoutSpaces' => mb_strlen(str_replace(' ', '', $text)),
+            'headings' => $document->querySelectorAll('h2, h3, h4, h5, h6')->length,
+            'codeBlocks' => $document->querySelectorAll('pre')->length,
+            'links' => $document->querySelectorAll('a[href]')->length,
+            'images' => $document->querySelectorAll('img')->length,
+        ];
+    }
+
     public function readingMinutes(): int
     {
-        return max(1, (int) ceil(str_word_count(strip_tags($this->html())) / self::WORDS_PER_MINUTE));
+        return max(1, (int) ceil($this->countWords(strip_tags($this->html())) / self::WORDS_PER_MINUTE));
     }
 
     /**
@@ -164,5 +224,20 @@ final class Post extends Model
             'locale' => Locale::class,
             'published_at' => 'immutable_datetime',
         ];
+    }
+
+    /**
+     * Words in any script: runs of letters and digits, with inner apostrophes and hyphens
+     * ("Türkiye’de", "end-to-end"). str_word_count() only knows ASCII letters, so it split
+     * Turkish words at every "ş" or "ı".
+     */
+    private function countWords(string $text): int
+    {
+        return (int) preg_match_all("/[\\p{L}\\p{N}]+(?:['’-][\\p{L}\\p{N}]+)*/u", $text);
+    }
+
+    private function document(): HTMLDocument
+    {
+        return HTMLDocument::createFromString('<!DOCTYPE html><body>'.$this->html().'</body>', LIBXML_NOERROR);
     }
 }

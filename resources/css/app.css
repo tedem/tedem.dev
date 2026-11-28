@@ -226,6 +226,23 @@
     @apply border-border overflow-x-auto border p-4 font-mono text-sm leading-6;
   }
 
+  /* Code blocks get a bar with the language and a copy button (useCodeBlocks in post.tsx). */
+  .post-body .code-block {
+    @apply border-border border;
+  }
+
+  .post-body .code-block pre {
+    @apply border-0;
+  }
+
+  .post-body .code-block-bar {
+    @apply border-border bg-muted/40 text-muted-foreground flex items-center justify-between gap-4 border-b px-4 py-2 font-mono text-xs;
+  }
+
+  .post-body .code-block-bar button {
+    @apply hover:text-foreground focus-visible:ring-ring rounded-sm transition-colors outline-none focus-visible:ring-2 data-copied:text-emerald-600 dark:data-copied:text-emerald-400;
+  }
+
   .post-body hr {
     @apply border-border my-12;
   }
