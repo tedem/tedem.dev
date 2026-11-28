@@ -232,7 +232,7 @@ const tr: Messages = {
       reading: 'okuma',
       progress: 'Okunan kısım',
       remaining: (minutes: number) => `~${minutes} dk kaldı`,
-      done: 'Bitti. Okuduğun için teşekkürler!',
+      done: 'Bitti. Teşekkürler!',
       notStarted: 'Henüz başlamadın',
       stats: 'istatistik',
       words: 'Kelime',

@@ -100,7 +100,7 @@ export function ReadingPanel({ target, minutes }: { target: RefObject<HTMLElemen
 
       <p
         className={cn(
-          'mt-2 font-mono text-[0.6875rem]',
+          'mt-2 truncate font-mono text-[0.6875rem]',
           percent >= 100 ? 'text-emerald-600 dark:text-emerald-400' : 'text-muted-foreground',
         )}
       >

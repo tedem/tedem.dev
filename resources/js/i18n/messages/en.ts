@@ -241,7 +241,7 @@ const en = {
       reading: 'reading',
       progress: 'Read so far',
       remaining: (minutes: number) => `~${minutes} min left`,
-      done: 'Finished. Thanks for reading!',
+      done: 'Done. Thanks for reading!',
       notStarted: 'Not started yet',
       stats: 'stats',
       words: 'Words',
