@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Middleware\ThrottleAuthForms;
 use Laravel\Fortify\Features;
 
 return [
@@ -103,7 +104,8 @@ return [
     |
     */
 
-    'middleware' => ['web'],
+    // ThrottleAuthForms rate limits registration and password reset links, which Fortify does not.
+    'middleware' => ['web', ThrottleAuthForms::class],
 
     /*
     |--------------------------------------------------------------------------

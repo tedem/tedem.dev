@@ -91,6 +91,17 @@ final class FortifyServiceProvider extends ServiceProvider
             return Limit::perMinute(5)->by($throttleKey);
         });
 
+        // Registration stays open, so bots are slowed per IP: a burst limit and an hourly cap.
+        // The keys differ because limits that share a key share one counter.
+        RateLimiter::for('register', fn (Request $request): array => [
+            Limit::perMinute(5)->by('minute|'.$request->ip()),
+            Limit::perHour(20)->by('hour|'.$request->ip()),
+        ]);
+
+        // The password broker already waits between links for one address; this caps how
+        // many addresses one IP can try.
+        RateLimiter::for('password-reset', fn (Request $request): Limit => Limit::perMinute(5)->by($request->ip()));
+
         RateLimiter::for('passkeys', fn (Request $request) => Limit::perMinute(10)->by(
             ($request->input('credential.id') ?: $request->session()->getId()).'|'.$request->ip(),
         ));
