@@ -36,6 +36,9 @@ export const WORDMARK = 'tedem';
 /** First name, as the hero greets visitors ("Hi, I'm Medet.") and as search engines see the site's author. */
 export const NAME = 'Medet';
 
+/** Full legal name: the data controller in the Privacy Policy and the party in the Terms of Service. */
+export const LEGAL_NAME = 'Medet Erdal';
+
 // Experience grows by itself: enter the year you started (month is 0-based, so 0 = January).
 export const CAREER_START = new Date(2012, 0, 1);
 

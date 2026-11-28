@@ -16,8 +16,8 @@ test('the sitemap lists the public pages', function (): void {
     );
 
     expect($locations)->toBe([
-        route('home'), route('about'), route('posts'), route('contact'),
-        route('en.home'), route('en.about'), route('en.posts'), route('en.contact'),
+        route('home'), route('about'), route('posts'), route('contact'), route('terms'), route('privacy'),
+        route('en.home'), route('en.about'), route('en.posts'), route('en.contact'), route('en.terms'), route('en.privacy'),
     ]);
 });
 

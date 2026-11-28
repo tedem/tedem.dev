@@ -1,5 +1,5 @@
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
-import { useMessages } from '@/i18n';
+import { useMessages, useRoutes } from '@/i18n';
 import {
   acceptAll,
   type ConsentCategory,
@@ -11,8 +11,8 @@ import {
   useCookieConsent,
 } from '@/lib/cookie-consent';
 import { cn } from '@/lib/utils';
-import { usePage } from '@inertiajs/react';
-import { Cookie, ShieldCheck, SlidersHorizontal } from 'lucide-react';
+import { Link, usePage } from '@inertiajs/react';
+import { ArrowRight, Cookie, ShieldCheck, SlidersHorizontal } from 'lucide-react';
 import { Switch as SwitchPrimitive } from 'radix-ui';
 import { useId, useState } from 'react';
 
@@ -182,6 +182,7 @@ function CategoryRow({
  */
 function SettingsDialog({ open, saved }: { open: boolean; saved: ConsentChoices | null }) {
   const t = useMessages();
+  const routes = useRoutes();
   const [draft, setDraft] = useState<ConsentChoices>(
     () => saved ?? (Object.fromEntries(OPTIONAL_CATEGORIES.map((category) => [category, false])) as ConsentChoices),
   );
@@ -195,6 +196,20 @@ function SettingsDialog({ open, saved }: { open: boolean; saved: ConsentChoices 
           <DialogDescription className="text-muted-foreground mt-2 text-sm leading-6 text-pretty">
             {t.cookies.settingsText}
           </DialogDescription>
+          <Link
+            href={`${routes.privacy().url}#cookies`}
+            onClick={() => setCookieSettingsOpen(false)}
+            className={cn(
+              'group text-foreground decoration-border hover:decoration-foreground mt-3 inline-flex items-center gap-1.5 text-sm underline underline-offset-4 transition-colors',
+              focusRing,
+            )}
+          >
+            {t.cookies.policyLink}
+            <ArrowRight
+              className="size-3.5 transition-transform motion-safe:group-hover:translate-x-0.5"
+              aria-hidden="true"
+            />
+          </Link>
         </div>
 
         <ul className="divide-border divide-y p-6">

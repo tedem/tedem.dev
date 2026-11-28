@@ -33,12 +33,30 @@ type SiteRoutes = {
   about: () => { url: string };
   posts: () => { url: string };
   contact: () => { url: string };
+  terms: () => { url: string };
+  privacy: () => { url: string };
   post: (args: { slug: string; publicId: string }) => { url: string };
 };
 
 const ROUTES: Record<Locale, SiteRoutes> = {
-  tr: { home: routesTr.home, about: routesTr.about, posts: routesTr.posts, contact: routesTr.contact, post: showTr },
-  en: { home: routesEn.home, about: routesEn.about, posts: routesEn.posts, contact: routesEn.contact, post: showEn },
+  tr: {
+    home: routesTr.home,
+    about: routesTr.about,
+    posts: routesTr.posts,
+    contact: routesTr.contact,
+    terms: routesTr.terms,
+    privacy: routesTr.privacy,
+    post: showTr,
+  },
+  en: {
+    home: routesEn.home,
+    about: routesEn.about,
+    posts: routesEn.posts,
+    contact: routesEn.contact,
+    terms: routesEn.terms,
+    privacy: routesEn.privacy,
+    post: showEn,
+  },
 };
 
 /** The language of the current page. */

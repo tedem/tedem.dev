@@ -20,7 +20,7 @@ enum Locale: string
      *
      * @var list<string>
      */
-    public const array PAGES = ['home', 'about', 'posts', 'contact'];
+    public const array PAGES = ['home', 'about', 'posts', 'contact', 'terms', 'privacy'];
 
     public static function default(): self
     {

@@ -27,6 +27,9 @@ foreach (Locale::cases() as $locale) {
                 ->where(['slug' => '[a-z0-9]+(?:-[a-z0-9]+)*', 'publicId' => '[A-Za-z0-9]+'])
                 ->name('posts.show');
             Route::inertia('contact', 'site/contact')->name('contact');
+            // Both legal pages share one component; the copy lives in resources/js/i18n/legal.
+            Route::inertia('terms-of-service', 'site/legal', ['document' => 'terms'])->name('terms');
+            Route::inertia('privacy-policy', 'site/legal', ['document' => 'privacy'])->name('privacy');
         });
 }
 

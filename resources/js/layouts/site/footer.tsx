@@ -1,7 +1,9 @@
 import Container from '@/components/site/container';
 import { EMAIL, MAILTO, SOCIALS, WORDMARK } from '@/content/profile';
 import { type Appearance, useAppearance } from '@/hooks/use-appearance';
-import { useMessages } from '@/i18n';
+import { useMessages, useRoutes } from '@/i18n';
+import { useLegalDocument } from '@/i18n/legal';
+import { Link } from '@inertiajs/react';
 import { openCookieSettings } from '@/lib/cookie-consent';
 import { ArrowUp, ArrowUpRight, Cookie, Monitor, Moon, Sun, type LucideIcon } from 'lucide-react';
 
@@ -145,6 +147,9 @@ function Wordmark() {
 
 export default function Footer() {
   const t = useMessages();
+  const routes = useRoutes();
+  const terms = useLegalDocument('terms');
+  const privacy = useLegalDocument('privacy');
 
   return (
     <footer className="border-border border-t">
@@ -156,9 +161,29 @@ export default function Footer() {
 
         <div className="border-border text-muted-foreground flex flex-wrap items-center justify-between gap-4 border-t py-6 text-sm">
           {/* The year is computed in the browser, so a prerendered page never shows a stale one. */}
-          <p>
-            © <span suppressHydrationWarning>{new Date().getFullYear()}</span> {WORDMARK}. {t.footer.rights}
-          </p>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <p>
+              © <span suppressHydrationWarning>{new Date().getFullYear()}</span> {WORDMARK}. {t.footer.rights}
+            </p>
+
+            <nav aria-label={t.footer.legal}>
+              <ul className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                <li>
+                  <Link
+                    href={routes.privacy().url}
+                    className={`hover:text-primary py-1 transition-colors ${focusRing}`}
+                  >
+                    {privacy.title}
+                  </Link>
+                </li>
+                <li>
+                  <Link href={routes.terms().url} className={`hover:text-primary py-1 transition-colors ${focusRing}`}>
+                    {terms.title}
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
 
           <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
             <ThemeSwitch />

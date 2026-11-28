@@ -8,7 +8,7 @@ test('public pages can be indexed', function (string $route): void {
     $this->get(route($route))
         ->assertOk()
         ->assertHeaderMissing('X-Robots-Tag');
-})->with(['home', 'about', 'posts', 'contact']);
+})->with(['home', 'about', 'posts', 'contact', 'terms', 'privacy']);
 
 test('auth pages are kept out of search results', function (string $route): void {
     $this->get(route($route))

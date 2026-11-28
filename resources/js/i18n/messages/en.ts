@@ -55,6 +55,19 @@ const en = {
     backToTop: 'Back to top',
     theme: { label: 'Theme', light: 'Light', dark: 'Dark', system: 'System' },
     cookieSettings: 'Cookie settings',
+    legal: 'Legal',
+  },
+
+  /** Shared parts of the legal pages; the documents themselves are in i18n/legal. */
+  legal: {
+    updated: 'Last updated',
+    contents: 'on-this-page',
+    summary: 'In short',
+    summaryNote: 'A plain-language summary. The full text below is what applies.',
+    cookieSettings: 'cookie settings',
+    readAlso: 'Also read',
+    questions: 'Questions?',
+    questionsText: 'Write to me about anything on this page.',
   },
 
   /** Cookie banner and settings (components/site/cookie-consent.tsx). */
@@ -70,6 +83,7 @@ const en = {
     save: 'Save choices',
     settingsTitle: 'Cookie settings',
     settingsText: 'Choose which cookies this site may set. You can change this at any time from the footer.',
+    policyLink: 'Read the Privacy Policy',
     alwaysOn: 'Always on',
     on: 'On',
     off: 'Off',

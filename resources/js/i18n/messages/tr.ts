@@ -48,6 +48,18 @@ const tr: Messages = {
     backToTop: 'Başa dön',
     theme: { label: 'Tema', light: 'Açık', dark: 'Koyu', system: 'Sistem' },
     cookieSettings: 'Çerez ayarları',
+    legal: 'Yasal',
+  },
+
+  legal: {
+    updated: 'Son güncelleme',
+    contents: 'bu-sayfada',
+    summary: 'Kısaca',
+    summaryNote: 'Anlaşılır bir özet. Geçerli olan, aşağıdaki metnin tamamıdır.',
+    cookieSettings: 'çerez ayarları',
+    readAlso: 'Ayrıca oku',
+    questions: 'Aklına takılan bir şey mi var?',
+    questionsText: 'Bu sayfadaki her konuda bana yazabilirsin.',
   },
 
   cookies: {
@@ -63,6 +75,7 @@ const tr: Messages = {
     settingsTitle: 'Çerez ayarları',
     settingsText:
       'Bu sitenin hangi çerezleri kullanabileceğini seç. Kararını istediğin zaman alt bilgiden değiştirebilirsin.',
+    policyLink: 'Gizlilik Politikası’nı oku',
     alwaysOn: 'Her zaman açık',
     on: 'Açık',
     off: 'Kapalı',

@@ -15,6 +15,8 @@ dataset('pages', [
     'about' => ['/about', '/en/about', 'site/about'],
     'posts' => ['/posts', '/en/posts', 'site/posts'],
     'contact' => ['/contact', '/en/contact', 'site/contact'],
+    'terms' => ['/terms-of-service', '/en/terms-of-service', 'site/legal'],
+    'privacy' => ['/privacy-policy', '/en/privacy-policy', 'site/legal'],
 ]);
 
 test('every public page has a Turkish and an English address', function (string $turkish, string $english, string $component): void {
