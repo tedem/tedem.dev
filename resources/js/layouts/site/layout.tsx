@@ -1,3 +1,4 @@
+import CookieConsent from '@/components/site/cookie-consent';
 import Header from '@/layouts/site/header';
 import Footer from '@/layouts/site/footer';
 import { useLocale, useMessages } from '@/i18n';
@@ -31,6 +32,8 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
 
         <Footer />
       </div>
+
+      <CookieConsent />
     </>
   );
 }

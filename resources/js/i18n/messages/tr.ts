@@ -47,6 +47,35 @@ const tr: Messages = {
     rights: 'Tüm hakları saklıdır.',
     backToTop: 'Başa dön',
     theme: { label: 'Tema', light: 'Açık', dark: 'Koyu', system: 'Sistem' },
+    cookieSettings: 'Çerez ayarları',
+  },
+
+  cookies: {
+    path: 'çerezler',
+    region: 'Çerez izni',
+    title: 'Birkaç çerez, izleme yok',
+    text: 'Bu site çalışmak için ve izin verirsen temanı hatırlamak için çerez kullanır. Analitik yok, reklam yok, üçüncü taraflarla paylaşılan bir şey yok.',
+    noTracking: 'İzleme yok · Reklam yok',
+    acceptAll: 'Tümünü kabul et',
+    rejectAll: 'Tümünü reddet',
+    customize: 'Özelleştir',
+    save: 'Seçimleri kaydet',
+    settingsTitle: 'Çerez ayarları',
+    settingsText:
+      'Bu sitenin hangi çerezleri kullanabileceğini seç. Kararını istediğin zaman alt bilgiden değiştirebilirsin.',
+    alwaysOn: 'Her zaman açık',
+    on: 'Açık',
+    off: 'Kapalı',
+    categories: {
+      necessary: {
+        title: 'Zorunlu',
+        text: 'Siteyi güvende ve çalışır tutar: formları sahte isteklere karşı korur ve bu seçimini hatırlar.',
+      },
+      preferences: {
+        title: 'Tercihler',
+        text: 'Seçtiğin temayı (açık, koyu ya da sistem) ziyaretler arasında hatırlar.',
+      },
+    },
   },
 
   profile: {

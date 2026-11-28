@@ -1,4 +1,5 @@
 import type { Locale } from '@/i18n';
+import type { ConsentChoices } from '@/lib/cookie-consent';
 import type { Auth } from '@/types/auth';
 
 declare module 'react' {
@@ -13,6 +14,8 @@ declare module '@inertiajs/core' {
       name: string;
       appUrl: string;
       auth: Auth;
+      /** The visitor's cookie choices, or null while the consent banner is still due. */
+      cookieConsent: ConsentChoices | null;
       sidebarOpen: boolean;
       /** Language of the current page; admin and auth pages are always "en". */
       locale: Locale;

@@ -2,7 +2,8 @@ import Container from '@/components/site/container';
 import { EMAIL, MAILTO, SOCIALS, WORDMARK } from '@/content/profile';
 import { type Appearance, useAppearance } from '@/hooks/use-appearance';
 import { useMessages } from '@/i18n';
-import { ArrowUp, ArrowUpRight, Monitor, Moon, Sun, type LucideIcon } from 'lucide-react';
+import { openCookieSettings } from '@/lib/cookie-consent';
+import { ArrowUp, ArrowUpRight, Cookie, Monitor, Moon, Sun, type LucideIcon } from 'lucide-react';
 
 /* -------------------------------------------------------------------------- */
 /* Content                                                                    */
@@ -161,6 +162,15 @@ export default function Footer() {
 
           <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
             <ThemeSwitch />
+
+            <button
+              type="button"
+              onClick={openCookieSettings}
+              className={`hover:text-primary flex items-center gap-2 py-1 transition-colors ${focusRing}`}
+            >
+              <Cookie className="size-4" aria-hidden="true" />
+              {t.footer.cookieSettings}
+            </button>
 
             <a href="#" className={`hover:text-primary flex items-center gap-2 py-1 transition-colors ${focusRing}`}>
               {t.footer.backToTop}

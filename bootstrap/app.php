@@ -7,6 +7,7 @@ use App\Http\Middleware\AddRobotsTag;
 use App\Http\Middleware\AddSecurityHeaders;
 use App\Http\Middleware\HandleAppearance;
 use App\Http\Middleware\HandleInertiaRequests;
+use App\Support\CookieConsent;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -20,7 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        $middleware->encryptCookies(except: ['appearance', 'sidebar_state']);
+        $middleware->encryptCookies(except: ['appearance', 'sidebar_state', CookieConsent::COOKIE]);
 
         // Signed-in users who open a guest page (e.g. /admin/login) go to the admin dashboard.
         $middleware->redirectUsersTo(fn (): string => route('admin.dashboard'));

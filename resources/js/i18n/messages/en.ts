@@ -54,6 +54,35 @@ const en = {
     rights: 'All rights reserved.',
     backToTop: 'Back to top',
     theme: { label: 'Theme', light: 'Light', dark: 'Dark', system: 'System' },
+    cookieSettings: 'Cookie settings',
+  },
+
+  /** Cookie banner and settings (components/site/cookie-consent.tsx). */
+  cookies: {
+    path: 'cookies',
+    region: 'Cookie consent',
+    title: 'A few cookies, no tracking',
+    text: 'This site uses cookies to work and, if you allow it, to remember your theme. No analytics, no ads, nothing shared with third parties.',
+    noTracking: 'No tracking · No ads',
+    acceptAll: 'Accept all',
+    rejectAll: 'Reject all',
+    customize: 'Customize',
+    save: 'Save choices',
+    settingsTitle: 'Cookie settings',
+    settingsText: 'Choose which cookies this site may set. You can change this at any time from the footer.',
+    alwaysOn: 'Always on',
+    on: 'On',
+    off: 'Off',
+    categories: {
+      necessary: {
+        title: 'Necessary',
+        text: 'Keep the site secure and working: they protect forms from forged requests and remember this choice.',
+      },
+      preferences: {
+        title: 'Preferences',
+        text: 'Remember the theme you pick (light, dark or system) between visits.',
+      },
+    },
   },
 
   // TODO: replace the placeholder bio with your own, here and in tr.ts.

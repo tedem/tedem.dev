@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Middleware;
 
 use App\Enums\Locale;
+use App\Support\CookieConsent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Inertia\Middleware;
@@ -49,6 +50,8 @@ final class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            // The visitor's cookie choices, or null while the consent banner is still due.
+            'cookieConsent' => fn (): ?array => CookieConsent::fromRequest($request),
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
             // Lazy: the site routes set the language in SetLocale, which runs after this middleware.
             'locale' => fn (): string => Locale::current()->value,
